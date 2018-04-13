@@ -1,1 +1,1 @@
-web: gunicorn anaesthetic.wsgi
+web: gunicorn somno.wsgi

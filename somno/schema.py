@@ -1,7 +1,7 @@
 """
 Define anaesthetic schemas.
 """
-from anaesthetic import models
+from somno import models
 
 list_columns = [
     models.Demographics,

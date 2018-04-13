@@ -8,7 +8,7 @@
 </div>
 
 <div class="col-md-3">
-  <button open-pathway="induction_drugs" class="btn btn-primary">Induction</button>
+  <button open-pathway="induction_drugs" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-primary">Induction</button>
   <button class="btn btn-secondary">Start Data</button>
   {% record_panel models.Induction %}
   [[ episode.Induction.size ]]
