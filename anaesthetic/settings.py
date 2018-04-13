@@ -1,5 +1,4 @@
 # Django settings for anaesthetic project.
-import commands
 import os
 import sys
 
