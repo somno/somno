@@ -1,4 +1,4 @@
-This is anaesthetic - an [OPAL](https://github.com/openhealthcare/opal) project.
+This is somno - an [Opal](https://github.com/openhealthcare/opal) project.
 
 ## Setting up the application in development
 Python and pip should already be installed however you will need to install some extra development tools to make sure everything installs without errors

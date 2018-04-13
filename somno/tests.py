@@ -1,5 +1,5 @@
 """
-Unittests for anaesthetic
+Unittests for somno
 """
 from django.test import TestCase
 

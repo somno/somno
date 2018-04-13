@@ -1,5 +1,5 @@
 """
-anaesthetic models.
+somno models.
 """
 from datetime import datetime
 from django.db import models as db_models

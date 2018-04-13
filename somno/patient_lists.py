@@ -4,7 +4,7 @@ Defining OPAL PatientLists
 from opal import core
 from opal.models import Episode
 from opal.core.patient_lists import TaggedPatientList
-from anaesthetic import models
+from somno import models
 
 class AllPatientsList(core.patient_lists.PatientList):
     display_name = 'All Patients'

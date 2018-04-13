@@ -1,4 +1,4 @@
-# Django settings for anaesthetic project.
+# Django settings for somno project.
 import os
 import sys
 
@@ -151,10 +151,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'anaesthetic.urls'
+ROOT_URLCONF = 'somno.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'anaesthetic.wsgi.application'
+WSGI_APPLICATION = 'somno.wsgi.application'
 
 # TEMPLATE_DIRS = (
 #     os.path.join(PROJECT_PATH, 'templates'),
@@ -188,7 +188,7 @@ INSTALLED_APPS = (
     'opal',
     'opal.core.search',
     'opal.core.pathway',
-    'anaesthetic',
+    'somno',
     'django.contrib.admin',
 )
 
@@ -256,8 +256,8 @@ else:
     EMAIL_HOST = 'localhost'
 
 TEST_RUNNER = 'django_test_coverage.runner.CoverageTestSuiteRunner'
-COVERAGE_EXCLUDE_MODULES = ('anaesthetic.migrations', 'anaesthetic.tests',
-                            'anaesthetic.local_settings',
+COVERAGE_EXCLUDE_MODULES = ('somno.migrations', 'somno.tests',
+                            'somno.local_settings',
                             'opal.migrations', 'opal.tests',
                             'opal.wsgi')
 
@@ -276,8 +276,6 @@ INTEGRATING = False
 # Uncomment these if you are integrating with other upstream systems via
 # Glossolalia (http://github.com/openhealthcare/glossolalia)
 #
-#GLOSSOLALIA_URL = 'http://localhost:5000/'
-#GLOSSOLALIA_NAME = 'anaesthetic'
 
 # OPAL required Django settings you should edit
 
