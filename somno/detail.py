@@ -9,6 +9,7 @@ class AnaestheticReadings(detail.PatientDetailView):
     template   = 'somno/detail/reading_detail.html'
 
 class PreopAssessment(detail.PatientDetailView):
+    order = 2
     name    = 'preop_assessment'
     display_name    = 'Pre Op Assessment'
     template        = 'somno/detail/preopassessment.html'
