@@ -26,13 +26,16 @@ class AnaestheticDrugType(lookuplists.LookupList):
 
 
 class GivenDrug(models.PatientSubrecord):
-    _title = "Given Drug"
     _sort           = 'datetime'
 
     drug_name   = fields.ForeignKeyOrFreeText(AnaestheticDrug)
     drug_type   = fields.ForeignKeyOrFreeText(AnaestheticDrugType)
     dose       = db_models.CharField(max_length=255)
     datetime    = db_models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Drug"
+
 
 class RemoteAdded(models.PatientSubrecord):
     class Meta:
@@ -78,7 +81,6 @@ class Position(lookuplists.LookupList): pass
 class Induction_type(lookuplists.LookupList): pass
 
 class Induction(models.EpisodeSubrecord):
-    _title = "Induction"
     _is_singleton = True
 
     MaskVent        = fields.ForeignKeyOrFreeText(MaskVent)
@@ -92,17 +94,14 @@ class Induction(models.EpisodeSubrecord):
     Induction_type  = fields.ForeignKeyOrFreeText(Induction_type)
     Position        = fields.ForeignKeyOrFreeText(Position)
 
-class AnaestheticTechnique(models.PatientSubrecord):
-    _title          = "Event"
 
+class AnaestheticNote(models.PatientSubrecord):
     Title       = db_models.TextField(blank=True, null=True)
     Description = db_models.TextField(blank=True, null=True)
     datetime    = db_models.DateTimeField(blank=True, null=True)
 
 
-
 class Gases(RemoteAdded):
-    _title = "Gases"
     inspired_carbon_dioxide = db_models.FloatField(blank=True, null=True)
     expired_carbon_dioxide = db_models.FloatField(blank=True, null=True)
     inspired_oxygen = db_models.FloatField(blank=True, null=True)
@@ -111,8 +110,7 @@ class Gases(RemoteAdded):
     datetime = db_models.DateTimeField()
 
 
-class Ventilators(RemoteAdded):
-    _title = "Ventilation"
+class Ventilation(RemoteAdded):
     mode = db_models.CharField(max_length=255)
     peak_airway_pressure = db_models.FloatField(blank=True, null=True)
     peep_airway_pressure = db_models.FloatField(blank=True, null=True)
@@ -120,8 +118,8 @@ class Ventilators(RemoteAdded):
     rate = db_models.IntegerField(blank=True, null=True)
     datetime = db_models.DateTimeField()
 
-class PreOpBloods(models.EpisodeSubrecord):
-    _title = "bloods"
+
+class Bloods(models.EpisodeSubrecord):
     _is_singleton = True
 
     Hb = db_models.FloatField(blank=True, null=True)
@@ -146,14 +144,12 @@ class ProposedProcedure(lookuplists.LookupList): pass
 class Risks(lookuplists.LookupList): pass
 
 class AnaestheticPlan(models.EpisodeSubrecord):
-    _title = "Anaesthetic Plan"
     Proposed_Procedure  = fields.ForeignKeyOrFreeText(ProposedProcedure)
     Procedure_Risks     = db_models.TextField(blank=True, null=True)
     Risks               = fields.ForeignKeyOrFreeText(Risks)
 
 
-class PreOpVisit(models.EpisodeSubrecord):
-    _title = "Anaesthetic Assesment"
+class AnaestheticAssesment(models.EpisodeSubrecord):
     _is_singleton = True
 
     Malampati   = fields.ForeignKeyOrFreeText(Malampati)
