@@ -25,21 +25,21 @@ To access the application, visit http://127.0.0.1:8000 in a browser, select list
 
 To view the live chart go to: http://127.0.0.1:8000/#/patient/1/anaesthetic_readings
 
-## I want to feed data
-You need a token to go in http header "Authorization: Token <token goes here>" you can get a token for a user by running:
+## I want to feed dummy data
+You need a user with the username `super`, if you don't
+already have one, on the command line run
 
 ```bash
-python manage.py gettoken <username>
+./maange.py createsuperuser
 ```
-You can then use this to feed in data to the application with the default dummy data
-(make sure the three arguments have quotation marks around them)
 
+Then run
 ```bash
-./manage.py insertdata <file location> <address of the install> <api token>
+./manage.py insert_data
 ```
-if you are feeding to a local install you will have to run this in another tab while the server is running
+If you are feeding to a local install you will have to run this in another tab while the server is running
 
-finally to load some of the fixture data run
+Finally to load some of the fixture data run
 ```bash
 ./manage.py load_lookup_lists
 ```
