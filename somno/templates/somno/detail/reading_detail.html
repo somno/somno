@@ -18,32 +18,43 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="list-group">
-        <div ng-repeat="drug in druglist" class="list-group-item" style="height:40px;margin:2px;padding:3px;">
+        <div ng-repeat="drug in druglist" class="list-group-item" style="min-height:20px;margin:2px;padding:3px;">
           [[ drug ]]
         </div>
       </div>
     </div>
-    <div class="col-md-8">
-      <div id="drugchart"></div>
+    <div class="col-md-9">
+      <div id="drugchart" style="padding-top:10px;"></div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
-      {% comment %}
+    <div class="col-md-3">
       {% record_panel models.AnaestheticNote %}
-      {% endcomment %}
     </div>
-    <div class="col-md-8">
-      <div id="ventchart" ></div>
+    <div class="col-md-9">
+      <div class="col-md-9">
+        <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link"  ng-click="showObs = ! showObs">Observations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  ng-click="showVent = ! showVent">>Ventilation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" ng-click="showchart = ! showGas">>Extras</a>
+        </li>
+        </ul>
+      </div>
+      <div id="chart"  ng-show="showObs" >Obs</div>
+      <div id="ventchart" ng-show="showVent"> Ventilation</div>
+      <div id="gaschart" ng-show="showVent"></div>
     </div>
   </div>
 
-  {% comment %}
-  <div id="chart" ></div>
-  <div id="gaschart" ></div>
-  {% endcomment %}
+
+
 </div>
 
 {% comment %}
