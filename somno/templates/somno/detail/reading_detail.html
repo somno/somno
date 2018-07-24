@@ -1,17 +1,55 @@
 {% load panels %}
 
-<div ng-controller="newgraph" class="col-md-9">
-    <div id="drugchart" ></div>
-    <div id="chart" ></div>
-    <div id="ventchart" ></div>
-    <div id="gaschart" ></div>
+<div ng-controller="newgraph" class="col-md-12">
+  <div class="row">
+    <div class="col-md-12 content-offset-below-10">
+      <div class="btn-group pull-left" uib-dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-secondary" uib-dropdown-toggle ng-disabled="disabled" id="list-dropdown">
+          Add
+          <i class="fa fa-angle-down"></i>
+        </button>
+        <ul class="uib-dropdown-menu slides" role="menu" aria-labelledby="list-dropdown">
+          <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
+          <li><a ng-click="episode.recordEditor.newItem(''{{ models.GivenDrug.get_api_name }}'')" href="">Infusion</a></li>
+          <li><a ng-click="episode.recordEditor.newItem(''{{ models.GivenDrug.get_api_name }}'')" href="">Fluid</a></li>
+          <li><a ng-click="episode.recordEditor.newItem(''{{ models.AnaestheticNote.get_api_name }}'')" href="">Event</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="list-group">
+        <div ng-repeat="drug in druglist" class="list-group-item">
+          [[ drug ]]
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div id="drugchart"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      {% record_panel models.AnaestheticNote %}
+    </div>
+    <div class="col-md-8">
+      <div id="ventchart" ></div>
+    </div>
+  </div>
+
+  {% comment %}
+  <div id="chart" ></div>
+  <div id="gaschart" ></div>
+  {% endcomment %}
 </div>
 
+{% comment %}
 <div class="col-md-3">
   <button open-pathway="induction_drugs" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-primary">Induction</button>
   <button class="btn btn-secondary">Start Data</button>
   {% record_panel models.Induction %}
   [[ episode.Induction.size ]]
-  {% record_panel models.AnaestheticTechnique %}
   {% record_panel models.GivenDrug %}
 </div>
+{% endcomment %}

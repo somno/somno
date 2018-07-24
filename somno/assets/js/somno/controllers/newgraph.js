@@ -212,10 +212,8 @@ angular.module('opal.controllers').controller(
             type: 'scatter',
             colors: $scope.drugcolours,
           }
-          $scope.dheight = $scope.druglist.length * 15;
+          $scope.dheight = $scope.druglist.length * 48;
           return drugdata;
-
-
         }
 
           var chart;
@@ -245,12 +243,12 @@ angular.module('opal.controllers').controller(
           patientLoader().then(function(patient){
           newColumns = createColumns(patient.episodes[0].observation);
           newgasses = creategasses(patient.episodes[0].gases);
-          newvents = ventsettings(patient.episodes[0].ventilators);
-          newlines = gridlines(patient.episodes[0].anaesthetic_technique);
+          newvents = ventsettings(patient.episodes[0].ventilation);
+          newlines = gridlines(patient.episodes[0].anaesthetic_note);
           newdrugs = drugs(patient.episodes[0].given_drug);
 
           chart_padding = 75;
-        chart = c3.generate({
+          chart = c3.generate({
 
           bindto: '#chart',
           legend: {
@@ -462,6 +460,9 @@ angular.module('opal.controllers').controller(
         });
 
         drugchart = c3.generate({
+          oninit: function(){
+            d3.select('#drugchart .c3-axis-x').attr("transform", "");
+          },
           bindto: '#drugchart',
           legend: {show: false},
           padding:{
@@ -514,6 +515,7 @@ angular.module('opal.controllers').controller(
                 top: 5,
                 bottom: 5,
               },
+              show: false,
             },
 
             y2: {
@@ -522,7 +524,7 @@ angular.module('opal.controllers').controller(
               tick: {
                 values: [0.5,1.5,2.5,3.5], //this needs to come from a function in the future
               },
-              show: true,
+              show: false,
             },
           },
           size: {
@@ -534,18 +536,15 @@ angular.module('opal.controllers').controller(
             },
           },
         });
-      drawlabels(drugchart.interal);
-
       });
 
         interval = setInterval(function () {
           patientLoader().then(function(patient){
             newColumns = createColumns(patient.episodes[0].observation);
             newgasses = creategasses(patient.episodes[0].gases);
-            newvents = ventsettings(patient.episodes[0].ventilators);
-            newlines = gridlines(patient.episodes[0].anaesthetic_technique);
+            newvents = ventsettings(patient.episodes[0].ventilation);
+            newlines = gridlines(patient.episodes[0].anaesthetic_note);
             newdrugs = drugs(patient.episodes[0].given_drug);
-
 
             //set first and last time for x axis
             $scope.firstobs = newColumns[4][1];
@@ -553,26 +552,25 @@ angular.module('opal.controllers').controller(
 
             drugchart.axis.range({max: {x: $scope.lastobs}, min: {x: $scope.firstobs}, });
             //chart.grid(newlines);
+            chart.load({
+                columns: newColumns,
+                grid: newlines,
+            });
+            chart2.load({
+                columns: newgasses,
+            });
+            chart3.load({
+                columns: newvents,
+            });
+            drugchart.load({
+                columns : newdrugs.columns,
+                xs: newdrugs.xs,
+                colors: newdrugs.colors,
 
-                chart.load({
-                    columns: newColumns,
-                    grid: newlines,
-                });
-                chart2.load({
-                    columns: newgasses,
-                });
-                chart3.load({
-                    columns: newvents,
-                });
-                drugchart.load({
-                    columns : newdrugs.columns,
-                    xs: newdrugs.xs,
-                    colors: newdrugs.colors,
-                });
-
+            });
           });
           drawlabels(drugchart.interal);
-        }, 10000);
+        }, 1000);
 
         $scope.$on("$routeChangeStart", function(){
           if(interval){

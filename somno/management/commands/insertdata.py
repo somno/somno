@@ -1,12 +1,11 @@
-#!/usr/bin/env python
-
-import httplib, urllib
+import urllib
+import datetime
+import copy
 import time
 import os.path
 import requests
 import sys
 import time
-import urlparse
 import json
 import requests
 import csv
@@ -100,54 +99,57 @@ dataMaps = {
 }
 
 if len(sys.argv) != 5:
-  print "Usage: %s <DATA_CSV> <HEALTH_CHART_BASE_URL> <AUTH_TOKEN>"
-  print "  <DATA_CSV> The CSV file with the dummy data (data.csv is included)"
-  print "  <HEALTH_CHART_BASE_URL> Base URL of the health chart to send the data to"
-  print "           the default is http://127.0.0.1:8000"
-  print "  <AUTH_TOKEN> Django Token Auth, Token for REST api"
-  print "           to get one use ./manage.py gettoken <username>"
-  sys.exit(1)
+    print("Usage: %s <DATA_CSV> <HEALTH_CHART_BASE_URL> <AUTH_TOKEN>")
+    print("<DATA_CSV> The CSV file with the dummy data (data.csv is included)")
+    print(
+        "<HEALTH_CHART_BASE_URL> Base URL of the health chart to send the data to"
+    )
+    print("the default is http://127.0.0.1:8000")
+    print("<AUTH_TOKEN> Django Token Auth, Token for REST api")
+    print("to get one use ./manage.py gettoken <username>")
+    sys.exit(1)
 
 
 filename = sys.argv[2]
 baseUrl = sys.argv[3]
 token = sys.argv[4]
-print baseUrl
+print(baseUrl)
 
 # Check file exists and open file
 if not os.path.isfile(filename):
-  print "Couldn't find CSV to read"
-  sys.exit(2)
+    print("Couldn't find CSV to read")
+    sys.exit(2)
 
 if not sys.argv[4]:
-  print "No API token please get one using python manage.py gettoken <username>"
-  sys.exit(2)
+    print(
+        "No API token please get one using python manage.py gettoken <username>"
+    )
+    sys.exit(2)
 
-print "Opening file %s" % filename
+print("Opening file %s" % filename)
+
+# print("What date would you like to use?")
+# newdate = input('DD/MM/YYYY: ')
+#
+# newcsv = open('newcsv.csv', 'wb')
+# writer = csv.writer(newcsv)
+#
+# #read the first 3 lines then write to new csv
+# fp.readline()
+# fp.readline()
+# fp.readline()
+#
+# for row in csv.reader(fp):
+#     date = row[0]
+#     date2 = newdate + date
+#     row[0] = date2
+#     writer.writerow(row)
+
+print("date written time to insert")
+
 fp = open(filename, 'r')
 
-print "What date would you like to use?"
-newdate = raw_input('DD/MM/YYYY: ')
-
-newcsv = open('newcsv.csv', 'wb')
-writer = csv.writer(newcsv)
-
-#read the first 3 lines then write to new csv
-fp.readline()
-fp.readline()
-fp.readline()
-
-for row in csv.reader(fp):
-    date = row[0]
-    date2 = newdate + date
-    row[0] = date2
-    writer.writerow(row)
-
-newcsv.close()
-print "date written time to insert"
-
-fp = open('newcsv.csv', 'r')
-
+today = datetime.date.today()
 while 1:
   where = fp.tell()
   line = fp.readline()
@@ -155,7 +157,7 @@ while 1:
     time.sleep(1)
     fp.seek(where)
   else:
-    #print line, # already has newline
+    #print(line, # already has newline
 
     parts = line.split(',')
 
@@ -165,32 +167,39 @@ while 1:
 
     # Start running maps and POSTs
     for m in dataMaps:
-      #print 'Building %s map' % m
-      data = {
-        'episode_id': 1
-      }
-      for d in dataMaps[m]['map']:
-        if parts[dataMaps[m]['map'][d]] != '-':
-          print '%s: %s' % (d, parts[dataMaps[m]['map'][d]])
-          data[d] = parts[dataMaps[m]['map'][d]]
+        #print('Building %s map' % m
+        data = {
+            'episode_id': 1
+        }
+        for d in dataMaps[m]['map']:
+            if parts[dataMaps[m]['map'][d]] != '-':
+                print('%s: %s' % (d, parts[dataMaps[m]['map'][d]]))
+                data[d] = parts[dataMaps[m]['map'][d]]
 
-      #print 'data is:'
-      #print data
+    data["datetime"] = "{} {}".format(
+        today.strftime("%d/%m/%Y"), parts[0]
+    )
 
-      print 'Making url from %s and %s' % (baseUrl, dataMaps[m]['uri'])
-      url = urlparse.urljoin(baseUrl, dataMaps[m]['uri'])
-      #url = baseUrl + dataMaps[m]['uri']
-      print url
-      urlBits = urlparse.urlparse(url)
+    #print('data is:'
+    #print(data
 
-      params = urllib.urlencode({'number': 12524, 'type': 'issue', 'action': 'show'})
-      headers = {
+    print('Making url from %s and %s' % (baseUrl, dataMaps[m]['uri']))
+    url = urllib.parse.urljoin(baseUrl, dataMaps[m]['uri'])
+    #url = baseUrl + dataMaps[m]['uri']
+    print(url)
+    urlBits = urllib.parse.urlparse(url)
+
+    params = urllib.parse.urlencode(
+        {'number': 12524, 'type': 'issue', 'action': 'show'}
+    )
+    headers = {
         "Content-type": "application/json",
         "Accept": "application/json",
         "Authorization": "Token " + token
-      }
+    }
+    print('sending ' + json.dumps(data, separators=(',', ':')))
 
-      print 'sending ' + json.dumps(data, separators=(',',':'))
-
-      response = requests.post(url, data=json.dumps(data, separators=(',',':')), headers=headers)
-      #print response.status, response.reason
+    response = requests.post(
+        url, data=json.dumps(data, separators=(',', ':')), headers=headers
+    )
+    #print(response.status, response.reason)
