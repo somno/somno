@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')">
     <div class="col-md-3">
       <div class="list-group">
         <div ng-repeat="drug in druglist" class="list-group-item" style="min-height:20px;margin:2px;padding:3px;">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" >
       <div class="col-md-12">
         <div id="drugchart" style="padding-top:10px;"></div>
       </div>
@@ -50,7 +50,7 @@
         </li>
         </ul>
       </div>
-      <div class="col-md-12" ng-show="showObs" >
+      <div class="col-md-12" ng-show="showObs" ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')">
         <div id="chart"></div>
       </div>
       <div class="col-md-12" ng-show="showVent">
