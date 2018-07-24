@@ -525,10 +525,10 @@ angular.module('opal.controllers').controller(
                 values: [0.5,1.5,2.5,3.5], //this needs to come from a function in the future
               },
               padding: {
-                top: 25,
+                top: 5,
                 bottom: 5,
               },
-              show: false,
+              show: true,
             },
           },
           size: {
