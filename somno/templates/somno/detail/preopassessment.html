@@ -15,7 +15,7 @@
   </div>
 
   <div class="col-md-4">
-    {% record_panel models.PreOpVisit %}
+    {% record_panel models.AnaestheticAssesment %}
   </div>
   <div class="col-md-8">
     {% record_panel models.PatientPhysicalAttributes title="Height and Weight" %}
@@ -42,6 +42,8 @@
                </div>
              </div>
            {% endblock episodes_switcher %}
+    {% comment %}
     {% record_panel models.PreOpBloods %}
+    {% endcomment %}
   </div>
 </div>

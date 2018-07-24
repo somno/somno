@@ -10,9 +10,9 @@
         </button>
         <ul class="uib-dropdown-menu slides" role="menu" aria-labelledby="list-dropdown">
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
-          <li><a ng-click="episode.recordEditor.newItem(''{{ models.GivenDrug.get_api_name }}'')" href="">Infusion</a></li>
-          <li><a ng-click="episode.recordEditor.newItem(''{{ models.GivenDrug.get_api_name }}'')" href="">Fluid</a></li>
-          <li><a ng-click="episode.recordEditor.newItem(''{{ models.AnaestheticNote.get_api_name }}'')" href="">Event</a></li>
+          <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Infusion</a></li>
+          <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Fluid</a></li>
+          <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Event</a></li>
         </ul>
       </div>
     </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="list-group">
-        <div ng-repeat="drug in druglist" class="list-group-item">
+        <div ng-repeat="drug in druglist" class="list-group-item" style="height:40px;margin:2px;padding:3px;">
           [[ drug ]]
         </div>
       </div>
@@ -31,7 +31,9 @@
   </div>
   <div class="row">
     <div class="col-md-4">
+      {% comment %}
       {% record_panel models.AnaestheticNote %}
+      {% endcomment %}
     </div>
     <div class="col-md-8">
       <div id="ventchart" ></div>
