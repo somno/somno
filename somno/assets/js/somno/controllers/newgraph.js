@@ -212,7 +212,7 @@ angular.module('opal.controllers').controller(
             type: 'scatter',
             colors: $scope.drugcolours,
           }
-          $scope.dheight = $scope.druglist.length * 48;
+          $scope.dheight = $scope.druglist.length * 35;
           return drugdata;
         }
 
@@ -235,7 +235,7 @@ angular.module('opal.controllers').controller(
                      .style('text-anchor', 'middle').attr('dy', '.2em')
                      .text($scope.labels[ind])
                      // same as at the point
-                     .attr('x', d3point.attr('cx')).attr('y', d3point.attr('cy'));
+                     .attr('x', d3point.attr('cx') ).attr('y', d3point.attr('cy'));
                })
              })
           }
@@ -506,14 +506,14 @@ angular.module('opal.controllers').controller(
             y: {
               inverted: true,
               tick: {
-                format: function(e){
-                  var label = $scope.druglist[e-1];
-                  return label;
-                },
+                // format: function(e){
+                //   var label = $scope.druglist[e-1];
+                //   return label;
+                // },
               },
               padding: {
-                top: 5,
-                bottom: 5,
+                top: 15,
+                bottom: 15,
               },
               show: false,
             },
@@ -524,7 +524,11 @@ angular.module('opal.controllers').controller(
               tick: {
                 values: [0.5,1.5,2.5,3.5], //this needs to come from a function in the future
               },
-              show: false,
+              padding: {
+                top: 5,
+                bottom: 5,
+              },
+              show: true,
             },
           },
           size: {
