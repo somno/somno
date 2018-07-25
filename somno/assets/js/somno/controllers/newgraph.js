@@ -574,7 +574,7 @@ angular.module('opal.controllers').controller(
             });
           });
           drawlabels(drugchart.interal);
-        }, 1000);
+        }, 1000000);
 
         $scope.$on("$routeChangeStart", function(){
           if(interval){
