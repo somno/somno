@@ -74,7 +74,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         now = timezone.now()
-        patient = omodels.Patient.objects.get(id=PATIENT_ID)
+        patient, _ = omodels.Patient.objects.get_or_create(id=PATIENT_ID)
         with open(FILE_LOCATION) as fs:
             reader = csv.DictReader(fs)
             for i, row in enumerate(reader):
