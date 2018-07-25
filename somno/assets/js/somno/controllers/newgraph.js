@@ -212,7 +212,7 @@ angular.module('opal.controllers').controller(
             type: 'scatter',
             colors: $scope.drugcolours,
           }
-          $scope.dheight = $scope.druglist.length * 35;
+          $scope.dheight = $scope.druglist.length * 25;
           return drugdata;
         }
 
@@ -232,14 +232,14 @@ angular.module('opal.controllers').controller(
                  textLayer
                      .append('text')
                      // center horizontally and vertically
-                     .style('text-anchor', 'middle').attr('dy', '.2em')
+                     .style('text-anchor', 'Start').attr('dy', '.3em')
                      .text($scope.labels[ind])
                      // same as at the point
                      .attr('x', d3point.attr('cx') ).attr('y', d3point.attr('cy'));
                })
              })
           }
-
+          debugger;
           patientLoader().then(function(patient){
           newColumns = createColumns(patient.episodes[0].observation);
           newgasses = creategasses(patient.episodes[0].gases);
@@ -501,11 +501,13 @@ angular.module('opal.controllers').controller(
                 format: '%d/%m %H:%M',
                 fit: false,
               },
+              height: 25,
             },
 
             y: {
               inverted: true,
               tick: {
+                //display: none,
                 // format: function(e){
                 //   var label = $scope.druglist[e-1];
                 //   return label;
@@ -513,9 +515,10 @@ angular.module('opal.controllers').controller(
               },
               padding: {
                 top: 15,
-                bottom: 15,
+                bottom: 12,
               },
-              show: false,
+              show: true,
+              height: $scope.dheight,
             },
 
             y2: {
@@ -525,14 +528,14 @@ angular.module('opal.controllers').controller(
                 values: [0.5,1.5,2.5,3.5], //this needs to come from a function in the future
               },
               padding: {
-                top: 5,
-                bottom: 5,
+                top: 0,
+                bottom: 0,
               },
               show: true,
             },
           },
           size: {
-            height: $scope.dheight,
+            height: $scope.dheight + 25,
           },
           grid: {
             y2: {

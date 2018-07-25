@@ -17,17 +17,17 @@
       </div>
     </div>
   </div>
-  <div class="row" ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')">
+  <div class="row" ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" style="background: repeating-linear-gradient(#EEE, #EEE 25px,#dedede 25px,#dedede 50px)">
     <div class="col-md-3">
       <div class="list-group">
-        <div ng-repeat="drug in druglist" class="list-group-item" style="min-height:20px;margin:2px;padding:3px;">
+        <div ng-repeat="drug in druglist" class="list-group-item" style="min-height:25px;margin:0px;padding:0px;background:none">
           [[ drug ]]
         </div>
       </div>
     </div>
     <div class="col-md-9" >
       <div class="col-md-12">
-        <div id="drugchart" style="padding-top:10px;"></div>
+        <div id="drugchart" class="drugchart"></div>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
         </li>
         </ul>
       </div>
-      <div class="col-md-12" ng-show="showObs" ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')">
+      <div class="col-md-12" ng-hide="showObs" ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')">
         <div id="chart"></div>
       </div>
       <div class="col-md-12" ng-show="showVent">
