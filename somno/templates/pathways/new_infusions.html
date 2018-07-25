@@ -21,14 +21,14 @@
           </span>
           {# when they have clicked the change button #}
           <span class="form-inline" ng-show="item._client.state === 'changed'">
-            [[ item.drug_name ]]([[ item.drug_type ]]) -
+            [[ item.drug_name ]] -
             <input ng-model="item.rate" type="text" style="max-width: 100px" class="form-control">
             <a ng-click="item.undo()" class="btn btn-secondary btn-xs">Undo</a>
             <a ng-click="item.doneChanging()" class="btn btn-secondary btn-xs">Done</a>
           </span>
           {# the default #}
           <span ng-show="item._client.state === 'normal' ">
-            [[ item.drug_name ]]([[ item.drug_type ]]) - [[ item.rate ]]
+            [[ item.drug_name ]] - [[ item.rate ]]
             <div class="pull-right">
               <a ng-click="item.change()" class="btn btn-secondary btn-xs">Change</a>
               <a ng-click="item.stop()" class="btn btn-secondary btn-xs">Stop</a>
