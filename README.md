@@ -35,7 +35,7 @@ already have one, on the command line run
 
 Then run
 ```bash
-./manage.py insert_data
+./manage.py insertdata
 ```
 If you are feeding to a local install you will have to run this in another tab while the server is running
 
