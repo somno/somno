@@ -228,6 +228,8 @@ angular.module('opal.controllers').controller(
              _.each(drugchart.internal.mainCircle, function(point){
                _.each(point, function(p){
                  var d3point = d3.select(p);
+                 var flat = _.flatten(drugchart.internal.mainCircle, true);
+                 var key = _.keys(drugchart.internal.mainCircle);
                  var ind = _.findIndex(drugchart.internal.mainCircle, point);
                  textLayer
                      .append('text')
@@ -238,8 +240,9 @@ angular.module('opal.controllers').controller(
                      .attr('x', d3point.attr('cx') ).attr('y', d3point.attr('cy'));
                })
              })
+             debugger;
           }
-          debugger;
+
           patientLoader().then(function(patient){
           newColumns = createColumns(patient.episodes[0].observation);
           newgasses = creategasses(patient.episodes[0].gases);
@@ -577,7 +580,8 @@ angular.module('opal.controllers').controller(
             });
           });
           drawlabels(drugchart.interal);
-        }, 1000);
+
+        }, 5000);
 
         $scope.$on("$routeChangeStart", function(){
           if(interval){
