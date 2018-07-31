@@ -1,0 +1,75 @@
+{% load forms %}
+{% with model="editing."|add:models.Infusion.get_api_name subrecord=models.Infusion %}
+<div ng-show="hasExisting">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Existing Infusions</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-push-3">
+      <ul class="list-group" ng-show="item.currentlyExisting()" ng-repeat="item in editing.infusion track by $index">
+        <li style="font-size: 18px;" class="list-group-item">
+          {# when they have clicked the stop button #}
+          <span ng-show="item._client.state === 'stopped'">
+            <del>
+              [[ item.drug_name ]]([[ item.drug_type ]]) - [[ item.rate ]]
+              <div class="pull-right">
+                <a ng-click="item.undo()" class="btn btn-secondary btn-xs">Undo</a>
+              </div>
+            </del>
+          </span>
+          {# when they have clicked the change button #}
+          <span class="form-inline" ng-show="item._client.state === 'changed'">
+            [[ item.drug_name ]] -
+            <input ng-model="item.rate" type="text" style="max-width: 100px" class="form-control">
+            <a ng-click="item.undo()" class="btn btn-secondary btn-xs">Undo</a>
+            <a ng-click="item.doneChanging()" class="btn btn-secondary btn-xs">Done</a>
+          </span>
+          {# the default #}
+          <span ng-show="item._client.state === 'normal' ">
+            [[ item.drug_name ]] - [[ item.rate ]]
+            <div class="pull-right">
+              <a ng-click="item.change()" class="btn btn-secondary btn-xs">Change</a>
+              <a ng-click="item.stop()" class="btn btn-secondary btn-xs">Stop</a>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<h3>New Infusions</h3>
+<div save-multiple-wrapper="{{ model }}" initialise-empty="{{ initialise_empty }}">
+  <div ng-if="!editing.infusion.id && !editing.infusion._client.changing" ng-repeat="editing in model.subrecords track by $index">
+    <div class="row">
+      <div class="col-md-12">
+        <div ng-show="!{{ model }}._client.completed" class="form-horizontal">
+          {% include "pathways/forms/infusion_pathway_form.html" %}
+        </div>
+        <div ng-show="{{ model }}._client.completed">
+          <div ng-repeat="item in [{{ model }}]">
+            {% include subrecord.get_detail_template %}
+          </div>
+        </div>
+        <div class="pull-right">
+          <div ng-show="{{ model }}._client.completed" ng-click="edit({{ model }})" class="btn btn-primary">
+            {% icon 'fa-edit' %}
+            Edit
+          </div>
+          <div ng-click="remove($index)" class="btn btn-secondary">
+            {% icon 'fa-trash' %}
+            Remove
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr ng-show="!$last" />
+  </div>
+  <div class="text-center row">
+    <a ng-click="addAnother()" class="text-center btn btn-primary">
+      {% icon "glyphicon-plus" %} Add Another
+    </a>
+  </div>
+</div>
+{% endwith %}

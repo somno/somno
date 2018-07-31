@@ -37,6 +37,14 @@ class GivenDrug(models.PatientSubrecord):
         verbose_name = "Drug"
 
 
+class Infusion(models.PatientSubrecord):
+    start_time = db_models.DateTimeField(blank=True, null=True)
+    stopped_time = db_models.DateTimeField(blank=True, null=True)
+    drug_name = fields.ForeignKeyOrFreeText(AnaestheticDrug)
+    drug_type = fields.ForeignKeyOrFreeText(AnaestheticDrugType)
+    rate = db_models.CharField(blank=True, default="", max_length=255)
+
+
 class RemoteAdded(models.PatientSubrecord):
     class Meta:
         abstract = True

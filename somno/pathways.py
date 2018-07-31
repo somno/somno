@@ -1,4 +1,5 @@
 from opal.core.pathway import PagePathway, Step
+from somno import models
 
 
 class DrugPathway(PagePathway):
@@ -10,3 +11,16 @@ class DrugPathway(PagePathway):
         icon="fa fa icon",
         step_controller="InductionDrugController"
     ),)
+
+
+class InfusionPathway(PagePathway):
+    display_name = "Infusion Pathway"
+    slug = "infusion_pathway"
+    steps = (
+        Step(
+            template="pathways/new_infusions.html",
+            display_name="New Infusions",
+            step_controller="NewInfusionsController",
+            model=models.Infusion
+        ),
+    )

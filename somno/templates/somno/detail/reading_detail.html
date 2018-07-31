@@ -3,18 +3,18 @@
 <div ng-controller="newgraph" class="col-md-12">
   <div class="row">
     <div class="col-md-12 content-offset-below-10">
-      <div class="btn-group pull-left" uib-dropdown is-open="status.isopen">
+      <div class="btn-group" uib-dropdown is-open="status.isopen">
         <button type="button" class="btn btn-secondary" uib-dropdown-toggle ng-disabled="disabled" id="list-dropdown">
           Add
           <i class="fa fa-angle-down"></i>
         </button>
         <ul class="uib-dropdown-menu slides" role="menu" aria-labelledby="list-dropdown">
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
-          <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Infusion</a></li>
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Fluid</a></li>
           <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Event</a></li>
         </ul>
       </div>
+      <a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-secondary">Edit Infusions</a>
     </div>
   </div>
   <div class="row" ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" style="background: repeating-linear-gradient(#EEE, #EEE 25px,#dedede 25px,#dedede 50px)">
