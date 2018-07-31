@@ -234,13 +234,29 @@ class AnaestheticPlan(models.EpisodeSubrecord):
 class AnaestheticAssesment(models.EpisodeSubrecord):
     _is_singleton = True
 
-    Malampati   = fields.ForeignKeyOrFreeText(Malampati)
-    Dentition   = fields.ForeignKeyOrFreeText(Dentition)
-    ASA         = fields.ForeignKeyOrFreeText(ASA)
-    Frailty     = fields.ForeignKeyOrFreeText(FrailtyScale)
+    ASA                 = fields.ForeignKeyOrFreeText(ASA)
+    Frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
     previous_anaesthetics = fields.ForeignKeyOrFreeText(PreviousAnaesthetics)
-
+    FastingStatus       = db_models.TextField(blank=True, null=True)
+    SmokingStatus       = db_models.TextField(blank=True, null=True)
+    ExerciseTolerance   = db_models.TextField(blank=True, null=True)
+    Assessment          = db_models.TextField(blank=True, null=True)
+    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
     Assessment  = db_models.TextField(blank=True, null=True)
-    General_Risks = db_models.TextField(blank=True, null=True,)
-    AdditionalRisks = db_models.TextField(blank=True, null=True)
     TimeSeen = db_models.DateTimeField(blank=True, null=True,)
+
+
+class AirwayAssessment(models.EpisodeSubrecord):
+    _is_singleton = True
+
+    Malampati       = fields.ForeignKeyOrFreeText(Malampati)
+    Dentition       = fields.ForeignKeyOrFreeText(Dentition)
+    MouthOpening    = db_models.FloatField(blank=True, null=True)
+    JawProtusion    = fields.ForeignKeyOrFreeText(ASA)
+
+
+class DrugHistroy(models.EpisodeSubrecord):
+    _is_singleton = True
+
+    Medications = db_models.TextField(blank=True, null=True)
+    Allergies = db_models.TextField(blank=True, null=True)
