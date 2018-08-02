@@ -189,6 +189,7 @@ INSTALLED_APPS = (
     'opal',
     'opal.core.search',
     'opal.core.pathway',
+    'einstein_api',
     'somno',
     'django.contrib.admin',
 )
@@ -256,7 +257,7 @@ else:
     EMAIL_PORT = 1025
     EMAIL_HOST = 'localhost'
 
-TEST_RUNNER = 'django_test_coverage.runner.CoverageTestSuiteRunner'
+# TEST_RUNNER = 'django_test_coverage.runner.CoverageTestSuiteRunner'
 COVERAGE_EXCLUDE_MODULES = ('somno.migrations', 'somno.tests',
                             'somno.local_settings',
                             'opal.migrations', 'opal.tests',
@@ -288,6 +289,7 @@ DEFAULT_DOMAIN = 'http://anaesthetic.com/'
 
 OPAL_BRAND_NAME = 'Somno'
 VERSION_NUMBER  = '0.2.0'
+EINSTEIN_URL = None
 
 try:
     from local_settings import *

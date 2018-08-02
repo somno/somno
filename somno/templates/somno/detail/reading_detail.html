@@ -15,6 +15,14 @@
         </ul>
       </div>
       <a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-secondary">Edit Infusions</a>
+      <span ng-show="!monitorPairing()">
+        <a open-pathway="pair_monitor" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-secondary">Pair With Monitor</a>
+      </span>
+      <span ng-show="monitorPairing()">
+        <a open-pathway="unpair_monitor" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-secondary">
+          [[ monitorPairing() ]]
+        </a>
+      </span>
     </div>
   </div>
   <div class="row" ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')">
