@@ -177,7 +177,7 @@ class AirwayAssessment(models.EpisodeSubrecord):
     MouthOpening    = db_models.FloatField(blank=True, null=True)
     JawProtusion    = fields.ForeignKeyOrFreeText(ASA)
 
-class DrugHistroy(models.EpisodeSubrecord):
+class DrugHistory(models.EpisodeSubrecord):
     _is_singleton = True
 
     Medications = db_models.TextField(blank=True, null=True)
