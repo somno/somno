@@ -13,10 +13,9 @@ class Einstein_ApiPlugin(plugins.OpalPlugin):
     urls = urlpatterns
     javascripts = {
         # Add your javascripts here!
-        'opal.einstein_api': [
-            # 'js/einstein_api/app.js',
-            # 'js/einstein_api/controllers/larry.js',
-            # 'js/einstein_api/services/larry.js',
+        'opal.controllers': [
+            'js/einstein_api/controllers/pair_monitor.js',
+            'js/einstein_api/controllers/unpair_monitor.js',
         ]
     }
 
