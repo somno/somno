@@ -11,4 +11,4 @@ letter==0.4.1
 requests==2.18.4
 djangorestframework==3.4.7
 django-compressor==1.5
-opal==0.10.0
+opal==0.11.2
