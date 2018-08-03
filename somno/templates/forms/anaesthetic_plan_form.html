@@ -1,3 +1,5 @@
 {% load forms %}
-{% textarea field="AnaestheticPlan.Procedure_Risks" %}
-{% input field="AnaestheticPlan.Proposed_Procedure" %}
+<div ng-controller="preoperative">
+  {% input field="AnaestheticPlan.Proposed_Procedure" %}
+  {% textarea field="AnaestheticPlan.Procedure_Risks" %}
+</div>

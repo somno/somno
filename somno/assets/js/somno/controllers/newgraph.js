@@ -240,7 +240,7 @@ angular.module('opal.controllers').controller(
                      .attr('x', d3point.attr('cx') ).attr('y', d3point.attr('cy'));
                })
              })
-             debugger;
+             //debugger;
           }
 
           patientLoader().then(function(patient){
