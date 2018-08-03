@@ -582,7 +582,7 @@ angular.module('opal.controllers').controller(
 
             });
           });
-          drawlabels(drugchart.interal);
+          // drawlabels(drugchart.interal);
         }, 1000);
 
         $scope.$on("$routeChangeStart", function(){
