@@ -1,19 +1,22 @@
 {% load panels %}
 
 <!-- things we need. Nav bar, physical attributes, pre op bloods, pre op visit, anaesthetic plan, previous episodes -->
-
-<div class="col-md-12">
+<div ng-controller="preoperative">
+<div class="row">
   <div class="col-md-12">
     <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Assessment</a>
+      <a class="nav-link active" ng-class="{'active': tab=='preop'}" ng-click="tab='preop'">Assessment</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Consent</a>
+      <a class="nav-link"  ng-class="{'active': tab=='consent'}" ng-click="tab='consent'">Consent</a>
     </li>
     </ul>
   </div>
+</div>
 
+<div ng-switch="tab">
+<div class="row" ng-switch-when="preop">
   <div class="col-md-4">
     {% record_panel models.PatientPhysicalAttributes title="Height and Weight" %}
     {% record_panel models.AnaestheticAssesment %}
@@ -55,4 +58,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="row" ng-switch-when="consent">
+  <p>consent stuff</p>>
+</div>
+</div>
 </div>
