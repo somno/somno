@@ -1,5 +1,5 @@
-from django.conf import settings
 from opal.core import metadata
+
 
 class DrugTypes(metadata.Metadata):
     slug = 'drug_type'
