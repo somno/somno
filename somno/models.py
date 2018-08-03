@@ -50,13 +50,6 @@ class RemoteAdded(models.PatientSubrecord):
     class Meta:
         abstract = True
 
-    def update_from_dict(self, data, user, force=False):
-        data["patient_id"] = 1
-
-        if "datetime" not in data:
-            data["datetime"] = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        return super(RemoteAdded, self).update_from_dict(data, user, force=True)
-
     def set_created_by_id(self, incoming_value, user, *args, **kwargs):
         pass
 
