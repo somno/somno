@@ -11,8 +11,8 @@ class EinsteinPayloadViewSet(viewsets.ViewSet):
 
     def create(self, request):
         obs = models.PayloadReceived(data=request.data)
-        payload_handler.handle_payload(request.data)
         obs.save()
+        payload_handler.handle_payload(request.data)
         return Response(
             {}, status=status.HTTP_201_CREATED
         )
