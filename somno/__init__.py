@@ -17,6 +17,7 @@ class Application(application.OpalApplication):
         'js/somno/controllers/existing_infusions.js',
         'js/somno/controllers/new_infusions.js',
         'js/somno/controllers/preoperative.js',
+        'js/somno/bootstrap-tagsinput.js',
     ]
     styles = [
         "css/somno.css",
