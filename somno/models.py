@@ -226,12 +226,14 @@ class Risks(lookuplists.LookupList):
 
 
 class AnaestheticPlan(models.EpisodeSubrecord):
+
     Proposed_Procedure  = fields.ForeignKeyOrFreeText(ProposedProcedure)
     Procedure_Risks     = db_models.TextField(blank=True, null=True)
     Risks               = fields.ForeignKeyOrFreeText(Risks)
 
 
 class AnaestheticAssesment(models.EpisodeSubrecord):
+
     _is_singleton = True
 
     ASA                 = fields.ForeignKeyOrFreeText(ASA)
@@ -255,7 +257,8 @@ class AirwayAssessment(models.EpisodeSubrecord):
     JawProtusion    = fields.ForeignKeyOrFreeText(ASA)
 
 
-class DrugHistroy(models.EpisodeSubrecord):
+class DrugHistory(models.EpisodeSubrecord):
+
     _is_singleton = True
 
     Medications = db_models.TextField(blank=True, null=True)
