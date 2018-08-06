@@ -3,6 +3,7 @@ somno models.
 """
 from datetime import datetime
 from django.db import models as db_models
+from django.contrib.auth.models import User
 
 from opal.core import fields
 from opal import models
@@ -48,13 +49,6 @@ class Infusion(models.PatientSubrecord):
 class RemoteAdded(models.PatientSubrecord):
     class Meta:
         abstract = True
-
-    def update_from_dict(self, data, user, force=False):
-        data["patient_id"] = 1
-
-        if "datetime" not in data:
-            data["datetime"] = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        return super(RemoteAdded, self).update_from_dict(data, user, force=True)
 
     def set_created_by_id(self, incoming_value, user, *args, **kwargs):
         pass
@@ -167,6 +161,6 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
     previous_anaesthetics = fields.ForeignKeyOrFreeText(PreviousAnaesthetics)
 
     Assessment  = db_models.TextField(blank=True, null=True)
-    General_Risks       = db_models.TextField(blank=True, null=True,)
+    General_Risks = db_models.TextField(blank=True, null=True,)
     AdditionalRisks = db_models.TextField(blank=True, null=True)
-    TimeSeen    = db_models.DateTimeField(blank=True, null=True,)
+    TimeSeen = db_models.DateTimeField(blank=True, null=True,)

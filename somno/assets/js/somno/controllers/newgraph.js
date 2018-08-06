@@ -6,10 +6,19 @@ angular.module('opal.controllers').controller(
             $cookieStore, patientLoader
           ){
 
-
-
         var dateformat = "DD/MM/YYYY HH:mm:ss";
         var interval;
+
+        $scope.monitorPairing = function(){
+          var result = _.find($scope.patient.monitor_patient_pairing, function(mpp){
+            return mpp.start && !mpp.stop
+          });
+
+          if(!result){
+            return;
+          }
+          return $scope.metadata.monitors[String(result.monitor_id)]
+        }
 
         var createColumns = function(anaesthetics){
             var columns = [

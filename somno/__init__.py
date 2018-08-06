@@ -14,12 +14,10 @@ class Application(application.OpalApplication):
         'js/somno/services/infusion.js',
         'js/somno/controllers/newgraph.js',
         'js/somno/controllers/induction_drug_controller.js',
-        'js/somno/controllers/existing_infusions.js',
         'js/somno/controllers/new_infusions.js',
     ]
     styles = [
         "css/somno.css",
         "css/anaesthetic_drug_colours.css",
         "css/anaesthetic_drug_colours.scss"
-
     ]
