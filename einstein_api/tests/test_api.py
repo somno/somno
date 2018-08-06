@@ -1,5 +1,6 @@
 import json
 import datetime
+from django.test import override_settings
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 from opal.core.test import OpalTestCase
@@ -38,6 +39,7 @@ class EinsteinObservationTestCase(OpalTestCase):
         )
         self.client = APIClient()
 
+    @override_settings(EINSTEIN_URL=None)
     def test_post_no_subscription(self):
         response = self.client.post(
             self.url,
@@ -56,17 +58,19 @@ class EinsteinObservationTestCase(OpalTestCase):
             smodels.Observation.objects.exists()
         )
 
+    @override_settings(EINSTEIN_URL=None)
     def test_post_with_subscription(self):
         patient, _ = self.new_patient_and_episode_please()
         dt = payload_handler.str_to_datetime(self.TEST_DATA["datetime"])
-        monitor = smodels.Monitor.objects.create(
+        monitor = models.Monitor.objects.create(
             einstein_id="00:09:fb:09:77:bd",
             user_machine_name="Moonraker"
         )
-        smodels.MonitorPatientPairing.objects.create(
+        models.Pairing.objects.create(
             patient=patient,
             monitor=monitor,
-            start=dt - datetime.timedelta(hours=1)
+            start=dt - datetime.timedelta(hours=1),
+            subscription_id=1
         )
         response = self.client.post(
             self.url,

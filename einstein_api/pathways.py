@@ -1,7 +1,5 @@
 from django.db import transaction
 from django.utils import timezone
-from django.conf import settings
-
 from opal.core.pathway import PagePathway, Step
 
 from einstein_api import models
@@ -24,9 +22,12 @@ class UnPairMonitor(PagePathway):
 
     @transaction.atomic
     def save(self, data, user=None, patient=None, episode=None):
-        patient.monitorpatientpairing_set.filter(stop=None).update(
-            stop=timezone.now()
+        pairings = models.Pairing.objects.filter(
+            patient=patient,
+            stop=None
         )
+        for pairing in pairings:
+            pairing.unsubscribe()
         return patient, episode
 
 
@@ -35,7 +36,7 @@ class PairMonitor(PagePathway):
     slug = "pair_monitor"
     steps = (
         Step(
-            model=models.MonitorPatientPairing,
+            model=models.Pairing,
             step_controller="PairMonitorController",
             multiple=False
         ),
@@ -43,14 +44,8 @@ class PairMonitor(PagePathway):
 
     @transaction.atomic
     def save(self, data, user=None, patient=None, episode=None):
-        to_save = data.pop(models.MonitorPatientPairing.get_api_name())[0]
-        to_save["patient_id"] = patient.id
-        to_save["start"] = timezone.now().strftime(
-            settings.DATETIME_INPUT_FORMATS[0]
-        )
-
-        monitor_patient_pairing = models.MonitorPatientPairing()
-        monitor_patient_pairing.update_from_dict(
-            to_save, user
-        )
+        monitor_id = data.pop(
+            models.Pairing.get_api_name()
+        )[0]["monitor_id"]
+        models.Pairing.subscribe(patient.id, monitor_id)
         return patient, episode

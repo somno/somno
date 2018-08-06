@@ -2,11 +2,11 @@ angular.module('opal.controllers').controller(
   'UnPairMonitorController', function(step, scope, episode){
     "use strict";
 
-    if(!_.isArray(scope.editing.monitor_patient_pairing)){
-      scope.editing.monitor_patient_pairing = [scope.editing.monitor_patient_pairing]
+    if(!_.isArray(scope.editing.pairing)){
+      scope.editing.pairing = [scope.editing.pairing]
     }
     var whichMonitor = function(){
-      var result = _.find(scope.editing.monitor_patient_pairing, function(mpp){
+      var result = _.find(scope.editing.pairing, function(mpp){
         return mpp.start && !mpp.stop
       });
 

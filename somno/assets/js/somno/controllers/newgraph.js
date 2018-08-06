@@ -10,8 +10,8 @@ angular.module('opal.controllers').controller(
         var interval;
 
         $scope.monitorPairing = function(){
-          var result = _.find($scope.patient.monitor_patient_pairing, function(mpp){
-            return mpp.start && !mpp.stop
+          var result = _.find($scope.patient.pairing, function(pairing){
+            return pairing.start && !pairing.stop
           });
 
           if(!result){
