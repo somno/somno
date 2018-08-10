@@ -43,3 +43,10 @@ Finally to load some of the fixture data run
 ```bash
 ./manage.py load_lookup_lists
 ```
+
+## I want to attach this up to instances of Einstein
+Add a settings.EINSTEIN_URL url in a `local_settings.py` file.
+
+In the admin go to the `/admin/einstein_api/monitor/add/` `Einstein Id` is the monitor id as understood by Einstein. `User machine name` is the machine name that a user understands (possibly by way of a sticker on the machine).
+
+After this is done. One should be able to choose from the lists of monitors to pair a monitor with a patient in the anaesthetic chart page.
