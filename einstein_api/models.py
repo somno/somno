@@ -36,7 +36,7 @@ class Pairing(models.PatientSubrecord):
     start = db_models.DateTimeField(blank=True, null=True)
     stop = db_models.DateTimeField(blank=True, null=True)
     monitor = db_models.ForeignKey(Monitor)
-    subscription_id = db_models.IntegerField(unique=True)
+    subscription_id = db_models.CharField(max_length=256, unique=True)
 
     def monitor_options(self):
         return Monitor.objects.all()
@@ -94,6 +94,9 @@ class Pairing(models.PatientSubrecord):
                 )
                 raise EinsteinError(err_str)
             contents = json.loads(result.content)
+            logging.info("{} returned {}".format(
+                pairing.new_subscription_url, contents
+            ))
             if not contents["subscription_id"]:
                 raise EinsteinError(
                     "unable to find subscription id from {}".format(
