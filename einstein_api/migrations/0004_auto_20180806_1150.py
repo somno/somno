@@ -11,7 +11,7 @@ import opal.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('opal', '0035_auto_20180806_1150'),
+        ('opal', '0033_auto_20171205_1553'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('einstein_api', '0003_monitor_monitorpatientpairing'),
     ]
