@@ -36,7 +36,7 @@ class PairingSubscribeTestCase(AbstractPairingTestCase):
         timezone.now.return_value = self.now
         models.Pairing.subscribe(self.patient.id, self.monitor.id)
         requests.post.assert_called_once_with(
-            "http://someurl.com/monitor/1234243234342/subscribe"
+            "http://someurl.com/api/monitor/1234243234342/subscribe"
         )
         pairing = models.Pairing.objects.get()
         self.assertEqual(
@@ -59,7 +59,7 @@ class PairingSubscribeTestCase(AbstractPairingTestCase):
             models.Pairing.subscribe(self.patient.id, self.monitor.id)
 
         expected = "unable to subscribe to url \
-http://someurl.com/monitor/1234243234342/subscribe  using 1 Goldfrapp with 500"
+http://someurl.com/api/monitor/1234243234342/subscribe using 1 Goldfrapp with 500"
 
         self.assertEqual(
             str(ee.exception), expected

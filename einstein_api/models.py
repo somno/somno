@@ -41,13 +41,13 @@ class Pairing(models.PatientSubrecord):
 
     @property
     def new_subscription_url(self):
-        return "{}/monitor/{}/subscribe".format(
+        return "{}/api/monitor/{}/subscribe".format(
             settings.EINSTEIN_URL, self.monitor.einstein_id
         )
 
     @property
     def existing_subscription_url(self):
-        return "{}/monitor/{}/subscribe/{}".format(
+        return "{}/api/monitor/{}/subscribe/{}".format(
             settings.EINSTEIN_URL,
             self.monitor.einstein_id,
             self.subscription_id
