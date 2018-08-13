@@ -84,7 +84,7 @@ class Pairing(models.PatientSubrecord):
                     url=api_url
                 )
             )
-            if not result.status_code == 201:
+            if not result.status_code < 300:
                 err_str = 'unable to subscribe to url {} using {} {} with {}'
                 err_str = err_str.format(
                     pairing.new_subscription_url,
