@@ -1,12 +1,14 @@
 import requests
 import json
 import logging
+from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.db import models as db_models
 from django.utils import timezone
 from jsonfield import JSONField
 from opal import models
 from einstein_api.exceptions import EinsteinError
+
 
 
 logger = logging.getLogger('einstein_api')
@@ -69,8 +71,19 @@ class Pairing(models.PatientSubrecord):
             else:
                 sub_id = 1
             pairing.subscription_id = sub_id
+            "einstein_observation-list",
         else:
-            result = requests.post(pairing.new_subscription_url)
+            if not settings.HOST_URL:
+                raise EinsteinError("Host URL required")
+            api_url = "{}/{}".format(
+                settings.HOST_URL,
+                reverse("einstein_observation-list")
+            )
+            result = requests.post(
+                pairing.new_subscription_url, json=dict(
+                    url=api_url
+                )
+            )
             if not result.status_code == 201:
                 err_str = 'unable to subscribe to url {} using {} {} with {}'
                 err_str = err_str.format(
