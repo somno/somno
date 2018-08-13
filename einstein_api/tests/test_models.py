@@ -58,10 +58,11 @@ class PairingSubscribeTestCase(AbstractPairingTestCase):
         with self.assertRaises(exceptions.EinsteinError) as ee:
             models.Pairing.subscribe(self.patient.id, self.monitor.id)
 
+        expected = "unable to subscribe to url \
+http://someurl.com/monitor/1234243234342/subscribe  using 1 Goldfrapp with 500"
+
         self.assertEqual(
-            str(ee.exception), "unable to subscribe to {} {} with 500".format(
-                self.monitor.id, self.monitor.user_machine_name
-            )
+            str(ee.exception), expected
         )
         self.assertFalse(info.called)
 

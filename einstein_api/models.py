@@ -72,7 +72,9 @@ class Pairing(models.PatientSubrecord):
         else:
             result = requests.post(pairing.new_subscription_url)
             if not result.status_code == 201:
-                err_str = 'unable to subscribe to {} {} with {}'.format(
+                err_str = 'unable to subscribe to url {} using {} {} with {}'
+                err_str = err_str.format(
+                    pairing.new_subscription_url,
                     pairing.monitor.id,
                     pairing.monitor.user_machine_name,
                     result.status_code
