@@ -27,16 +27,27 @@ class PairingSubscribeTestCase(AbstractPairingTestCase):
         self.response = mock.MagicMock()
         self.response.status_code = 201
         self.response.content = json.dumps(
-            dict(subscription_id=1)
+            dict(subscription_id="1")
         )
 
-    @override_settings(EINSTEIN_URL="http://someurl.com")
-    def test_subscribe_with_einstein_url_success(self, info, timezone, requests):
+    @override_settings(
+        EINSTEIN_URL="http://some-einstein-url.com",
+        HOST_URL="http://some-host-url.com"
+    )
+    def test_subscribe_with_einstein_url_success(
+        self, info, timezone, requests
+    ):
         requests.post.return_value = self.response
         timezone.now.return_value = self.now
         models.Pairing.subscribe(self.patient.id, self.monitor.id)
+        url = """
+        http://some-host-url.com//einstein_api/v0.1/einstein_observation/
+        """.strip()
         requests.post.assert_called_once_with(
-            "http://someurl.com/api/monitor/1234243234342/subscribe"
+            "http://some-einstein-url.com/api/monitor/1234243234342/subscribe",
+            json={
+                'url': url
+            }
         )
         pairing = models.Pairing.objects.get()
         self.assertEqual(
@@ -47,10 +58,13 @@ class PairingSubscribeTestCase(AbstractPairingTestCase):
         )
         self.assertIsNone(pairing.stop)
         self.assertEqual(pairing.monitor.id, self.monitor.id)
-        self.assertEqual(pairing.subscription_id, 1)
+        self.assertEqual(pairing.subscription_id, "1")
         self.assertFalse(info.called)
 
-    @override_settings(EINSTEIN_URL="http://someurl.com")
+    @override_settings(
+        EINSTEIN_URL="http://some-einstein-url.com",
+        HOST_URL="http://some-host-url.com"
+    )
     def test_subscribe_with_einstein_url_fail(self, info, timezone, requests):
         self.response.status_code = 500
         requests.post.return_value = self.response
@@ -59,12 +73,23 @@ class PairingSubscribeTestCase(AbstractPairingTestCase):
             models.Pairing.subscribe(self.patient.id, self.monitor.id)
 
         expected = "unable to subscribe to url \
-http://someurl.com/api/monitor/1234243234342/subscribe using 1 Goldfrapp with 500"
+http://some-einstein-url.com/api/monitor/1234243234342/subscribe using 1 \
+Goldfrapp with 500"
 
         self.assertEqual(
             str(ee.exception), expected
         )
         self.assertFalse(info.called)
+
+    @override_settings(
+        EINSTEIN_URL="http://some-einstein-url.com",
+    )
+    def test_subscribe_with_einstein_url_but_not_host(
+        self, info, timezone, requests
+    ):
+        with self.assertRaises(exceptions.EinsteinError) as ee:
+            models.Pairing.subscribe(self.patient.id, self.monitor.id)
+        self.assertEqual(str(ee.exception), "Host URL needs to be set")
 
     @override_settings(EINSTEIN_URL=None)
     def test_subscribe_without_einstein_url(self, info, timezone, requests):
@@ -80,7 +105,7 @@ http://someurl.com/api/monitor/1234243234342/subscribe using 1 Goldfrapp with 50
         )
         self.assertIsNone(pairing.stop)
         self.assertEqual(pairing.monitor.id, self.monitor.id)
-        self.assertEqual(pairing.subscription_id, 1)
+        self.assertEqual(pairing.subscription_id, "1")
         self.assertFalse(requests.post.called)
         info.assert_called_once_with(
             'Unable to find einstein_api url, not posting'
@@ -102,7 +127,7 @@ class PairingUnsubscribeTestCase(AbstractPairingTestCase):
             patient=self.patient,
         )
 
-    @override_settings(EINSTEIN_URL="http://someurl.com")
+    @override_settings(EINSTEIN_URL="http://some-einstein-url.com")
     def test_unsubscribe_with_einstein_url(self, info, timezone, requests):
         timezone.now.return_value = self.now
         requests.delete.return_value.status_code = 200
@@ -112,7 +137,7 @@ class PairingUnsubscribeTestCase(AbstractPairingTestCase):
         pairing = models.Pairing.objects.get(id=self.pairing.id)
         self.assertEqual(pairing.stop, self.now)
 
-    @override_settings(EINSTEIN_URL="http://someurl.com")
+    @override_settings(EINSTEIN_URL="http://some-einstein-url.com")
     def test_unsubscribe_with_einstein_url_and_error(
         self, info, timezone, requests
     ):
@@ -124,6 +149,11 @@ class PairingUnsubscribeTestCase(AbstractPairingTestCase):
 
         pairing = models.Pairing.objects.get(id=self.pairing.id)
         self.assertIsNone(pairing.stop)
+        expected_err = "Unable to unsubscribe from einstein at \
+http://some-einstein-url.com/api/subscribe/1"
+        self.assertEqual(
+            str(ee.exception), expected_err
+        )
 
     @override_settings(EINSTEIN_URL=None)
     def test_unsubscribe_without_einstein_url(

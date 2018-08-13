@@ -66,14 +66,14 @@ class Pairing(models.PatientSubrecord):
         if not settings.EINSTEIN_URL:
             logger.info("Unable to find einstein_api url, not posting")
             if cls.objects.exists():
-                sub_id = cls.objects.last().id + 1
+                sub_id = str(cls.objects.last().id + 1)
             else:
-                sub_id = 1
+                sub_id = str(1)
             pairing.subscription_id = sub_id
             "einstein_observation-list",
         else:
             if not settings.HOST_URL:
-                raise EinsteinError("Host URL required")
+                raise EinsteinError("Host URL needs to be set")
             api_url = "{}/{}".format(
                 settings.HOST_URL,
                 reverse("einstein_observation-list")
@@ -116,6 +116,10 @@ class Pairing(models.PatientSubrecord):
         else:
             result = requests.delete(self.existing_subscription_url)
             if result.status_code not in (200, 204,):
-                raise EinsteinError("Unable to delete {}".format(str(self)))
+                raise EinsteinError(
+                    "Unable to unsubscribe from einstein at {}".format(
+                        self.existing_subscription_url
+                    )
+                )
             self.stop = timezone.now()
         self.save()

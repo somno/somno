@@ -299,7 +299,14 @@ DEFAULT_DOMAIN = 'http://anaesthetic.com/'
 
 OPAL_BRAND_NAME = 'Somno'
 VERSION_NUMBER  = '0.2.0'
+
+# einstein url is the server url that will
+# translate the ouput of the monitors
+# into json
 EINSTEIN_URL = None
+
+# host url, required to subscribe to einstein
+HOST_URL = None
 
 try:
     from local_settings import *
