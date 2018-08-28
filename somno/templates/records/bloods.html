@@ -1,36 +1,81 @@
-<span ng-show="item.Hb">
-    [[ item.Hb ]]
-   <br />
-</span>
-<span ng-show="item.Plt">
-    [[ item.Plt ]]
-   <br />
-</span>
-<span ng-show="item.WBC">
-    [[ item.WBC ]]
-   <br />
-</span>
-<span ng-show="item.INR">
-    [[ item.INR ]]
-   <br />
-</span>
-<span ng-show="item.CRP">
-    [[ item.CRP ]]
-   <br />
-</span>
-<span ng-show="item.Urea">
-    [[ item.Urea ]]
-   <br />
-</span>
-<span ng-show="item.Creat">
-    [[ item.Creat ]]
-   <br />
-</span>
-<span ng-show="item.Na">
-    [[ item.Na ]]
-   <br />
-</span>
-<span ng-show="item.K">
-    [[ item.K ]]
-   <br />
-</span>
+<div class="col-sm-12">
+<div class="row">
+  <div class="col-sm-12 preopcontent">
+    <div class="col-sm-3">
+      <b>Hb:</b>
+      <span ng-show="item.Hb">
+          <br />[[ item.Hb ]]
+      </span>
+    </div>
+    <div class="col-sm-3">
+      <b>Plt</b>
+      <span ng-show="item.Plt">
+          <br />[[ item.Plt ]]
+      </span>
+    </div>
+    <div class="col-sm-3">
+      <b>INR</b>
+      <span ng-show="item.INR">
+           <br />[[ item.INR ]]
+      </span>
+    </div>
+    <div class="col-sm-3">
+      <b>PT</b>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-sm-12 preopcontent">
+    <div class="col-sm-3">
+      <b>Na</b>
+      <span ng-show="item.Na">
+          <br />[[ item.Na ]]
+      </span>
+      </div>
+  <div class="col-sm-3">
+    <b>K</b>
+    <span ng-show="item.K">
+        <br />[[ item.K ]]
+
+    </span>
+  </div>
+  <div class="col-sm-3">
+    <b>Urea</b>
+    <span ng-show="item.Urea">
+        <br />[[ item.Urea ]]
+
+    </span>
+  </div>
+  <div class="col-sm-3">
+    <b>Creat</b>
+    <span ng-show="item.Creat">
+        <br />[[ item.Creat ]]
+
+    </span>
+  </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-12 preopcontent">
+    <div class="col-sm-3">
+      <b>WBC</b>
+      <span ng-show="item.WBC">
+          <br />
+          [[ item.WBC ]]
+      </span>
+      </div>
+  <div class="col-sm-3">
+    <b>CRP</b>
+    <span ng-show="item.CRP">
+      <br />
+        [[ item.CRP ]]
+    </span>
+  </div>
+  </div>
+</div>
+
+
+</div>

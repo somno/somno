@@ -1,11 +1,38 @@
-<span ng-show="item.Hb">
-    [[ item.Hb ]]
-   <br />
-</span>
-<span ng-show="item.Plt">
-    [[ item.Plt ]]
-   <br />
-</span>
+<div class="row">
+  <b>Hb:</b>
+  <span ng-show="item.Hb">
+      Hb: [[ item.Hb ]]
+  </span>
+  <b>Plt</b>
+  <span ng-show="item.Plt">
+      [[ item.Plt ]]
+     <br />
+  </span>
+</div>
+<div class="row">
+  <b>Na</b>
+  <span ng-show="item.Na">
+      [[ item.Na ]]
+
+  </span>
+  <b>K</b>
+  <span ng-show="item.K">
+      [[ item.K ]]
+
+  </span>
+  <b>Urea</b>
+  <span ng-show="item.Urea">
+      [[ item.Urea ]]
+
+  </span>
+  <b>Creat</b>
+  <span ng-show="item.Creat">
+      [[ item.Creat ]]
+
+  </span>
+</div>
+
+
 <span ng-show="item.WBC">
     [[ item.WBC ]]
    <br />
@@ -16,21 +43,5 @@
 </span>
 <span ng-show="item.CRP">
     [[ item.CRP ]]
-   <br />
-</span>
-<span ng-show="item.Urea">
-    [[ item.Urea ]]
-   <br />
-</span>
-<span ng-show="item.Creat">
-    [[ item.Creat ]]
-   <br />
-</span>
-<span ng-show="item.Na">
-    [[ item.Na ]]
-   <br />
-</span>
-<span ng-show="item.K">
-    [[ item.K ]]
    <br />
 </span>
