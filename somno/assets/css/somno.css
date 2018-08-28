@@ -1,12 +1,14 @@
 body {
-  background-color: #EEE;
+  background-color: #fff;
   color: #2F312E; }
 
 h3 {
-  font-family: "PT Sans", "Lucida Grande", "Lucida Sans", Arial, Verdana, sans-serif; }
+  font-family: "PT Sans", "Lucida Grande", "Lucida Sans", Arial, Verdana, sans-serif;
+  font-size: 20px;
+}
 
 .container-fluid {
-  padding: 0; }
+  padding: 40; }
 
 .menu-bar-offset {
   padding-left: 5px; }
@@ -24,6 +26,11 @@ h3 {
 .bg-active {
   background-color: #0054B5; }
 
+.panel-heading{
+  background-color: #DDD !important;
+  padding: 5px;
+}
+
 .panel.panel-primary {
   border-color: #0054B5; }
 
@@ -38,9 +45,9 @@ h3 {
 */
 .page-header {
   border-bottom: 1px solid #FFF;
-  background-color: #E4EDF6;
+  background-color: #DDD;
   margin-top: 50;
-  min-height: 60px;
+  min-height: 40px;
   overflow: hidden;
   padding: 0; }
 
@@ -205,7 +212,7 @@ svg .data path {
   border-color: none; }
   .panel-default .panel-heading {
     background-color: #E4EDF6;
-    border-bottom: 2px solid #0054B5; }
+    border-bottom: 1px solid #0054B5; }
   .panel-default .list-group-item {
     min-height:25px;
     margin: 0px;
@@ -239,4 +246,19 @@ Styles for the graphs
   max-width: 100%;
   line-height: 22px;
   cursor: text;
+}
+
+.tabsclass {
+  padding-bottom: 20px;
+}
+
+.preopcol {
+  background-color: #EEE;
+  padding: 20px;
+}
+
+.preopcontent{
+  border: 1px solid #0054B5;
+  min-height: 40px;
+  padding: 5px;
 }

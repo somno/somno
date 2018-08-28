@@ -3,10 +3,10 @@
 <!-- things we need. Nav bar, physical attributes, pre op bloods, pre op visit, anaesthetic plan, previous episodes -->
 <div ng-controller="preoperative">
 <div class="row">
-  <div class="col-md-12">
-    <ul class="nav nav-tabs">
+  <div class="col-md-12 tabsclass">
+    <ul class="nav nav-tabs" style="padding-left:20px;">
     <li class="nav-item">
-      <a class="nav-link active" ng-class="{'active': tab=='preop'}" ng-click="tab='preop'">Assessment</a>
+      <a class="nav-link" ng-class="{'active': tab=='preop'}" ng-click="tab='preop'">Assessment</a>
     </li>
     <li class="nav-item">
       <a class="nav-link"  ng-class="{'active': tab=='consent'}" ng-click="tab='consent'">Consent</a>
@@ -14,17 +14,21 @@
     </ul>
   </div>
 </div>
+<div class="row">
+ <!--blank row for padding?  -->
+</div>
 
 <div ng-switch="tab">
+  <div class="col-md-12">
   <div class="row" ng-switch-when="preop">
-    <div class="col-md-4">
+    <div class="col-md-4 preopcol">
       {% record_panel models.PatientPhysicalAttributes title="Height and Weight" %}
       {% record_panel models.AnaestheticAssesment %}
       {% block episodes_switcher %}
                <div class="panel panel-default">
                  <div class="panel-heading ">
                    <h3>
-                     Previous Anaesthetics
+                     Previous Episodes
                    </h3>
                  </div>
                  <div class="list-group">
@@ -43,13 +47,20 @@
                </div>
         {% endblock episodes_switcher %}
     </div>
-
     <div class="col-md-8">
+
+    <div class="col-md-12 ">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 preopcol">
           {% record_panel models.DrugHistory %}
         </div>
       </div>
+    </div>
+    <div class="col-md-12 ">
+      <br>
+    </div>
+
+    <div class="col-md-12 preopcol ">
       <div class="row">
         <div class="col-md-8">
           {% record_panel models.AirwayAssessment %}
@@ -59,6 +70,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
   <div class="row" ng-switch-when="consent">
@@ -66,5 +78,6 @@
       {% record_panel models.AnaestheticPlan %}
     </div>
   </div>
+</div>
 </div>
 </div>

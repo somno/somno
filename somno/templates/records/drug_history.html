@@ -1,8 +1,21 @@
-<span ng-show="item.Medications">
-    [[ item.Medications ]]
-   <br />
-</span>
-<span ng-show="item.Allergies">
-    [[ item.Allergies ]]
-   <br />
-</span>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-7">
+      <h5>Medications:</h5>
+      <div class=" preopcontent">
+      <span ng-show="item.Medications">
+          [[ item.Medications ]]
+         <br />
+      </span>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <h5>Allergies:</h5>
+      <div class="preopcontent">
+      <span ng-show="item.Allergies" >
+          [[ item.Allergies ]]
+      </span>
+      </div>
+    </div>
+  </div>
+</div>

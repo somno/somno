@@ -1,36 +1,23 @@
-<span ng-show="item.Assessment">
-    [[ item.Assessment ]]
-   <br />
-</span>
-<span ng-show="item.General_Risks">
-    [[ item.General_Risks ]]
-   <br />
-</span>
-<span ng-show="item.AdditionalRisks">
-    [[ item.AdditionalRisks ]]
-   <br />
-</span>
-<span ng-show="item.TimeSeen">
-    [[ item.TimeSeen | shortDateTime ]]
-   <br />
-</span>
-<span ng-show="item.Malampati">
-    [[ item.Malampati ]]
-   <br />
-</span>
-<span ng-show="item.Dentition">
-    [[ item.Dentition ]]
-   <br />
-</span>
-<span ng-show="item.ASA">
-    [[ item.ASA ]]
-   <br />
-</span>
-<span ng-show="item.Frailty">
-    [[ item.Frailty ]]
-   <br />
-</span>
+Previous Anaesthetics:<br />
 <span ng-show="item.previous_anaesthetics">
     [[ item.previous_anaesthetics ]]
-   <br />
+</span>
+<br />
+
+Past Medical History: <br />
+<span ng-show="item.Assessment">
+    [[ item.Assessment ]]
+
+</span>
+<br />
+
+ASA Grade: <br />
+<span ng-show="item.ASA">
+    [[ item.ASA ]]
+
+</span>
+<br />
+
+<span ng-show="item.TimeSeen">
+    [[ item.TimeSeen | shortDateTime ]]
 </span>
