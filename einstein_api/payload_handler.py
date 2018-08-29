@@ -2,7 +2,7 @@ from dateutil import parser
 from django.db.models import Q
 from django.utils import timezone
 from opal.models import Patient
-from somno import models
+from einstein_api import models
 
 # what we get given as the heart rate
 HEART_RATE = "NOM_ECG_CARD_BEAT_RATE"
@@ -32,7 +32,7 @@ def update_observations(monitor_id, datetime, observations):
     if not observations:
         return
 
-    patient_ids = models.MonitorPatientPairing.objects.filter(
+    patient_ids = models.Pairing.objects.filter(
         monitor__einstein_id=monitor_id
     ).filter(
         start__lte=datetime
