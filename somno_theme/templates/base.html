@@ -7,6 +7,7 @@
 
 <html {% block angulardefinition %}xmlns:ng="http://angularjs.org" id="ng-app" ng-app="{% block ngapp %}opal{% endblock %}" ng-controller="RootCtrl" ng-keydown="keydown($event)"{% endblock %}>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!-- Sometimes your system administrater will helpfully configure IE to use old document modes by default. You don't want that here. -->
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <!--[if lte IE 8]>
@@ -69,7 +70,9 @@
   {% endcomment %}
 	<link href="{% static "css/select.css" %}" rel="stylesheet" media="all">
 	<link href="{% static "css/bootstrap-datepicker.css" %}" rel="stylesheet" media="all">
+  {% comment %}
 	<link href="{% static "css/font-awesome/css/font-awesome.css" %}" rel="stylesheet" media="all">
+  {% endcomment %}
 	<link href="{% static "css/awesome-bootstrap-checkbox.css" %}" rel="stylesheet" media="all">
   <link href="{% static "css/ngprogress-lite.css" %}" rel="stylesheet" media="screen">
 	<link href="{% static "js/lib/bower_components/angular-growl-v2/build/angular-growl.css" %}" rel="stylesheet" media="screen">

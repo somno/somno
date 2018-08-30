@@ -1,7 +1,14 @@
-<div style="margin-left: 230px; width: calc(100% - 240px); height: 500px;"id="chart"></div>
+<div class="col-md-9">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="">Basic Obs</a></li>
+    <li role="presentation"><a href="">Ventilation</a></li>
+    <li role="presentation"><a href="">Extras</a></li>
+  </ul>
+<div style="height: 500px;"id="chart1"></div>
+</div>
 <script>
   var chart = c3.generate({
-      bindto: '#chart',
+      bindto: '#chart1',
       data: {
           x: 'x',
           xFormat: '%Y-%m-%dT%H:%M:%S',
@@ -15,9 +22,6 @@
                 "2015-01-25T14:00:43",
                 "2015-01-26T14:15:43",
               ],
-
-
-
               ['sample', 30, 200, 100, 400, 150, 250]
           ]
       },

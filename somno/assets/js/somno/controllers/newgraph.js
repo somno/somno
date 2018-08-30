@@ -551,45 +551,45 @@ angular.module('opal.controllers').controller(
         });
       });
 
-        interval = setInterval(function () {
-          patientLoader().then(function(patient){
-            newColumns = createColumns(patient.episodes[0].observation);
-            newgasses = creategasses(patient.episodes[0].gases);
-            newvents = ventsettings(patient.episodes[0].ventilation);
-            newlines = gridlines(patient.episodes[0].anaesthetic_note);
-            newdrugs = drugs(patient.episodes[0].given_drug);
-
-            //set first and last time for x axis
-            $scope.firstobs = newColumns[4][1];
-            $scope.lastobs = newColumns[4][newColumns[4].length-1];
-
-            drugchart.axis.range({max: {x: $scope.lastobs}, min: {x: $scope.firstobs}, });
-            //chart.grid(newlines);
-            chart.load({
-                columns: newColumns,
-                grid: newlines,
-            });
-            chart2.load({
-                columns: newgasses,
-            });
-            chart3.load({
-                columns: newvents,
-            });
-            drugchart.load({
-                columns : newdrugs.columns,
-                xs: newdrugs.xs,
-                colors: newdrugs.colors,
-
-            });
-          });
-          drawlabels(drugchart.interal);
-        }, 1000);
-
-        $scope.$on("$routeChangeStart", function(){
-          if(interval){
-            clearInterval(interval);
-          }
-        });
-
+        // interval = setInterval(function () {
+        //   patientLoader().then(function(patient){
+        //     newColumns = createColumns(patient.episodes[0].observation);
+        //     newgasses = creategasses(patient.episodes[0].gases);
+        //     newvents = ventsettings(patient.episodes[0].ventilation);
+        //     newlines = gridlines(patient.episodes[0].anaesthetic_note);
+        //     newdrugs = drugs(patient.episodes[0].given_drug);
+        //
+        //     //set first and last time for x axis
+        //     $scope.firstobs = newColumns[4][1];
+        //     $scope.lastobs = newColumns[4][newColumns[4].length-1];
+        //
+        //     drugchart.axis.range({max: {x: $scope.lastobs}, min: {x: $scope.firstobs}, });
+        //     //chart.grid(newlines);
+        //     chart.load({
+        //         columns: newColumns,
+        //         grid: newlines,
+        //     });
+        //     chart2.load({
+        //         columns: newgasses,
+        //     });
+        //     chart3.load({
+        //         columns: newvents,
+        //     });
+        //     drugchart.load({
+        //         columns : newdrugs.columns,
+        //         xs: newdrugs.xs,
+        //         colors: newdrugs.colors,
+        //
+        //     });
+        //   });
+        //   drawlabels(drugchart.interal);
+        // }, 1000);
+        //
+        // $scope.$on("$routeChangeStart", function(){
+        //   if(interval){
+        //     clearInterval(interval);
+        //   }
+        // });
+        //
 
 });

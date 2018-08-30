@@ -2,58 +2,81 @@
 {% load forms %}
 
 {% block angularapp %}
-<nav class="somno-main-nav">
-  <a class="somno-brand" href="">
-    S
-  </a>
-  <div class="right-menu">
-    <div class="patient-details">
-      Mike Thompson | 1st January 1970  | Hip replacement
-    </div>
-    <a href="#" class="hamburger">
-      <i class="fas fa-bars"></i>
+<div ng-controller="newgraph">
+  <nav class="somno-main-nav">
+    <a class="somno-brand" href="">
+      S
     </a>
-  </div>
-</nav>
-<nav >
-  <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
-    <div class="col-md-6 somno-sub-nav">
-      <ul>
-        <li>
-          <a href="">Pre-op</a>
-        </li>
-        <li>
-          <a href="">Chart</a>
-        </li>
-        <li>
-          <a href="">Anaesthetic details</a>
-        </li>
-      </ul>
+    <div class="right-menu">
+      <div class="patient-details">
+        Mike Thompson | 1st January 1970  | Hip replacement
+      </div>
+      <a href="#" class="hamburger">
+        <i class="fas fa-bars"></i>
+      </a>
     </div>
-    <div class="col-md-6 somno-theatre-nav">
-      <ul>
-        <li>
-          <div>
-            Connected to:
-            <strong>Operating Theatre 1</strong>
-          </div>
-        </li>
-        <li>
-          <a href="" open-pathway="pair_monitor" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-primary">
-            Switch
-          </a>
-        </li>
-        <li>
-          <a href="" ng-click="" class="btn btn-light">
-            End case
-          </a>
-        </li>
-      </ul>
+  </nav>
+  <nav >
+    <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
+      <div class="col-md-6 somno-sub-nav">
+        <ul>
+          <li>
+            <a href="">Pre-op</a>
+          </li>
+          <li>
+            <a class="active" href="">Chart</a>
+          </li>
+          <li>
+            <a href="">Anaesthetic details</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 somno-theatre-nav">
+        <ul>
+          <li>
+            <div ng-show="monitorPairing()">
+              Connected to:
+              <strong >[[ monitorPairing() ]]</strong>
+            </div>
+            <div ng-hide="monitorPairing()">
+              Currently not connected
+            </div>
+          </li>
+          <li>
+            <a href="" open-pathway="pair_monitor" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-primary">
+              <span ng-show="monitorPairing()">
+                Switch
+              </span>
+              <span ng-hide="monitorPairing()">
+                Connect
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="" open-pathway="unpair_monitor" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-default">
+              End case
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div autoscroll="true" ng-hide="ready==false" class="container-fluid">
+    {% include "drug_graphs.html" %}
+    <div class="row">
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Events</div>
+          <ul class="list-group">
+            <li ng-repeat="event in episode.anaesthetic_note" class="list-group-item">
+              [[ event.Title ]]
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {% include "line_graph.html" %}
     </div>
   </div>
-</nav>
-<div autoscroll="true" ng-hide="ready==false" class="container-fluid">
-  {% include "drug_graphs.html" %}
-  {% include "line_graph.html" %}
 </div>
 {% endblock %}

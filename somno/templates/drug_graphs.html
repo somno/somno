@@ -1,3 +1,20 @@
+<div class="row">
+  <div class="col-md-12 content-offset-below-10">
+    <div class="btn-group" uib-dropdown is-open="status.isopen">
+      <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled" id="list-dropdown">
+        Add
+        <i class="fa fa-angle-down"></i>
+      </button>
+      <ul class="uib-dropdown-menu slides" role="menu" aria-labelledby="list-dropdown">
+        <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
+        <li><a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" href="">Infusions</a></li>
+        <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Fluid</a></li>
+        <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Event</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div style="width: calc(100% - 100px); margin-left: 100px" id="drug-chart-canvas">
 </div>
 <script>
@@ -226,10 +243,6 @@ var bulletLoader = function(data) {
       .attr("x", "0")
       .attr("dy", "1em")
       .text(function(d) { return d.subtitle; });
-
-  d3.selectAll("button").on("click", function() {
-    svg.datum(randomize).call(chart.duration(1000)); // TODO automatic transition
-  });
 };
 
 var ranges = [0, 0, 300];

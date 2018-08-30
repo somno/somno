@@ -2,22 +2,29 @@ $btn-border-radius: 0;
 $btn-border-radius-lg: 0;
 $btn-border-radius-sm: 0;
 
-$blue: #2D62A3;
-$red: #E47127;
+$brand-primary: #2D62A3;
+$brand-success: #E47127;
+$font-size-base: 16px;
 
+$font-family-base: 'Montserrat', sans-serif;
 
 @import "bootstrap/bootstrap";
 
+.content-offset-10{
+  margin-bottom: 10px
+}
 
 .login{
   margin-top: 50%;
 }
 
+
+
 .somno-main-nav{
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  border-bottom: 1px solid $black;
+  border-bottom: 1px solid $gray-dark;
   justify-content: space-between;
 }
 
@@ -29,22 +36,28 @@ $red: #E47127;
     flex-flow: row nowrap;
     align-items: flex-end;
     padding-left: 0;
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid $gray-dark;
 
     li{
       list-style: none;
 
       a{
         padding: 1rem;
-        border-right: 1px solid $black;
+        border-right: 1px solid $gray-dark;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: $black;
+        color: $gray-dark;
+        height: 54px;
+
+        &.active{
+          background-color: $brand-primary;
+          color: #fff;
+        }
 
         &:hover{
           background-color: $link-hover-color;
-          color: $white;
+          color: $body-bg;
           text-decoration: none;
         }
       }
@@ -61,7 +74,7 @@ $red: #E47127;
     align-items: flex-end;
     justify-content: flex-end;
     padding-left: 0;
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid $gray-dark;
 
     li{
       list-style: none;
@@ -78,11 +91,11 @@ $red: #E47127;
 
 
 .somno-brand{
-  width: 3rem;
-  height: 3rem;
+  width: 45px;
+  height: 45px;
   text-align: center;
   font-size: 34px;
-  background-color: red;
+  background-color: $brand-primary;
   color: white;
 }
 
@@ -98,12 +111,16 @@ $red: #E47127;
 
 .hamburger{
   display: inline-block;
-  width: 3rem;
-  height: 3rem;
+  height: 45px;
+  width: 45px;
   text-align: center;
   font-size: 34px;
-  background-color: black;
   color: white;
+  background-color: black;
+
+  &:hover{
+    background-color: $brand-primary;
+  }
 }
 
 .btn{
