@@ -47,5 +47,6 @@ class PairMonitor(PagePathway):
         monitor_id = data.pop(
             models.Pairing.get_api_name()
         )[0]["monitor_id"]
+
         models.Pairing.subscribe(patient.id, monitor_id)
         return patient, episode

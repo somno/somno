@@ -1,10 +1,14 @@
 $btn-border-radius: 0;
 $btn-border-radius-lg: 0;
 $btn-border-radius-sm: 0;
+$panel-border-radius: 0;
 
-$brand-primary: #2D62A3;
-$brand-success: #E47127;
+// https://color.adobe.com/b703a77bdd81eab476f23b001df9f94d-color-theme-11200366/edit/?copy=true
+$brand-primary: #105187;
+$brand-success: #F19722;
 $font-size-base: 16px;
+
+$btn-default-bg: #F0F1D5;
 
 $font-family-base: 'Montserrat', sans-serif;
 
@@ -16,6 +20,11 @@ $font-family-base: 'Montserrat', sans-serif;
 
 .login{
   margin-top: 50%;
+}
+
+h1.display-1{
+  font-weight: 200;
+  font-size: $font-size-h1 * 1.25;
 }
 
 

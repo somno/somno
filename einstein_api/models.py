@@ -59,6 +59,13 @@ class Pairing(models.PatientSubrecord):
         pairing = cls()
         pairing.patient_id = patient_id
 
+        existing_pairings = cls.objects.filter(
+            stop=None, patient_id=patient_id
+        ).exclude(monitor_id=monitor_id)
+
+        for existing_pairing in existing_pairings:
+            existing_pairing.unsubscribe()
+
         pairing.monitor = Monitor.objects.get(
             id=monitor_id
         )
