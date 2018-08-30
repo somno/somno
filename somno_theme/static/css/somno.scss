@@ -1,0 +1,123 @@
+$btn-border-radius: 0;
+$btn-border-radius-lg: 0;
+$btn-border-radius-sm: 0;
+
+$blue: #2D62A3;
+$red: #E47127;
+
+
+@import "bootstrap/bootstrap";
+
+
+.login{
+  margin-top: 50%;
+}
+
+.somno-main-nav{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border-bottom: 1px solid $black;
+  justify-content: space-between;
+}
+
+.somno-sub-nav {
+  padding-left: 0;
+  padding-right: 0;
+  ul{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    padding-left: 0;
+    border-bottom: 1px solid $black;
+
+    li{
+      list-style: none;
+
+      a{
+        padding: 1rem;
+        border-right: 1px solid $black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $black;
+
+        &:hover{
+          background-color: $link-hover-color;
+          color: $white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.somno-theatre-nav {
+  padding-left: 0;
+  padding-right: 0;
+  ul{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-left: 0;
+    border-bottom: 1px solid $black;
+
+    li{
+      list-style: none;
+      padding: 9px;
+      align-items: center;
+      justify-content: center;
+
+      div{
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+
+.somno-brand{
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 34px;
+  background-color: red;
+  color: white;
+}
+
+.right-menu{
+  display: flex;
+  align-items: center;
+}
+
+.patient-details{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.hamburger{
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 34px;
+  background-color: black;
+  color: white;
+}
+
+.btn{
+  border-radius: 0;
+}
+
+// bullets
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .measure.s0 { fill: lightsteelblue; }
+.bullet .measure.s1 { fill: steelblue; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }

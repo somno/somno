@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load menus %}
+
+{% block application %}
+{% block navbar %}
+<nav class="somno-main-nav">
+  <a class="somno-brand" href="">
+    S
+  </a>
+  <div class="right-menu">
+    <div class="patient-details">
+      Mike Thompson | 1st January 1970  | Hip replacement
+    </div>
+    <a href="#" class="hamburger">
+      <i class="fas fa-bars"></i>
+    </a>
+  </div>
+</nav>
+<nav >
+  <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
+    <div class="col-md-6 somno-sub-nav">
+      <ul>
+        <li>
+          <a href="">Pre-op</a>
+        </li>
+        <li>
+          <a href="">Chart</a>
+        </li>
+        <li>
+          <a href="">Anaesthetic details</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6 somno-theatre-nav">
+      <ul>
+        <li>
+          <div>
+            Connected to:
+            <strong>Operating Theatre 1</strong>
+          </div>
+        </li>
+        <li>
+          <a href="" open-pathway="pair_monitor" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-primary">
+            Switch
+          </a>
+        </li>
+        <li>
+          <a href="" ng-click="" class="btn btn-light">
+            End case
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "drug_graphs.html" %}
+  {% include "line_graph.html" %}
+</div>
+
+{% endblock %}
+
+{% include 'logout_modal.html' %}
+<div growl></div>
+
+{% block loading %}
+{% endblock %}
+
+{% endblock %}

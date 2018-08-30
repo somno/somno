@@ -1,0 +1,34 @@
+<div style="margin-left: 230px; width: calc(100% - 240px); height: 500px;"id="chart"></div>
+<script>
+  var chart = c3.generate({
+      bindto: '#chart',
+      data: {
+          x: 'x',
+          xFormat: '%Y-%m-%dT%H:%M:%S',
+          columns: [
+              [
+                'x',
+                "2015-01-21T13:00:43",
+                "2015-01-22T13:15:43",
+                "2015-01-23T13:30:43",
+                "2015-01-24T13:45:43",
+                "2015-01-25T14:00:43",
+                "2015-01-26T14:15:43",
+              ],
+
+
+
+              ['sample', 30, 200, 100, 400, 150, 250]
+          ]
+      },
+      axis : {
+          x : {
+              type : 'timeseries',
+              tick: {
+                  format: function (x) { return "" + x.getHours() + ":" + x.getMinutes(); }
+                //format: '%Y' // format string is also available for timeseries data
+              }
+          }
+      }
+  });
+</script>
