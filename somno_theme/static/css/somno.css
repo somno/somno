@@ -5937,4 +5937,33 @@ h1.display-1 {
   padding-top: 6px;
   padding-bottom: 6px; }
 
+.modal-dialog {
+  width: 300px; }
+
+.modal-dialog .modal-header {
+  background-color: steelblue;
+  color: white; }
+
+.modal-dialog .modal-header h2 {
+  font-size: 18px;
+  padding-top: 18px; }
+
+.somno-options-list {
+  background-color: green;
+  margin-left: -15px;
+  margin-right: -16px;
+  margin-top: -16px;
+  margin-bottom: -16px;
+  border-bottom: 1px #434c3d solid;
+  border-top: 1px #434c3d solid; }
+
+.somno-options-list label {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  color: black;
+  border-color: #434c3d; }
+
 /*# sourceMappingURL=somno.css.map */

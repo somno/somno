@@ -33,7 +33,10 @@ class UnPairMonitor(PagePathway):
 
 class PairMonitor(PagePathway):
     display_name = "Pair with monitor"
+    modal_template = 'pathways/modal_without_patient_header.html'
     slug = "pair_monitor"
+    finish_button_text = 'Pair'
+    finish_button_icon = ''
     steps = (
         Step(
             model=models.Pairing,

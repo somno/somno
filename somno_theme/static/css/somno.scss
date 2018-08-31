@@ -30,8 +30,6 @@ h1.display-1{
   font-size: $font-size-h1 * 1.25;
 }
 
-
-
 .somno-main-nav{
   display: flex;
   flex-flow: row nowrap;
@@ -151,6 +149,8 @@ h1.display-1{
 .bullet .title { font-size: 14px; font-weight: bold; }
 .bullet .subtitle { fill: #999; }
 
+// Dropdowns are wider and fixed width
+
 .btn.btn-default.dropdown-toggle,
 .btn.btn-default.dropdown-toggle:focus{
     min-width: 160px;
@@ -159,7 +159,6 @@ h1.display-1{
     color: white;
 }
 
-
 .dropdown-menu li:first-child {
   border-top: none;
 }
@@ -167,4 +166,39 @@ h1.display-1{
   border-top: 1px $slate solid;
   padding-top: 6px;
   padding-bottom: 6px;
+}
+
+// Make dialogs thin with small headings
+
+.modal-dialog {
+    width: 300px;
+}
+
+.modal-dialog .modal-header {
+  background-color: steelblue;
+  color: white;
+}
+.modal-dialog .modal-header h2{
+  font-size: 18px;
+  padding-top: 18px;
+}
+
+// Used in monitor pairing step 1
+.somno-options-list {
+  background-color: green;
+  margin-left: -15px;
+  margin-right: -16px;
+  margin-top: -16px;
+  margin-bottom: -16px;
+  border-bottom: 1px #434c3d solid;
+  border-top: 1px #434c3d solid;
+}
+.somno-options-list label {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  color: black;
+  border-color: #434c3d;
 }
