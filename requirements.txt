@@ -12,5 +12,6 @@ requests==2.18.4
 -e git+https://github.com/srosro/django-test-coverage@3f34cc05e50dd16b75d2e18a681d133f27dc5668#egg=django_test_coverage
 djangorestframework==3.4.7
 django-compressor==1.5
-opal==0.10.0
+# opal==0.12.0
+-e git+https://github.com/openhealthcare/opal.git@v0.12.0#egg=opal
 jsonfield==1.0.3
