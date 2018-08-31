@@ -74,7 +74,9 @@
           <div class="panel-heading">Events</div>
           <ul class="list-group">
             <li ng-repeat="event in episode.anaesthetic_note" class="list-group-item">
-              [[ event.Title ]]
+              <span class="badge badge-secondary pull-left">[[ $index +1 ]]</span>
+              &nbsp;
+              [[ event.name ]]
             </li>
           </ul>
         </div>

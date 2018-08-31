@@ -1,6 +1,6 @@
 {% extends 'base_templates/form_modal_base.html' %}
 {% block title %}
-  Add an Infusion
+  Add an infusion
 {% endblock %}
 {% block modal_body %}
   <div class="row">
@@ -10,16 +10,8 @@
   </div>
 {% endblock %}
 {% block modal_save %}
-  <div class="row">
-    <div class="col-md-12">
-      <span ng-show="form">
-        <button check-form="form" class="btn btn-primary pull-left"
-                ng-click="form.$valid && save('save')">
-          Add infusion
-        </button>
-        <a ng-click="cancel()" class="somno-cancel-text-btn">or cancel</a>
-      </span>
-    </div>
-  </div>
+  {% with "Add infusion" as button_text %}
+    {% include "_partials/modal_save_block.html" %}
+  {% endwith %}
 {% endblock %}
 {% block modal_cancel %}{% endblock %}

@@ -1,8 +1,11 @@
 {% load forms %}
-
-<div>
-  {% input field="AnaestheticNote.Title"  %}
-  {% textarea field="AnaestheticNote.Description" %}
-  {% datetimepicker field="AnaestheticNote.datetime"  %}
-
+<div class="row">
+  <div class="col-md-12">
+    {% select field="AnaestheticNote.name" style="vertical" %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {% input field="AnaestheticNote.datetime" style="vertical" %}
+  </div>
 </div>

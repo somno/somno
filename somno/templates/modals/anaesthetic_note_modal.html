@@ -1,6 +1,6 @@
 {% extends 'base_templates/form_modal_base.html' %}
 {% block title %}
-  Add a drug
+  Add an event
 {% endblock %}
 {% block modal_body %}
   <div class="row">
@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block modal_save %}
-  {% with "Add drug" as button_text %}
+  {% with "Add event" as button_text %}
     {% include "_partials/modal_save_block.html" %}
   {% endwith %}
 {% endblock %}

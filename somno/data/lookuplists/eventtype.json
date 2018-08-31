@@ -1,0 +1,16 @@
+{
+    "eventtype": [
+        {
+            "name": "General anaesthetic",
+            "synonyms": []
+        },
+        {
+            "name": "Move to theatre",
+            "synonyms": []
+        },
+        {
+            "name": "Knife to skin",
+            "synonyms": []
+        }
+    ]
+}

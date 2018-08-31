@@ -148,10 +148,20 @@ class Induction(models.EpisodeSubrecord):
     Position        = fields.ForeignKeyOrFreeText(Position)
 
 
+class EventType(lookuplists.LookupList):
+    pass
+
+
 class AnaestheticNote(models.PatientSubrecord):
-    Title       = db_models.TextField(blank=True, null=True)
-    Description = db_models.TextField(blank=True, null=True)
-    datetime    = db_models.DateTimeField(blank=True, null=True)
+
+    _angular_service = 'EventRecord'
+
+    name        = fields.ForeignKeyOrFreeText(EventType)
+    description = db_models.TextField(blank=True, null=True)
+    datetime    = db_models.DateTimeField(
+        blank=True, null=True,
+        verbose_name="Time"
+    )
 
 
 class Gases(RemoteAdded):
