@@ -94,6 +94,7 @@ class Application(application.OpalApplication):
         'js/somno/filters.js',
         'js/somno/directives.js',
         'js/somno/controllers/drug_controller.js',
+        'js/somno/services/records/infusion.js',
         'js/somno/services/records/observation_record.js',
         'js/somno/services/infusion.js',
         'js/somno/controllers/newgraph.js',

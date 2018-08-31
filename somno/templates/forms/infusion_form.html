@@ -1,6 +1,24 @@
 {% load forms %}
-{% datetimepicker field="Infusion.start_time" %}
-{% datetimepicker field="Infusion.stopped_time" %}
-{% input field="Infusion.rate" %}
-{% input field="Infusion.drug_name" %}
-{% input field="Infusion.drug_type" %}
+<div class="row">
+  <div class="col-md-12">
+    {% input field="Infusion.drug_name" style="vertical" %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {% input field="Infusion.concentration" style="vertical" %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    {% input field="Infusion.rate" style="vertical" %}
+  </div>
+  <div class="col-md-4">
+    {% input field="Infusion.units" style="vertical" %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {% input field="Infusion.start_time" style="vertical" %}
+  </div>
+</div>

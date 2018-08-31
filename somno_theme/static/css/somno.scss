@@ -183,6 +183,18 @@ h1.display-1{
   padding-top: 18px;
 }
 
+.somno-cancel-text-btn {
+    float: left;
+    padding-top: 7px;
+    display: inline-block;
+    text-decoration: underline;
+    padding-left: 18px;
+}
+
+.somno-cancel-text-btn:hover {
+    cursor: pointer;
+}
+
 // Used in monitor pairing step 1
 .somno-options-list {
   background-color: green;

@@ -36,18 +36,28 @@ class GivenDrug(models.PatientSubrecord):
     drug_type   = fields.ForeignKeyOrFreeText(AnaestheticDrugType)
     dose        = db_models.CharField(max_length=255)
     units       = db_models.CharField(max_length=255, blank=True, null=True)
-    datetime    = db_models.DateTimeField(blank=True, null=True)
+    datetime    = db_models.DateTimeField(
+        blank=True, null=True, verbose_name="Start"
+    )
 
     class Meta:
         verbose_name = "Drug"
 
 
 class Infusion(models.PatientSubrecord):
-    start_time = db_models.DateTimeField(blank=True, null=True)
-    stopped_time = db_models.DateTimeField(blank=True, null=True)
-    drug_name = fields.ForeignKeyOrFreeText(AnaestheticDrug)
-    drug_type = fields.ForeignKeyOrFreeText(AnaestheticDrugType)
-    rate = db_models.CharField(blank=True, default="", max_length=255)
+    _angular_service = 'InfusionRecord'
+
+    start_time    = db_models.DateTimeField(
+        blank=True, null=True, verbose_name="Start"
+    )
+    stopped_time  = db_models.DateTimeField(blank=True, null=True)
+    drug_name     = fields.ForeignKeyOrFreeText(
+        AnaestheticDrug, verbose_name="Name"
+    )
+    drug_type     = fields.ForeignKeyOrFreeText(AnaestheticDrugType)
+    rate          = db_models.CharField(blank=True, default="", max_length=255)
+    concentration = db_models.CharField(blank=True, null=True, max_length=255)
+    units         = db_models.CharField(max_length=255, blank=True, null=True)
 
 
 class RemoteAdded(models.PatientSubrecord):

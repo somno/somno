@@ -5948,6 +5948,16 @@ h1.display-1 {
   font-size: 18px;
   padding-top: 18px; }
 
+.somno-cancel-text-btn {
+  float: left;
+  padding-top: 7px;
+  display: inline-block;
+  text-decoration: underline;
+  padding-left: 18px; }
+
+.somno-cancel-text-btn:hover {
+  cursor: pointer; }
+
 .somno-options-list {
   background-color: green;
   margin-left: -15px;

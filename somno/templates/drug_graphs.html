@@ -7,7 +7,8 @@
       </button>
       <ul class="uib-dropdown-menu slides" role="menu" aria-labelledby="list-dropdown">
         <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
-        <li><a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" href="">Infusion</a></li>
+        <!-- <li><a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" href="">Infusion</a></li> -->
+        <li><a ng-click="episode.recordEditor.newItem('{{ models.Infusion.get_api_name }}')" href="">Infusion</a></li>
         <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Fluid</a></li>
         <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Event</a></li>
       </ul>
