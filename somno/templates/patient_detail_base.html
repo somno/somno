@@ -9,7 +9,10 @@
     </a>
     <div class="right-menu">
       <div class="patient-details">
-        Mike Thompson | 1st January 1970  | Hip replacement
+        [[ episode.getFullName() ]]
+        | [[ patient.demographics[0].hospital_number ]]
+        | [[ patient.demographics[0].date_of_birth | momentDateFormat:"Mo MMMM YYYY" ]]
+        | Hip replacement
       </div>
       <a href="#" class="hamburger">
         <i class="fas fa-bars"></i>
