@@ -5987,4 +5987,8 @@ h1.display-1 {
 a.btn.btn-lg, .btn-group-lg > a.btn {
   background-color: #ccc; }
 
+#preop-form .panel-body {
+  padding-left: 24px;
+  padding-right: 24px; }
+
 /*# sourceMappingURL=somno.css.map */
