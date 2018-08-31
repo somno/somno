@@ -3,28 +3,15 @@
 
 {% block angularapp %}
 <div ng-controller="newgraph">
-  <nav class="somno-main-nav">
-    <a class="somno-brand" href="">
-      S
-    </a>
-    <div class="right-menu">
-      <div class="patient-details">
-        [[ episode.getFullName() ]]
-        | [[ patient.demographics[0].hospital_number ]]
-        | [[ patient.demographics[0].date_of_birth | momentDateFormat:"Mo MMMM YYYY" ]]
-        | Hip replacement
-      </div>
-      <a href="#" class="hamburger">
-        <i class="fas fa-bars"></i>
-      </a>
-    </div>
-  </nav>
+  {% include "_partials/somno_top_nav.html" %}
   <nav >
     <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
       <div class="col-md-6 somno-sub-nav">
         <ul>
           <li>
-            <a href="">Pre-op</a>
+            <a href="/pathway/#/preop/[[ patient.id ]]/[[ episode.id ]]">
+              Pre-op
+            </a>
           </li>
           <li>
             <a class="active" href="">Chart</a>

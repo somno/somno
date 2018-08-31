@@ -1,0 +1,16 @@
+<nav class="somno-main-nav">
+  <a class="somno-brand" href="">
+    S
+  </a>
+  <div class="right-menu">
+    <div class="patient-details">
+      [[ episode.getFullName() ]]
+      | [[ episode.demographics[0].hospital_number ]]
+      | [[ episode.demographics[0].date_of_birth | momentDateFormat:"Mo MMMM YYYY" ]]
+      | Hip replacement
+    </div>
+    <a href="#" class="hamburger">
+      <i class="fas fa-bars"></i>
+    </a>
+  </div>
+</nav>

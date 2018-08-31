@@ -90,6 +90,9 @@ class RemoteAdded(models.PatientSubrecord):
 
 
 class PatientPhysicalAttributes(models.PatientSubrecord):
+
+    _is_singleton = True
+
     height       = db_models.FloatField(blank=True, null=True)
     weight       = db_models.FloatField(blank=True, null=True)
 
@@ -226,6 +229,7 @@ class Risks(lookuplists.LookupList):
 
 
 class AnaestheticPlan(models.EpisodeSubrecord):
+    _is_singleton = True
 
     Proposed_Procedure  = fields.ForeignKeyOrFreeText(ProposedProcedure)
     Procedure_Risks     = db_models.TextField(blank=True, null=True)
@@ -244,8 +248,8 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
     ExerciseTolerance   = db_models.TextField(blank=True, null=True)
     Assessment          = db_models.TextField(blank=True, null=True)
     TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
-    Assessment  = db_models.TextField(blank=True, null=True)
-    TimeSeen = db_models.DateTimeField(blank=True, null=True,)
+    Assessment          = db_models.TextField(blank=True, null=True)
+    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
 
 
 class AirwayAssessment(models.EpisodeSubrecord):
