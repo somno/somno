@@ -1,7 +1,21 @@
 {% load forms %}
 <div ng-controller="DrugController as drug_controller" ng-class="anaesthetic_drug_colours">
-  {% input field="GivenDrug.drug_name" %}
-  {% input field="GivenDrug.drug_type" %}
-  {% input field="GivenDrug.dose" %}
-  {% datetimepicker field="GivenDrug.datetime" date_label="Start date" time_label="Start time" %}
+  <div class="row">
+    <div class="col-md-12">
+      {% input field="GivenDrug.drug_name" style="vertical" %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      {% input field="GivenDrug.dose" style="vertical" %}
+    </div>
+    <div class="col-md-4">
+      {% input field="GivenDrug.units" style="vertical" %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% input field="GivenDrug.datetime" date_label="Start date" time_label="Start time" style="vertical" %}
+    </div>
+  </div>
 </div>

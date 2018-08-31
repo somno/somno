@@ -29,9 +29,13 @@ class AnaestheticDrugType(lookuplists.LookupList):
 class GivenDrug(models.PatientSubrecord):
     _sort           = 'datetime'
 
-    drug_name   = fields.ForeignKeyOrFreeText(AnaestheticDrug)
+    drug_name   = fields.ForeignKeyOrFreeText(
+        AnaestheticDrug,
+        verbose_name="Name"
+    )
     drug_type   = fields.ForeignKeyOrFreeText(AnaestheticDrugType)
-    dose       = db_models.CharField(max_length=255)
+    dose        = db_models.CharField(max_length=255)
+    units       = db_models.CharField(max_length=255, blank=True, null=True)
     datetime    = db_models.DateTimeField(blank=True, null=True)
 
     class Meta:
