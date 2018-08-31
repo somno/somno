@@ -8,6 +8,9 @@ $brand-primary: #105187;
 $brand-success: #F19722;
 $font-size-base: 16px;
 
+$slate: rgb(67, 76, 61);
+
+
 $btn-default-bg: #F0F1D5;
 
 $font-family-base: 'Montserrat', sans-serif;
@@ -147,3 +150,21 @@ h1.display-1{
 .bullet .measure.s1 { fill: steelblue; }
 .bullet .title { font-size: 14px; font-weight: bold; }
 .bullet .subtitle { fill: #999; }
+
+.btn.btn-default.dropdown-toggle,
+.btn.btn-default.dropdown-toggle:focus{
+    min-width: 160px;
+    text-align: left;
+    background-color: $slate;
+    color: white;
+}
+
+
+.dropdown-menu li:first-child {
+  border-top: none;
+}
+.dropdown-menu li {
+  border-top: 1px $slate solid;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}

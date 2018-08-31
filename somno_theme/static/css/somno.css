@@ -5922,4 +5922,19 @@ h1.display-1 {
 .bullet .subtitle {
   fill: #999; }
 
+.btn.btn-default.dropdown-toggle,
+.btn.btn-default.dropdown-toggle:focus {
+  min-width: 160px;
+  text-align: left;
+  background-color: #434c3d;
+  color: white; }
+
+.dropdown-menu li:first-child {
+  border-top: none; }
+
+.dropdown-menu li {
+  border-top: 1px #434c3d solid;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+
 /*# sourceMappingURL=somno.css.map */
