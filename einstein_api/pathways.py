@@ -6,10 +6,10 @@ from einstein_api import models
 
 
 class UnPairMonitor(PagePathway):
-    display_name = "Unpair with monitor"
+    display_name = "Disconnect from monitor"
     slug = "unpair_monitor"
     modal_template = "pathways/modal_only_cancel.html"
-    finish_button_text = "Unpair"
+    finish_button_text = "Disconnect"
     finish_button_icon = "fa fa-sign-out"
 
     steps = (

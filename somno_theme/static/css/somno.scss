@@ -9,7 +9,7 @@ $brand-success: #F19722;
 $font-size-base: 16px;
 
 $slate: rgb(67, 76, 61);
-
+$lightgrey: #ccc;
 
 $btn-default-bg: #F0F1D5;
 
@@ -201,4 +201,8 @@ h1.display-1{
   background-color: white;
   color: black;
   border-color: #434c3d;
+}
+
+a.btn.btn-lg {
+  background-color: $lightgrey;
 }

@@ -5966,4 +5966,7 @@ h1.display-1 {
   color: black;
   border-color: #434c3d; }
 
+a.btn.btn-lg, .btn-group-lg > a.btn {
+  background-color: #ccc; }
+
 /*# sourceMappingURL=somno.css.map */
