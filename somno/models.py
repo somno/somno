@@ -1,21 +1,39 @@
 """
 somno models.
 """
-from datetime import datetime
 from django.db import models as db_models
-from django.contrib.auth.models import User
 
 from opal.core import fields
 from opal import models
 from opal.core import lookuplists
 
-class Demographics(models.Demographics): pass
-class Location(models.Location): pass
-class Allergies(models.Allergies): pass
-class Diagnosis(models.Diagnosis): pass
-class PastMedicalHistory(models.PastMedicalHistory): pass
-class Treatment(models.Treatment): pass
-class Investigation(models.Investigation): pass
+
+class Demographics(models.Demographics):
+    pass
+
+
+class Location(models.Location):
+    pass
+
+
+class Allergies(models.Allergies):
+    pass
+
+
+class Diagnosis(models.Diagnosis):
+    pass
+
+
+class PastMedicalHistory(models.PastMedicalHistory):
+    pass
+
+
+class Treatment(models.Treatment):
+    pass
+
+
+class Investigation(models.Investigation):
+    pass
 
 
 class AnaestheticDrug(lookuplists.LookupList):
@@ -90,11 +108,26 @@ class Observation(RemoteAdded):
     temperature  = db_models.FloatField(blank=True, null=True)
     datetime     = db_models.DateTimeField()
 
-class MaskVent(lookuplists.LookupList): pass
-class airway(lookuplists.LookupList): pass
-class CormackLehane(lookuplists.LookupList): pass
-class Position(lookuplists.LookupList): pass
-class Induction_type(lookuplists.LookupList): pass
+
+class MaskVent(lookuplists.LookupList):
+    pass
+
+
+class airway(lookuplists.LookupList):
+    pass
+
+
+class CormackLehane(lookuplists.LookupList):
+    pass
+
+
+class Position(lookuplists.LookupList):
+    pass
+
+
+class Induction_type(lookuplists.LookupList):
+    pass
+
 
 class Induction(models.EpisodeSubrecord):
     _is_singleton = True
@@ -104,9 +137,13 @@ class Induction(models.EpisodeSubrecord):
     CormackLehane   = fields.ForeignKeyOrFreeText(CormackLehane)
     Size            = db_models.FloatField(blank=True, null=True)
     Description     = db_models.TextField(blank=True, null=True)
-    Propofol_dose   = db_models.FloatField(blank=True, null=True, default="200")
+    Propofol_dose   = db_models.FloatField(
+        blank=True, null=True, default="200"
+    )
     Atracurium_dose = db_models.FloatField(blank=True, null=True,)
-    Fentanyl_dose   = db_models.FloatField(blank=True, null=True, default="100")
+    Fentanyl_dose   = db_models.FloatField(
+        blank=True, null=True, default="100"
+    )
     Induction_type  = fields.ForeignKeyOrFreeText(Induction_type)
     Position        = fields.ForeignKeyOrFreeText(Position)
 
@@ -150,14 +187,33 @@ class Bloods(models.EpisodeSubrecord):
     K = db_models.FloatField(blank=True, null=True)
 
 
-class Malampati(lookuplists.LookupList): pass
-class Dentition(lookuplists.LookupList): pass
-class FrailtyScale(lookuplists.LookupList): pass
-class ASA(lookuplists.LookupList): pass
-class PreviousAnaesthetics(lookuplists.LookupList): pass
+class Malampati(lookuplists.LookupList):
+    pass
 
-class ProposedProcedure(lookuplists.LookupList): pass
-class Risks(lookuplists.LookupList): pass
+
+class Dentition(lookuplists.LookupList):
+    pass
+
+
+class FrailtyScale(lookuplists.LookupList):
+    pass
+
+
+class ASA(lookuplists.LookupList):
+    pass
+
+
+class PreviousAnaesthetics(lookuplists.LookupList):
+    pass
+
+
+class ProposedProcedure(lookuplists.LookupList):
+    pass
+
+
+class Risks(lookuplists.LookupList):
+    pass
+
 
 class AnaestheticPlan(models.EpisodeSubrecord):
     Proposed_Procedure  = fields.ForeignKeyOrFreeText(ProposedProcedure)

@@ -1,5 +1,4 @@
 from django.db import transaction
-from django.utils import timezone
 from opal.core.pathway import PagePathway, Step
 
 from einstein_api import models

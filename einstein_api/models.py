@@ -10,7 +10,6 @@ from opal import models
 from einstein_api.exceptions import EinsteinError
 
 
-
 logger = logging.getLogger('einstein_api')
 
 
