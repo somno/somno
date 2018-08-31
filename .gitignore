@@ -13,3 +13,4 @@ lib
 pip-selfcheck.json
 djcelery
 lib64
+somno/local_settings.py
