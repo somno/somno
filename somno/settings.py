@@ -311,6 +311,6 @@ EINSTEIN_URL = None
 HOST_URL = None
 
 try:
-    from local_settings import *
+    from somno.local_settings import *
 except:
     pass
