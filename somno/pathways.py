@@ -8,6 +8,9 @@ settings = {
 }
 smart = client.FHIRClient(settings=settings)
 import fhirclient.models.patient as p
+import fhirclient.models.medicationrequest as meds
+import fhirclient.models.medication as mednames
+import fhirclient.models as fhirmodels
 
 from somno import models
 
@@ -80,5 +83,13 @@ class FhirPathway(PagePathway):
     )]
 
     print ("FHIR!!!!")
-    patient = p.Patient.read('SMART-PROMs-55', smart.server)
-    print (patient.birthDate.isostring)
+    patient = p.Patient.read('2c4c5104-6d23-4c0a-97e9-bd229fc3559c', smart.server)
+    print (patient)
+
+    print ("medications")
+    search = meds.MedicationRequest.where(struct={'subject': '2c4c5104-6d23-4c0a-97e9-bd229fc3559c', 'status': 'active'})
+    medications = search.perform_resources(smart.server)
+    for medication in medications:
+        medref = medication.medicationReference.reference
+        print (medref)
+        # med = mednames.read(medref, smart.server)
