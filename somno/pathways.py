@@ -1,5 +1,13 @@
 from django.conf import settings
 from opal.core.pathway import PagePathway, Step
+from fhirclient import client
+
+settings = {
+    'app_id': 'my_web_app',
+    'api_base': 'https://r3.smarthealthit.org'
+}
+smart = client.FHIRClient(settings=settings)
+import fhirclient.models.patient as p
 
 from somno import models
 
@@ -62,3 +70,15 @@ class PreOpPathway(PagePathway):
 
     def redirect_url(self, **kwargs):
         return settings.LOGIN_REDIRECT
+
+class FhirPathway(PagePathway):
+    display_name = "Smart Fhir"
+    slug = "fhir"
+    steps = [Step(
+        model=models.DrugHistory,
+        base_template="pathways/preop_step_base_template.html"
+    )]
+
+    print ("FHIR!!!!")
+    patient = p.Patient.read('SMART-PROMs-55', smart.server)
+    print (patient.birthDate.isostring)
