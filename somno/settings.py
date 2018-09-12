@@ -279,7 +279,7 @@ COVERAGE_EXCLUDE_MODULES = ('somno.migrations', 'somno.tests',
 
 OPAL_LOG_OUT_MINUTES = 15
 OPAL_LOG_OUT_DURATION = OPAL_LOG_OUT_MINUTES*60*1000
-LOGIN_REDIRECT = "/#/patient/16/16"
+LOGIN_REDIRECT = "/#/patient/1/1"
 
 # Begins OPAL optional settings
 # OPAL_EXTRA_HEADER = ''

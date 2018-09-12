@@ -575,12 +575,12 @@ angular.module('opal.controllers').controller(
         //     chart3.load({
         //         columns: newvents,
         //     });
-        //     drugchart.load({
-        //         columns : newdrugs.columns,
-        //         xs: newdrugs.xs,
-        //         colors: newdrugs.colors,
-        //
-        //     });
+        //     // drugchart.load({
+        //     //     columns : newdrugs.columns,
+        //     //     xs: newdrugs.xs,
+        //     //     colors: newdrugs.colors,
+        //     //
+        //     // });
         //   });
         //   drawlabels(drugchart.interal);
         // }, 1000);
@@ -590,6 +590,6 @@ angular.module('opal.controllers').controller(
         //     clearInterval(interval);
         //   }
         // });
-        //
+
 
     });

@@ -47,3 +47,30 @@ class DrugTypes(metadata.Metadata):
                 ],
             }
         }
+class Risks(metadata.Metadata):
+    slug = 'risks'
+
+    @classmethod
+    def to_dict(klass, *args, **kwargs):
+        return {
+                "Risks": {
+                    "General Anaesthetic": [
+                        "PONV", "Dental Damage", "Sore Throat", "Awareness 1:20,000", "Anaphylaxis 1:10,000"
+                    ],
+                    "Neuraxial Blockade": [
+                        "Failure", "PDPH", "Haematoma", "Infection", "Shivering", "Nerve Injury", "Itching"
+                    ],
+                    "Nerve Block": [
+                        "Failure", "Bleeding", "Infection", "Nerve Injury", "Itching"
+                    ],
+                    "Sedation": [
+                        "Awareness", "Discomfort"
+                    ],
+                    "Central Venous Access": [
+                        "Pneumothorax", "Nerve Injury", "Bleeding"
+                    ],
+                    "Other": [
+                        "Arterial Line", "Transfusion", "Intesive Care", "HDU", "Blindness", "Pressure Sore", "Congitive Dysfunction"
+                    ],
+                }
+        }
