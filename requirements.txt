@@ -1,7 +1,7 @@
 Django==1.10.8
 coverage==3.6
 dj-database-url==0.2.1
-gunicorn ~> 19.5.0
+gunicorn==19.5.0
 psycopg2==2.7
 dj-static==0.0.6
 django-reversion==1.10.2
