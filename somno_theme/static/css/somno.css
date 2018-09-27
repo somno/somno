@@ -5800,6 +5800,9 @@ button.close {
 .content-offset-10 {
   margin-bottom: 10px; }
 
+.content-offset-below {
+  margin-bottom: 50px; }
+
 .login {
   margin-top: 50%; }
 
