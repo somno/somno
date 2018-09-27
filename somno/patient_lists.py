@@ -67,6 +67,5 @@ class TodaysList(core.patient_lists.PatientList):
         )
     ]
 
-
     def get_queryset(self, **kwargs):
         return Episode.objects.all()
