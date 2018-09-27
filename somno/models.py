@@ -43,6 +43,7 @@ class AnaestheticDrug(lookuplists.LookupList):
 class AnaestheticDrugType(lookuplists.LookupList):
     pass
 
+
 class Fluids(lookuplists.LookupList):
     pass
 
@@ -79,6 +80,7 @@ class Infusion(models.PatientSubrecord):
     rate          = db_models.CharField(blank=True, default="", max_length=255)
     concentration = db_models.CharField(blank=True, null=True, max_length=255)
     units         = db_models.CharField(max_length=255, blank=True, null=True)
+
 
 class GivenFluids(models.PatientSubrecord):
 
