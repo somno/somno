@@ -280,7 +280,7 @@ COVERAGE_EXCLUDE_MODULES = ('somno.migrations', 'somno.tests',
 OPAL_LOG_OUT_MINUTES = 15
 OPAL_LOG_OUT_DURATION = OPAL_LOG_OUT_MINUTES*60*1000
 OPAL_FAVICON_PATH = "img/somno.favicon.png"
-LOGIN_REDIRECT = "/#/patient/16/16"
+LOGIN_REDIRECT = "/#/list/today"
 
 # Begins OPAL optional settings
 # OPAL_EXTRA_HEADER = ''

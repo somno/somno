@@ -17,8 +17,20 @@ $font-family-base: 'Montserrat', sans-serif;
 
 @import "bootstrap/bootstrap";
 
-.content-offset-10{
+.content-offset-10 {
   margin-bottom: 10px
+}
+
+.content-offset-80 {
+  margin-top: 80px
+}
+
+.content-offset-25 {
+  margin-top: 25px
+}
+
+.content-offset-below {
+    margin-bottom: 50px;
 }
 
 .login{
@@ -106,6 +118,11 @@ h1.display-1{
   }
 }
 
+.nav-bar-search input {
+  border-radius: 0px;
+  min-width: 400px;
+  height: 32px;
+}
 
 .somno-brand{
   width: 45px;

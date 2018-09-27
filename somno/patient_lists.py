@@ -40,3 +40,32 @@ class Theatre2(TaggedPatientList):
         models.Diagnosis,
         models.Treatment
     ]
+
+
+class TodaysList(core.patient_lists.PatientList):
+    display_name = "Today's list"
+    slug = 'today'
+
+    template_name = "patient_lists/layouts/table_list.html"
+
+    schema = [
+        core.patient_lists.Column(
+            title="name",
+            template_path="patient_lists/name_column.html"
+        ),
+        core.patient_lists.Column(
+            title="hosp",
+            template_path="patient_lists/hospital_number_column.html"
+        ),
+        core.patient_lists.Column(
+            title="dob",
+            template_path="patient_lists/dob_column.html"
+        ),
+        core.patient_lists.Column(
+            title="links",
+            template_path="patient_lists/links_column.html"
+        )
+    ]
+
+    def get_queryset(self, **kwargs):
+        return Episode.objects.all()

@@ -1,0 +1,31 @@
+{% extends "patient_lists/layouts/table_list_base.html" %}
+
+{% block container %}
+  {% include "_partials/somno_top_nav.html" %}
+  {{ block.super }}
+{% endblock %}
+
+{% block list_actions %}
+  <h1 class="text-center content-offset-below">
+    {{ patient_list.display_name }}
+  </h1>
+{% endblock %}
+
+{% block table_header %}{% endblock %}
+
+{% block table_row %}
+  {% for column in columns %}
+    <td class="table-link-cell">
+        <div>
+          {% if column.model_column %}
+            <div class="row" ng-repeat="item in row.{{column.name}}">
+              {% include column.template_path %}
+            </div>
+          {% else %}
+            {% include column.template_path %}
+          {% endif %}
+        </div>
+    </td>
+  {% endfor %}
+
+{% endblock %}

@@ -1,16 +1,20 @@
 <nav class="somno-main-nav">
-  <a class="somno-brand" href="">
+  <a class="somno-brand" href="/#/">
     S
   </a>
+
+  <div style="margin-left: -40%;">
+    {% include 'partials/_nav_search.html' %}
+  </div>
   <div class="right-menu">
-    <div class="patient-details">
+    <div class="patient-details" ng-show="episode && path_base != '/list/'">
       [[ episode.getFullName() ]]
       | [[ episode.demographics[0].hospital_number ]]
       | [[ episode.demographics[0].date_of_birth | momentDateFormat:"Mo MMMM YYYY" ]]
       | Hip replacement
     </div>
-    <a href="#" class="hamburger">
-      <i class="fas fa-bars"></i>
+    <a href="/accounts/logout/" class="hamburger">
+      <i class="fas fa-sign-out-alt"></i>
     </a>
   </div>
 </nav>
