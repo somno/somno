@@ -5867,6 +5867,11 @@ h1.display-1 {
       .somno-theatre-nav ul li div {
         padding-bottom: 5px; }
 
+.nav-bar-search input {
+  border-radius: 0px;
+  min-width: 400px;
+  height: 32px; }
+
 .somno-brand {
   width: 45px;
   height: 45px;
