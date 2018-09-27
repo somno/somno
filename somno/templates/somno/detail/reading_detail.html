@@ -11,7 +11,7 @@
         <ul class="uib-dropdown-menu slides" role="menu" aria-labelledby="list-dropdown">
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenFluid.get_api_name }}')" href="">Fluids</a></li>
-          <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Eventz</a></li>
+          <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Event</a></li>
         </ul>
       </div>
       <a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-secondary">Edit Infusions</a>
