@@ -1,4 +1,6 @@
+from django.conf import settings
 from opal.core.pathway import PagePathway, Step
+
 from somno import models
 
 
@@ -24,3 +26,39 @@ class InfusionPathway(PagePathway):
             model=models.Infusion
         ),
     )
+
+
+class PreOpPathway(PagePathway):
+    display_name = "Pre Op"
+    slug         = "preop"
+    template     = "pathways/preop.html"
+
+    steps = [
+        Step(
+            model=models.PatientPhysicalAttributes,
+            base_template="pathways/preop_step_base_template.html"
+        ),
+        Step(
+            model=models.AnaestheticAssesment,
+            base_template="pathways/preop_step_base_template.html"
+        ),
+        Step(
+            model=models.DrugHistory,
+            base_template="pathways/preop_step_base_template.html"
+        ),
+        Step(
+            model=models.AirwayAssessment,
+            base_template="pathways/preop_step_base_template.html"
+        ),
+        Step(
+            model=models.Bloods,
+            base_template="pathways/preop_step_base_template.html"
+        ),
+        Step(
+            model=models.AnaestheticPlan,
+            base_template="pathways/preop_step_base_template.html"
+        )
+    ]
+
+    def redirect_url(self, **kwargs):
+        return settings.LOGIN_REDIRECT

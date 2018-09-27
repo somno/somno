@@ -1,0 +1,11 @@
+  <div class="row">
+    <div class="col-md-12">
+      <span ng-show="form">
+        <button check-form="form" class="btn btn-primary pull-left"
+                ng-click="form.$valid && save('save')">
+          {{ button_text }}
+        </button>
+        <a ng-click="cancel()" class="somno-cancel-text-btn">or cancel</a>
+      </span>
+    </div>
+  </div>

@@ -1,11 +1,14 @@
 {% extends "pathway/templates/modal_page_pathway.html" %}
+{% block pathway_header %}
+  {{ pathway.display_name }}
+{% endblock %}
 {% block pathway_footer %}
 <div class="modal-footer">
   <div class="row">
     <div class="col-md-12">
-      <div class="pull-right">
+      <center>
         {% include "pathway/partial/cancel_button.html" %}
-      </div>
+      </center>
     </div>
   </div>
 </div>

@@ -1,10 +1,12 @@
 {% load forms %}
-{% for monitor in models.Pairing.monitor_options %}
-  <div class="row">
-    <div class="col-md-6 col-md-push-3 content-offset-10">
-      <label class="btn btn-primary block" uib-btn-radio="{{ monitor.id }}" ng-model="editing.{{ models.Pairing.get_api_name }}.monitor_id" uib-btn-radio="undefined">
-        {{ monitor.user_machine_name }}
-      </label>
+<div class="somno-options-list">
+  {% for monitor in models.Pairing.monitor_options %}
+    <div class="row">
+      <div class="col-md-12">
+        <label ng-disabled="{{ monitor.id }} === currentRunning" class="btn btn-primary block" uib-btn-radio="{{ monitor.id }}" ng-model="editing.{{ models.Pairing.get_api_name }}.monitor_id" uib-btn-radio="undefined">
+          {{ monitor.user_machine_name }}
+        </label>
+      </div>
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
+</div>

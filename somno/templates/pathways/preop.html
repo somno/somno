@@ -1,0 +1,74 @@
+{% include "_partials/somno_top_nav.html" %}
+<nav>
+  <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
+    <div class="col-md-12 somno-sub-nav">
+      <ul>
+        <li>
+          <a class="active" href="/pathway/#/preop/[[ episode.patient_id ]]/[[ episode.id ]]">
+            Pre-op
+          </a>
+        </li>
+        <li>
+          <a href="{{ LOGIN_REDIRECT }}">
+            Chart
+          </a>
+        </li>
+        <li>
+          <a href="">Anaesthetic details</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<form name="form" class="form-horizontal" novalidate id="preop-form">
+
+  <div class="row">
+    <div class="col-md-5" >
+      <!-- Physical attributes -->
+      {% with pathway.steps.0 as step %}
+        {% include pathway.steps.0.get_base_template %}
+      {% endwith %}
+
+      <!-- Drug History -->
+      {% with pathway.steps.2 as step %}
+        {% include pathway.steps.2.get_base_template %}
+      {% endwith %}
+
+      <!-- Airway assessment -->
+      {% with pathway.steps.3 as step %}
+        {% include pathway.steps.3.get_base_template %}
+      {% endwith %}
+    </div>
+    <div class="col-md-7">
+
+      <!-- Anaesthetic assessment -->
+      {% with pathway.steps.1 as step %}
+        {% include pathway.steps.1.get_base_template %}
+      {% endwith %}
+
+      <!-- Bloods -->
+      {% with pathway.steps.4 as step %}
+        {% include pathway.steps.4.get_base_template %}
+      {% endwith %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Anaesthetic plan -->
+      {% with pathway.steps.5 as step %}
+        {% include pathway.steps.5.get_base_template %}
+      {% endwith %}
+    </div>
+  </div>
+
+  <div class="text-center" ng-show="form.$submitted && form.$invalid">
+    <strong class="help-block">Please fix the above errors</strong>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-push-2">
+      {% include "pathway/partial/save_button.html" %}
+    </div>
+  </div>
+</form>

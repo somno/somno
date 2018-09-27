@@ -2,91 +2,75 @@
 {% load forms %}
 
 {% block angularapp %}
-
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css">
-
-<!-- {{ block.super }}
-{% endblock %} -->
-
-<div class="container-fluid">
-    <!-- Header -->
-
-    <header class="page-header">
-      <ul id="patient-meta-data">
-
-        <li>
-          <h5>Name</h5>
-          <p>[[ patient.demographics[0].first_name ]] [[ patient.demographics[0].surname ]]</p>
-        </li>
-
-        <li>
-          <h5>Age</h5>
-          <p>[[ patient.demographics[0].date_of_birth | age ]]</p>
-        </li>
-
-        <li>
-          <h5>NHS Number</h5>
-          <p>[[ patient.demographics[0].nhs_number ]]</p>
-        </li>
-
-      </ul>
-      {% block content %}
-      <div class="col-md-5" >
-        <ul >
-        {% block views_switcher %}
-        {% if detail_views|length > 0 %}
-        {% for detail in detail_views %}
-        <li style="display:inline-block">
-        <a class="list-group-item episodelist pointer"
-           ng-class="{'bg-active': view == '{{ detail.get_slug}}'}"
-           ng-click="switch_to_episode(0, $event) && switch_to_view('{{ detail.get_slug }}')"
-           href="[[ '/#/patient/' + patient.id + '/{{ detail.get_slug }}' ]]"
-           >
-          {{ detail.display_name }}
-        </a>
-      </li>
-        {% endfor %}
-        {% block viewnavigation %}{% endblock %}
-        {% endif %}
-      {% endblock views_switcher %}
-    </ul>
+<div ng-controller="newgraph">
+  {% include "_partials/somno_top_nav.html" %}
+  <nav >
+    <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
+      <div class="col-md-6 somno-sub-nav">
+        <ul>
+          <li>
+            <a href="/pathway/#/preop/[[ patient.id ]]/[[ episode.id ]]">
+              Pre-op
+            </a>
+          </li>
+          <li>
+            <a class="active" href="">Chart</a>
+          </li>
+          <li>
+            <a href="">Anaesthetic details</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 somno-theatre-nav">
+        <ul>
+          <li>
+            <div ng-show="monitorPairing()">
+              Connected to:
+              <strong >[[ monitorPairing() ]]</strong>
+            </div>
+            <div ng-hide="monitorPairing()">
+              Currently not connected
+            </div>
+          </li>
+          <li>
+            <a href="" open-pathway="pair_monitor" pathway-episode="episode"
+               pathway-callback="refresh()" class="btn btn-primary">
+              <span ng-show="monitorPairing()">
+                Switch
+              </span>
+              <span ng-hide="monitorPairing()">
+                Connect
+              </span>
+            </a>
+          </li>
+          <li ng-show="monitorPairing()">
+            <a href="" open-pathway="unpair_monitor" pathway-episode="episode"
+               pathway-callback="refresh()" class="btn btn-default">
+              End case
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-
-      <a href="#" class="more-button">
-        More
-      </a>
-
-    </header>
-
-
+  </nav>
+  <div autoscroll="true" ng-hide="ready==false" class="container-fluid">
+    {% include "drug_graphs.html" %}
     <div class="row">
-
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Events</div>
+          <ul class="list-group">
+            <li ng-repeat="event in episode.anaesthetic_note" class="list-group-item">
+              <span class="badge badge-secondary pull-left">[[ $index +1 ]]</span>
+              &nbsp;
+              [[ event.name ]]
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <div class="col-md-12">
-          {% for episode_category in episode_categories %}
-          {% if episode_category.detail_template %}
-          <div class="row" ng-show="view == null && episode.category_name == '{{ episode_category.display_name }}'">
-            {% include episode_category.detail_template %}
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% for detail in detail_views %}
-          <div class="row" ng-show="view == '{{ detail.get_slug }}'">
-            {% include detail.template %}
-          </div>
-          {% endfor %}
-          {% block viewtemplates %}{% endblock %}
-
-        </div>
-
-
-
-
-
-    </div> <!-- Ends Main Panel -->
-
-      {% endblock content %}
-
-</div>   <!-- Panel -->
-</div>     <!-- Container -->
+      {% include "line_graph.html" %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from opal.core import detail
-from opal.models import UserProfile
+
 
 class AnaestheticReadings(detail.PatientDetailView):
     order = 1
@@ -7,6 +7,7 @@ class AnaestheticReadings(detail.PatientDetailView):
     display_name = 'Anaesthetic Chart'
     # title = 'Anaesthetic Readings'
     template   = 'somno/detail/reading_detail.html'
+
 
 class PreopAssessment(detail.PatientDetailView):
     order = 2

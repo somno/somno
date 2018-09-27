@@ -9,22 +9,19 @@
       <a class="nav-link active" href="#">Assessment</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Consenting</a>
+      <a class="nav-link" href="#">Consent</a>
     </li>
     </ul>
   </div>
 
   <div class="col-md-4">
-    {% record_panel models.AnaestheticAssesment %}
-  </div>
-  <div class="col-md-8">
     {% record_panel models.PatientPhysicalAttributes title="Height and Weight" %}
+    {% record_panel models.AnaestheticAssesment %}
     {% block episodes_switcher %}
              <div class="panel panel-default">
                <div class="panel-heading ">
                  <h3>
-                   <i class="fa fa-history"></i>
-                   Episodes
+                   Previous Anaesthetics
                  </h3>
                </div>
                <div class="list-group">
@@ -41,9 +38,21 @@
                  </a>
                </div>
              </div>
-           {% endblock episodes_switcher %}
-    {% comment %}
-    {% record_panel models.PreOpBloods %}
-    {% endcomment %}
+      {% endblock episodes_switcher %}
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-12">
+        {% record_panel models.DrugHistory %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        {% record_panel models.AirwayAssessment %}
+      </div>
+      <div class="col-md-4">
+        {% record_panel models.Bloods %}
+      </div>
+    </div>
   </div>
 </div>

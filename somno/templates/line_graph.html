@@ -1,0 +1,38 @@
+<div class="col-md-9">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="">Basic Obs</a></li>
+    <li role="presentation"><a href="">Ventilation</a></li>
+    <li role="presentation"><a href="">Extras</a></li>
+  </ul>
+<div style="height: 500px;"id="chart1"></div>
+</div>
+<script>
+  var chart = c3.generate({
+      bindto: '#chart1',
+      data: {
+          x: 'x',
+          xFormat: '%Y-%m-%dT%H:%M:%S',
+          columns: [
+              [
+                'x',
+                "2015-01-21T13:00:43",
+                "2015-01-22T13:15:43",
+                "2015-01-23T13:30:43",
+                "2015-01-24T13:45:43",
+                "2015-01-25T14:00:43",
+                "2015-01-26T14:15:43",
+              ],
+              ['sample', 30, 200, 100, 400, 150, 250]
+          ]
+      },
+      axis : {
+          x : {
+              type : 'timeseries',
+              tick: {
+                  format: function (x) { return "" + x.getHours() + ":" + x.getMinutes(); }
+                //format: '%Y' // format string is also available for timeseries data
+              }
+          }
+      }
+  });
+</script>

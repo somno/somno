@@ -1,0 +1,239 @@
+$btn-border-radius: 0;
+$btn-border-radius-lg: 0;
+$btn-border-radius-sm: 0;
+$panel-border-radius: 0;
+
+// https://color.adobe.com/b703a77bdd81eab476f23b001df9f94d-color-theme-11200366/edit/?copy=true
+$brand-primary: #105187;
+$brand-success: #F19722;
+$font-size-base: 16px;
+
+$slate: rgb(67, 76, 61);
+$lightgrey: #ccc;
+
+$btn-default-bg: #F0F1D5;
+
+$font-family-base: 'Montserrat', sans-serif;
+
+@import "bootstrap/bootstrap";
+
+.content-offset-10{
+  margin-bottom: 10px
+}
+
+.login{
+  margin-top: 50%;
+}
+
+h1.display-1{
+  font-weight: 200;
+  font-size: $font-size-h1 * 1.25;
+}
+
+// Reset Opal / OHC logos and loading
+
+.loading-inner,
+.navbar-brand img,
+.navbar-brand small{ display: none; }
+
+
+.somno-main-nav{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border-bottom: 1px solid $gray-dark;
+  justify-content: space-between;
+}
+
+.somno-sub-nav {
+  padding-left: 0;
+  padding-right: 0;
+  ul{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    padding-left: 0;
+    border-bottom: 1px solid $gray-dark;
+
+    li{
+      list-style: none;
+
+      a{
+        padding: 1rem;
+        border-right: 1px solid $gray-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $gray-dark;
+        height: 54px;
+
+        &.active{
+          background-color: $brand-primary;
+          color: #fff;
+        }
+
+        &:hover{
+          background-color: $link-hover-color;
+          color: $body-bg;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.somno-theatre-nav {
+  padding-left: 0;
+  padding-right: 0;
+  ul{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-left: 0;
+    border-bottom: 1px solid $gray-dark;
+
+    li{
+      list-style: none;
+      padding: 9px;
+      align-items: center;
+      justify-content: center;
+
+      div{
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+
+.somno-brand{
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  font-size: 34px;
+  background-color: $brand-primary;
+  color: white;
+}
+
+.right-menu{
+  display: flex;
+  align-items: center;
+}
+
+.patient-details{
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.hamburger{
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  font-size: 34px;
+  color: white;
+  background-color: black;
+
+  &:hover{
+    background-color: $brand-primary;
+  }
+}
+
+.btn{
+  border-radius: 0;
+}
+
+// bullets
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .measure.s0 { fill: lightsteelblue; }
+.bullet .measure.s1 { fill: steelblue; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }
+
+// Dropdowns are wider and fixed width
+
+.btn.btn-default.dropdown-toggle,
+.btn.btn-default.dropdown-toggle:focus{
+    min-width: 210px;
+    text-align: left;
+    background-color: $slate;
+    color: white;
+}
+
+.dropdown-menu {
+    min-width: 210px;
+}
+
+.dropdown-menu li:first-child {
+  border-top: none;
+}
+
+.dropdown-menu li {
+  border-top: 1px $slate solid;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+// Make dialogs thin with small headings
+
+.modal-dialog {
+    width: 300px;
+}
+
+.modal-dialog .modal-header {
+  background-color: steelblue;
+  color: white;
+}
+
+.modal-dialog .modal-header h2{
+  font-size: 18px;
+  padding-top: 18px;
+}
+
+.somno-cancel-text-btn {
+    float: left;
+    padding-top: 7px;
+    display: inline-block;
+    text-decoration: underline;
+    padding-left: 18px;
+}
+
+.somno-cancel-text-btn:hover {
+    cursor: pointer;
+}
+
+// Used in monitor pairing step 1
+.somno-options-list {
+  background-color: green;
+  margin-left: -15px;
+  margin-right: -16px;
+  margin-top: -16px;
+  margin-bottom: -16px;
+  border-bottom: 1px #434c3d solid;
+  border-top: 1px #434c3d solid;
+}
+.somno-options-list label {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  color: black;
+  border-color: #434c3d;
+}
+
+a.btn.btn-lg {
+  background-color: $lightgrey;
+}
+
+// Specific form styles
+#preop-form .panel-body {
+    padding-left: 24px;
+    padding-right: 24px;
+}

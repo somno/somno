@@ -1,6 +1,7 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
+
 
 class Command(BaseCommand):
     help = 'Create REST Token Auth key'
@@ -10,9 +11,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
             u = User.objects.get(username=options['username'])
-            try:
-                token = Token.objects.create(user=u)
-            except:
-                token = Token.objects.get(user=u)
+            token, _ = Token.objects.get_or_create(user=u)
 
             self.stdout.write('Token: %s' % token.key)

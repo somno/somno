@@ -20,6 +20,12 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## To Demo
+Add a `LOGIN_REDIRECT` to settings with the patient you would like to redirect to.
+
+## Run sass
+We are not webpacked, just run `./run_sass.sh`
+
 To access the application, visit http://127.0.0.1:8000 in a browser, select lists, add a patient.
 
 
