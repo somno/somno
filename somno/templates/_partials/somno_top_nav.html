@@ -7,7 +7,7 @@
     {% include 'partials/_nav_search.html' %}
   </div>
   <div class="right-menu">
-    <div class="patient-details">
+    <div class="patient-details" ng-show="episode && path_base != '/list/'">
       [[ episode.getFullName() ]]
       | [[ episode.demographics[0].hospital_number ]]
       | [[ episode.demographics[0].date_of_birth | momentDateFormat:"Mo MMMM YYYY" ]]
