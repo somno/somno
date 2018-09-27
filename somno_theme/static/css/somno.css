@@ -5800,6 +5800,12 @@ button.close {
 .content-offset-10 {
   margin-bottom: 10px; }
 
+.content-offset-80 {
+  margin-top: 80px; }
+
+.content-offset-25 {
+  margin-top: 25px; }
+
 .content-offset-below {
   margin-bottom: 50px; }
 
