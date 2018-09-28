@@ -22,7 +22,7 @@
       "name": "Thoracic Epidural",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "427060008",
         "system": "http://snomed.info/sct"
       }
     },
@@ -30,7 +30,7 @@
       "name": "Lumbar Epidural",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "58611004",
         "system": "http://snomed.info/sct"
       }
     },
@@ -38,7 +38,7 @@
       "name": "Caudal Epidural",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "67716003",
         "system": "http://snomed.info/sct"
       }
     },
@@ -46,7 +46,7 @@
       "name": "Combine Spinal Epidural",
       "synonyms":["CSE"],
       "coding": {
-        "code": "",
+        "code": "231261002",
         "system": "http://snomed.info/sct"
       }
     },
@@ -54,7 +54,7 @@
       "name": "Spinal",
       "synonyms":["SAB", "Sub Arachnoid Block"],
       "coding": {
-        "code": "",
+        "code": "231249005",
         "system": "http://snomed.info/sct"
       }
     },
@@ -62,7 +62,7 @@
       "name": "Spinal Drain",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "307300009",
         "system": "http://snomed.info/sct"
       }
     },
@@ -70,7 +70,7 @@
       "name": "Cannulation",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "735414004",
         "system": "http://snomed.info/sct"
       }
     },
@@ -78,7 +78,7 @@
       "name": "Radial Arterial Line",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "233514007",
         "system": "http://snomed.info/sct"
       }
     },
@@ -86,7 +86,7 @@
       "name": "Femoral Arterial Line",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "233516009",
         "system": "http://snomed.info/sct"
       }
     },
@@ -94,7 +94,7 @@
       "name": "Brachial Arterial Line",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "233513001",
         "system": "http://snomed.info/sct"
       }
     },
@@ -102,7 +102,7 @@
       "name": "Internal Jugular Line",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "233528001",
         "system": "http://snomed.info/sct"
       }
     },
@@ -110,7 +110,7 @@
       "name": "Subclavian Line",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "405430002",
         "system": "http://snomed.info/sct"
       }
     },
@@ -118,7 +118,7 @@
       "name": "Femoral Line",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "233534008",
         "system": "http://snomed.info/sct"
       }
     },
@@ -126,7 +126,7 @@
       "name": "InterScalene Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231130004",
         "system": "http://snomed.info/sct"
       }
     },
@@ -134,7 +134,7 @@
       "name": "SupraClavicular Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231131000",
         "system": "http://snomed.info/sct"
       }
     },
@@ -142,7 +142,7 @@
       "name": "Infraclaviuclar Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231132007",
         "system": "http://snomed.info/sct"
       }
     },
@@ -150,7 +150,7 @@
       "name": "Axillary",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231133002",
         "system": "http://snomed.info/sct"
       }
     },
@@ -158,7 +158,7 @@
       "name": "Radial Nerve Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231141002",
         "system": "http://snomed.info/sct"
       }
     },
@@ -166,7 +166,7 @@
       "name": "Ulnar Nerve Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231138006",
         "system": "http://snomed.info/sct"
       }
     },
@@ -174,7 +174,7 @@
       "name": "Median Nerve Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231145006",
         "system": "http://snomed.info/sct"
       }
     },
@@ -182,7 +182,7 @@
       "name": "Serratus Anterior Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "714159001",
         "system": "http://snomed.info/sct"
       }
     },
@@ -198,7 +198,7 @@
       "name": "Paraverterbral Block",
       "synonyms":["PVB"],
       "coding": {
-        "code": "",
+        "code": "55195009",
         "system": "http://snomed.info/sct"
       }
     },
@@ -206,7 +206,7 @@
       "name": "Transverse Abdominus Plane Block",
       "synonyms":["TAP block"],
       "coding": {
-        "code": "",
+        "code": "699799000",
         "system": "http://snomed.info/sct"
       }
     },
@@ -222,7 +222,7 @@
       "name": "Fascia Iliaca",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "830011000000108",
         "system": "http://snomed.info/sct"
       }
     },
@@ -230,7 +230,7 @@
       "name": "Femoral Nerve Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231169005",
         "system": "http://snomed.info/sct"
       }
     },
@@ -238,7 +238,7 @@
       "name": "Sciatic Nerve Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "52516005",
         "system": "http://snomed.info/sct"
       }
     },
@@ -246,7 +246,7 @@
       "name": "Popliteal Nerve Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "416427008",
         "system": "http://snomed.info/sct"
       }
     },
@@ -254,7 +254,7 @@
       "name": "Ankle Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "231175001",
         "system": "http://snomed.info/sct"
       }
     }
