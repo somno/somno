@@ -266,14 +266,14 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
 class AirwayAssessment(models.EpisodeSubrecord):
     _is_singleton = True
 
-    Malampati       = fields.ForeignKeyOrFreeText(Malampati)
-    Dentition       = fields.ForeignKeyOrFreeText(Dentition)
-    MouthOpening    = db_models.FloatField(
+    mouth_opening = db_models.FloatField(
         blank=True, null=True, verbose_name="Mouth opening"
     )
-    JawProtusion    = fields.ForeignKeyOrFreeText(
+    jaw_protusion = fields.ForeignKeyOrFreeText(
         ASA, verbose_name="Jaw protrusion"
     )
+    malampati     = fields.ForeignKeyOrFreeText(Malampati)
+    dentition     = fields.ForeignKeyOrFreeText(Dentition)
 
 
 class DrugHistory(models.EpisodeSubrecord):
