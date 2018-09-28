@@ -44,6 +44,10 @@ class AnaestheticDrugType(lookuplists.LookupList):
     pass
 
 
+class Fluids(lookuplists.LookupList):
+    pass
+
+
 class GivenDrug(models.PatientSubrecord):
     _sort           = 'datetime'
 
@@ -76,6 +80,19 @@ class Infusion(models.PatientSubrecord):
     rate          = db_models.CharField(blank=True, default="", max_length=255)
     concentration = db_models.CharField(blank=True, null=True, max_length=255)
     units         = db_models.CharField(max_length=255, blank=True, null=True)
+
+
+class GivenFluids(models.PatientSubrecord):
+
+    fluid = fields.ForeignKeyOrFreeText(Fluids)
+    volume = db_models.FloatField(blank=True, null=True)
+    unit_number = db_models.CharField(max_length=255, blank=True, null=True)
+    given_time    = db_models.DateTimeField(
+        blank=True, null=True, verbose_name="Time"
+    )
+
+    class Meta:
+        verbose_name = "Fluids"
 
 
 class RemoteAdded(models.PatientSubrecord):
