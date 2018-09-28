@@ -1,0 +1,468 @@
+{
+  "proceduretype": [
+    {
+      "name": "Cannulation",
+      "synonyms":["IV"]
+    },
+    {
+      "name": "Central Neuraxial Technique",
+      "synonyms":[]
+    },
+    {
+      "name": "Regional Anaesthetic",
+      "synonyms":["Nerve Block"]
+    },
+    {
+      "name": "Central Venous Catheter" ,
+      "synonyms":["CVC"]
+    }
+  ],
+  "procedurename": [
+    {
+      "name": "Thoracic Epidural",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Lumbar Epidural",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Caudal Epidural",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Combine Spinal Epidural",
+      "synonyms":["CSE"],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Spinal",
+      "synonyms":["SAB", "Sub Arachnoid Block"],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Spinal Drain",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Cannulation",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Radial Arterial Line",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Femoral Arterial Line",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Brachial Arterial Line",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Internal Jugular Line",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Subclavian Line",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Femoral Line",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "InterScalene Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "SupraClavicular Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Infraclaviuclar Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Axillary",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Radial Nerve Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Ulnar Nerve Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Median Nerve Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Serratus Anterior Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Erector Spinae Block",
+      "synonyms":["ESP"],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Paraverterbral Block",
+      "synonyms":["PVB"],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Transverse Abdominus Plane Block",
+      "synonyms":["TAP block"],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Rectus Sheath Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Fascia Iliaca",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Femoral Nerve Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Sciatic Nerve Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Popliteal Nerve Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    },
+    {
+      "name": "Ankle Block",
+      "synonyms":[],
+      "coding": {
+        "code": "",
+        "system": "http://snomed.info/sct"
+      }
+    }
+  ],
+  "proceduredevice" :[
+    {
+      "name": "Venflon",
+      "synonyms":[]
+    },
+    {
+      "name": "Neoflon",
+      "synonyms":[]
+    },
+    {
+      "name": "Whittaker Needle" ,
+      "synonyms":[]
+    },
+    {
+      "name": "Pencil Point" ,
+      "synonyms":[]
+    },
+    {
+      "name": "Touhy Needle",
+      "synonyms":[]
+    },
+    {
+      "name": "Stimuplex Needle",
+      "synonyms":[]
+    },
+    {
+      "name": "CSE Kit",
+      "synonyms":[]
+    },
+    {
+      "name": "Tri-Lumen",
+      "synonyms":["Triple Lumen"]
+    },
+    {
+      "name": "Quad Lumen" ,
+      "synonyms":[]
+    },
+    {
+      "name": "Quin Lumen",
+      "synonyms":[]
+    }
+    {
+      "name": "Vascath",
+      "synonyms":[]
+    },
+    {
+      "name": "Vygon",
+      "synonyms":[]
+    },
+    {
+      "name": "Angiocath",
+      "synonyms":[]
+    },
+    {
+      "name": "Flo-Switch",
+      "synonyms":[]
+    }
+  ],
+  "bodysite": [
+    {
+      "name": "Left",
+      "synonyms":[]
+    },
+    {
+      "name": "Right",
+      "synonyms":[]
+    },
+    {
+      "name": "Hand",
+      "synonyms":[]
+    },
+    {
+      "name": "Wrist",
+      "synonyms":[]
+    },
+    {
+      "name": "Forearm",
+      "synonyms":[]
+    },
+    {
+      "name": "Antecubital Fossa",
+      "synonyms":["ACF"]
+    },
+    {
+      "name": "External Jugular",
+      "synonyms":["EJV"]
+    },
+    {
+      "name": "L4/5",
+      "synonyms":[]
+    },
+    {
+      "name": "L3/4",
+      "synonyms":[]
+    },
+    {
+      "name": "L2/3",
+      "synonyms":[]
+    },
+    {
+      "name": "L1/2",
+      "synonyms":[]
+    },
+    {
+      "name": "T12/L1",
+      "synonyms":[]
+    },
+    {
+      "name": "T12/11",
+      "synonyms":[]
+    },
+    {
+      "name": "T11/10",
+      "synonyms":[]
+    },
+    {
+      "name": "T9/10",
+      "synonyms":[]
+    },
+    {
+      "name": "T8/9",
+      "synonyms":[]
+    },
+    {
+      "name": "T7/8",
+      "synonyms":[]
+    },
+    {
+      "name": "T6/7",
+      "synonyms":[]
+    },
+    {
+      "name": "T5/6",
+      "synonyms":[]
+    },
+    {
+      "name": "T4/5",
+      "synonyms":[]
+    },
+    {
+      "name": "T3/4",
+      "synonyms":[]
+    },
+    {
+      "name": "T2/3",
+      "synonyms":[]
+    },
+    {
+      "name": "T1/2",
+      "synonyms":[]
+    },
+    {
+      "name": "C7/T1",
+      "synonyms":[]
+    },
+  ],
+  "proceduretechnique": [
+    {
+      "name": "Loss of resistance to air",
+      "synonyms":[]
+    },
+    {
+      "name": "Loss of resistance to saline",
+      "synonyms":[]
+    },
+    {
+      "name": "Needle through Needle",
+      "synonyms":[]
+    }
+  ],
+  "proceduresterility": [
+    {
+      "name": "ANTT",
+      "synonyms":[]
+    },
+    {
+      "name": "Emergency, Basic PPE only",
+      "synonyms":[]
+    },
+    {
+      "name": "Full Sterility",
+      "synonyms":[]
+    }
+  ],
+  "procedureultrasound": [
+    {
+      "name": "Not Used: Landmark",
+      "synonyms":[]
+    },
+    {
+      "name": "Not Used: Nerve Stimulator",
+      "synonyms":[]
+    },
+    {
+      "name": "Ultrasound Marked",
+      "synonyms":[]
+    },
+    {
+      "name": "Real Time Ultrasound Guidance",
+      "synonyms":[]
+    },
+    {
+      "name": "Combined Ultrasound and Nerve Stimulator",
+      "synonyms":[]
+    },
+  ]
+}

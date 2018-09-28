@@ -284,3 +284,49 @@ class DrugHistory(models.EpisodeSubrecord):
 
     Medications = db_models.TextField(blank=True, null=True)
     Allergies = db_models.TextField(blank=True, null=True)
+
+
+class ProcedureType(lookuplists.LookupList):
+    pass
+
+class ProcedureName(lookuplists.LookupList):
+    pass
+
+
+class ProcedureDevice(lookuplists.LookupList):
+    pass
+
+
+class BodySite(lookuplists.LookupList):
+    pass
+
+
+class ProcedureTechnique(lookuplists.LookupList):
+    pass
+
+
+class ProcedureSterility(lookuplists.LookupList):
+    pass
+
+
+class ProcedureUltrasound(lookuplists.LookupList):
+    pass
+
+
+class Procedure(models.EpisodeSubrecord):
+
+    Procedure_Type = fields.ForeignKeyOrFreeText(ProcedureType)
+    Procedure_Name = fields.ForeignKeyOrFreeText(ProcedureName)
+    Device_Used = fields.ForeignKeyOrFreeText(ProcedureDevice)
+    Body_Site = fields.ForeignKeyOrFreeText(BodySite)
+    Technique = fields.ForeignKeyOrFreeText(ProcedureTechnique)
+    Number_Of_Attempts = db_models.FloatField(blank=True, null=True)
+    Depth_Of_Space = db_models.FloatField(blank=True, null=True)
+    Catheter_Left_In = db_models.FloatField(blank=True, null=True)
+    Sterility = fields.ForeignKeyOrFreeText(ProcedureSterility)
+    Ultrasound = fields.ForeignKeyOrFreeText(ProcedureUltrasound)
+    Drug_Used = fields.ForeignKeyOrFreeText(AnaestheticDrug)
+    Drug_Concentration = db_models.FloatField(blank=True, null=True)
+    Drug_Dose = db_models.FloatField(blank=True, null=True)
+    Procedure_Note = db_models.TextField(blank=True, null=True)
+    Time_Done = db_models.DateTimeField(blank=True, null=True)
