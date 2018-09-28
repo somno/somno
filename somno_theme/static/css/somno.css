@@ -7433,6 +7433,9 @@ h1.display-1 {
   display: flex;
 }
 
+.left-nav {
+  display: flex; }
+
 .patient-details {
   display: inline-block;
   margin-right: 20px;
