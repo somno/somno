@@ -1,4 +1,3 @@
-from django.conf import settings
 from opal.core.pathway import PagePathway, Step
 
 from somno import models
