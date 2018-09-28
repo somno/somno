@@ -1,8 +1,10 @@
 <nav class="somno-main-nav">
-  <a class="somno-brand" href="/#/">
-    S
-  </a>
-  {% include 'partials/_nav_search.html' %}
+  <div class=left-nav>
+    <a class="somno-brand" href="/#/">
+      S
+    </a>
+    {% include 'partials/_nav_search.html' %}
+  </div>
   <div class="right-menu">
     <div class="patient-details" ng-show="episode && path_base != '/list/'">
       [[ episode.getFullName() ]]
