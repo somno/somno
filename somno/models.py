@@ -1,11 +1,107 @@
 """
-somno models.
+Somno models.
+
+This file is divided into three sections:
+
+1. Lookuplists
+2. Concrete definitions of core Opal Models
+3. Somno models
 """
 from django.db import models as db_models
 
 from opal.core import fields
 from opal import models
 from opal.core import lookuplists
+
+
+"""
+Section 1: Lookuplists
+"""
+
+
+class AnaestheticDrug(lookuplists.LookupList):
+    pass
+
+
+class AnaestheticDrugType(lookuplists.LookupList):
+    pass
+
+
+class Fluids(lookuplists.LookupList):
+    pass
+
+
+class MaskVent(lookuplists.LookupList):
+    pass
+
+
+class airway(lookuplists.LookupList):
+    pass
+
+
+class CormackLehane(lookuplists.LookupList):
+    pass
+
+
+class Position(lookuplists.LookupList):
+    pass
+
+
+class Induction_type(lookuplists.LookupList):
+    pass
+
+
+class EventType(lookuplists.LookupList):
+    pass
+
+
+class Malampati(lookuplists.LookupList):
+    pass
+
+
+class Dentition(lookuplists.LookupList):
+    pass
+
+
+class ASA(lookuplists.LookupList):
+    pass
+
+
+class PreviousAnaesthetics(lookuplists.LookupList):
+    pass
+
+
+class ProposedProcedure(lookuplists.LookupList):
+    """
+    An anaesthetic procedure - e.g. Block, Art line
+    """
+
+
+class Surgeon(lookuplists.LookupList):
+    """
+    A person booked to conduct surgery e.g. Dr Hunter
+    """
+
+
+class Anaesthetist(lookuplists.LookupList):
+    """
+    A person who conducts an anaesthetic
+    """
+
+
+class Risks(lookuplists.LookupList):
+    pass
+
+
+class Procedure(lookuplists.LookupList):
+    """
+    A procedure that could be undertaken for an operation
+    """
+
+
+"""
+Section 2: Concrete implementations of core Opal models
+"""
 
 
 class Demographics(models.Demographics):
@@ -36,16 +132,9 @@ class Investigation(models.Investigation):
     pass
 
 
-class AnaestheticDrug(lookuplists.LookupList):
-    pass
-
-
-class AnaestheticDrugType(lookuplists.LookupList):
-    pass
-
-
-class Fluids(lookuplists.LookupList):
-    pass
+"""
+Section 3: Somno models
+"""
 
 
 class GivenDrug(models.PatientSubrecord):
@@ -132,26 +221,6 @@ class Observation(RemoteAdded):
     datetime     = db_models.DateTimeField()
 
 
-class MaskVent(lookuplists.LookupList):
-    pass
-
-
-class airway(lookuplists.LookupList):
-    pass
-
-
-class CormackLehane(lookuplists.LookupList):
-    pass
-
-
-class Position(lookuplists.LookupList):
-    pass
-
-
-class Induction_type(lookuplists.LookupList):
-    pass
-
-
 class Induction(models.EpisodeSubrecord):
     _is_singleton = True
 
@@ -169,10 +238,6 @@ class Induction(models.EpisodeSubrecord):
     )
     Induction_type  = fields.ForeignKeyOrFreeText(Induction_type)
     Position        = fields.ForeignKeyOrFreeText(Position)
-
-
-class EventType(lookuplists.LookupList):
-    pass
 
 
 class AnaestheticNote(models.PatientSubrecord):
@@ -218,30 +283,6 @@ class Bloods(models.EpisodeSubrecord):
     Creat = db_models.FloatField(blank=True, null=True)
     Na = db_models.FloatField(blank=True, null=True)
     K = db_models.FloatField(blank=True, null=True)
-
-
-class Malampati(lookuplists.LookupList):
-    pass
-
-
-class Dentition(lookuplists.LookupList):
-    pass
-
-
-class ASA(lookuplists.LookupList):
-    pass
-
-
-class PreviousAnaesthetics(lookuplists.LookupList):
-    pass
-
-
-class ProposedProcedure(lookuplists.LookupList):
-    pass
-
-
-class Risks(lookuplists.LookupList):
-    pass
 
 
 class AnaestheticPlan(models.EpisodeSubrecord):
@@ -292,3 +333,15 @@ class DrugHistory(models.EpisodeSubrecord):
 
     Medications = db_models.TextField(blank=True, null=True)
     Allergies = db_models.TextField(blank=True, null=True)
+
+
+class OperationDetails(models.EpisodeSubrecord):
+
+    procedure    = fields.ForeignKeyOrFreeText(Procedure)
+    planned_date = db_models.DateField(blank=True, null=True)
+    surgeon      = db_models.ManyToManyField(
+        Surgeon, related_name='surgeons', blank=True, null=True
+    )
+    anaesthetist = db_models.ManyToManyField(
+        Anaesthetist, related_name='Anaesthetists', blank=True, null=True
+    )
