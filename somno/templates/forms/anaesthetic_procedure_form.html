@@ -1,0 +1,21 @@
+{% load forms %}
+
+{% input field="AnaestheticProcedure.Procedure_Type" %}
+{% input field="AnaestheticProcedure.Procedure_Name" %}
+{% input field="AnaestheticProcedure.Body_Site" %}
+
+{% input field="AnaestheticProcedure.Device_Used" %}
+{% input field="AnaestheticProcedure.Number_Of_Attempts" %}
+{% input field="AnaestheticProcedure.Depth_Of_Space" unit="cm" %}
+{% input field="AnaestheticProcedure.Catheter_Left_In" unit="cm" %}
+
+{% input field="AnaestheticProcedure.Drug_Used" %}
+{% input field="AnaestheticProcedure.Drug_Concentration" unit="%" %}
+{% input field="AnaestheticProcedure.Drug_Dose" %}
+
+{% input field="AnaestheticProcedure.Technique" %}
+{% input field="AnaestheticProcedure.Sterility" %}
+{% input field="AnaestheticProcedure.Ultrasound" %}
+
+{% textarea field="AnaestheticProcedure.Procedure_Note" %}
+{% datetimepicker field="AnaestheticProcedure.Time_Done" %}

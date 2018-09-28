@@ -105,7 +105,6 @@ class ProcedureType(lookuplists.LookupList):
     """
 
 
-
 class ProcedureName(lookuplists.LookupList):
     """
     The Specific name of the procedure e.g. Subclavian line insertion
@@ -388,3 +387,17 @@ class AnaestheticProcedure(models.EpisodeSubrecord):
     Drug_Dose = db_models.FloatField(blank=True, null=True)
     Procedure_Note = db_models.TextField(blank=True, null=True)
     Time_Done = db_models.DateTimeField(blank=True, null=True)
+
+
+class OperationDetails(models.EpisodeSubrecord):
+
+    _is_singleton = True
+
+    procedure    = fields.ForeignKeyOrFreeText(Procedure)
+    planned_date = db_models.DateField(blank=True, null=True)
+    surgeon      = db_models.ManyToManyField(
+        Surgeon, related_name='surgeons', blank=True, null=True
+    )
+    anaesthetist = db_models.ManyToManyField(
+        Anaesthetist, related_name='Anaesthetists', blank=True, null=True
+    )
