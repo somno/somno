@@ -241,23 +241,23 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
     _is_singleton = True
 
     previous_anaesthetics = fields.ForeignKeyOrFreeText(PreviousAnaesthetics)
-    Assessment            = db_models.TextField(blank=True, null=True)
-    ASA                   = fields.ForeignKeyOrFreeText(
+    assessment            = db_models.TextField(blank=True, null=True)
+    asa                   = fields.ForeignKeyOrFreeText(
         ASA, verbose_name="ASA"
     )
-    FastingStatus         = db_models.TextField(
+    fasting_status        = db_models.TextField(
         blank=True, null=True, verbose_name="Fasting status"
     )
-    SmokingStatus         = db_models.TextField(
+    smoking_status        = db_models.TextField(
         blank=True, null=True, verbose_name="Smoking status"
     )
-    ExerciseTolerance     = db_models.TextField(
+    exercise_tolerance    = db_models.TextField(
         blank=True, null=True, verbose_name="Exercise tolerance"
     )
-    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
-    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
+    time_seen             = db_models.DateTimeField(blank=True, null=True,)
 
-    Frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
+    # TODO <- this is currently not anywhere in the UI ?
+    frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
 
 
 class AirwayAssessment(models.EpisodeSubrecord):
