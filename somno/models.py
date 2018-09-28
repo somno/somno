@@ -93,6 +93,9 @@ class PatientPhysicalAttributes(models.PatientSubrecord):
 
     _is_singleton = True
 
+    class Meta:
+        verbose_name = "Physical Attributes"
+
     height       = db_models.FloatField(blank=True, null=True)
     weight       = db_models.FloatField(blank=True, null=True)
 
