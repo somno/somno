@@ -268,8 +268,12 @@ class AirwayAssessment(models.EpisodeSubrecord):
 
     Malampati       = fields.ForeignKeyOrFreeText(Malampati)
     Dentition       = fields.ForeignKeyOrFreeText(Dentition)
-    MouthOpening    = db_models.FloatField(blank=True, null=True)
-    JawProtusion    = fields.ForeignKeyOrFreeText(ASA)
+    MouthOpening    = db_models.FloatField(
+        blank=True, null=True, verbose_name="Mouth opening"
+    )
+    JawProtusion    = fields.ForeignKeyOrFreeText(
+        ASA, verbose_name="Jaw protrusion"
+    )
 
 
 class DrugHistory(models.EpisodeSubrecord):
