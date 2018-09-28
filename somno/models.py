@@ -44,6 +44,10 @@ class AnaestheticDrugType(lookuplists.LookupList):
     pass
 
 
+class Fluids(lookuplists.LookupList):
+    pass
+
+
 class GivenDrug(models.PatientSubrecord):
     _sort           = 'datetime'
 
@@ -78,6 +82,19 @@ class Infusion(models.PatientSubrecord):
     units         = db_models.CharField(max_length=255, blank=True, null=True)
 
 
+class GivenFluids(models.PatientSubrecord):
+
+    fluid = fields.ForeignKeyOrFreeText(Fluids)
+    volume = db_models.FloatField(blank=True, null=True)
+    unit_number = db_models.CharField(max_length=255, blank=True, null=True)
+    given_time    = db_models.DateTimeField(
+        blank=True, null=True, verbose_name="Time"
+    )
+
+    class Meta:
+        verbose_name = "Fluids"
+
+
 class RemoteAdded(models.PatientSubrecord):
     class Meta:
         abstract = True
@@ -92,6 +109,9 @@ class RemoteAdded(models.PatientSubrecord):
 class PatientPhysicalAttributes(models.PatientSubrecord):
 
     _is_singleton = True
+
+    class Meta:
+        verbose_name = "Physical Attributes"
 
     height       = db_models.FloatField(blank=True, null=True)
     weight       = db_models.FloatField(blank=True, null=True)
@@ -240,25 +260,37 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
 
     _is_singleton = True
 
-    ASA                 = fields.ForeignKeyOrFreeText(ASA)
-    Frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
     previous_anaesthetics = fields.ForeignKeyOrFreeText(PreviousAnaesthetics)
-    FastingStatus       = db_models.TextField(blank=True, null=True)
-    SmokingStatus       = db_models.TextField(blank=True, null=True)
-    ExerciseTolerance   = db_models.TextField(blank=True, null=True)
-    Assessment          = db_models.TextField(blank=True, null=True)
-    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
-    Assessment          = db_models.TextField(blank=True, null=True)
-    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
+    assessment            = db_models.TextField(blank=True, null=True)
+    asa                   = fields.ForeignKeyOrFreeText(
+        ASA, verbose_name="ASA"
+    )
+    fasting_status        = db_models.TextField(
+        blank=True, null=True, verbose_name="Fasting status"
+    )
+    smoking_status        = db_models.TextField(
+        blank=True, null=True, verbose_name="Smoking status"
+    )
+    exercise_tolerance    = db_models.TextField(
+        blank=True, null=True, verbose_name="Exercise tolerance"
+    )
+    time_seen             = db_models.DateTimeField(blank=True, null=True,)
+
+    # TODO <- this is currently not anywhere in the UI ?
+    frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
 
 
 class AirwayAssessment(models.EpisodeSubrecord):
     _is_singleton = True
 
-    Malampati       = fields.ForeignKeyOrFreeText(Malampati)
-    Dentition       = fields.ForeignKeyOrFreeText(Dentition)
-    MouthOpening    = db_models.FloatField(blank=True, null=True)
-    JawProtusion    = fields.ForeignKeyOrFreeText(ASA)
+    mouth_opening = db_models.FloatField(
+        blank=True, null=True, verbose_name="Mouth opening"
+    )
+    jaw_protusion = fields.ForeignKeyOrFreeText(
+        ASA, verbose_name="Jaw protrusion"
+    )
+    malampati     = fields.ForeignKeyOrFreeText(Malampati)
+    dentition     = fields.ForeignKeyOrFreeText(Dentition)
 
 
 class DrugHistory(models.EpisodeSubrecord):

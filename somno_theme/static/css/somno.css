@@ -5800,6 +5800,15 @@ button.close {
 .content-offset-10 {
   margin-bottom: 10px; }
 
+.content-offset-80 {
+  margin-top: 80px; }
+
+.content-offset-25 {
+  margin-top: 25px; }
+
+.content-offset-below {
+  margin-bottom: 50px; }
+
 .login {
   margin-top: 50%; }
 
@@ -5863,6 +5872,11 @@ h1.display-1 {
       justify-content: center; }
       .somno-theatre-nav ul li div {
         padding-bottom: 5px; }
+
+.nav-bar-search input {
+  border-radius: 0px;
+  min-width: 400px;
+  height: 32px; }
 
 .somno-brand {
   width: 45px;
@@ -5986,6 +6000,10 @@ h1.display-1 {
 
 a.btn.btn-lg, .btn-group-lg > a.btn {
   background-color: #ccc; }
+
+.page-pathway-container {
+  margin-left: 14px;
+  margin-right: 14px; }
 
 #preop-form .panel-body {
   padding-left: 24px;
