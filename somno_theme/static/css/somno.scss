@@ -125,8 +125,8 @@ h1.display-1{
 }
 
 .somno-brand{
-  width: 45px;
-  height: 45px;
+  width: 46px;
+  height: 46px;
   text-align: center;
   font-size: 34px;
   background-color: $brand-primary;
@@ -138,6 +138,10 @@ h1.display-1{
   align-items: center;
 }
 
+.left-nav{
+  display: flex;
+}
+
 .patient-details{
   display: inline-block;
   margin-right: 20px;
@@ -145,8 +149,8 @@ h1.display-1{
 
 .hamburger{
   display: inline-block;
-  height: 45px;
-  width: 45px;
+  height: 46px;
+  width: 46px;
   text-align: center;
   font-size: 34px;
   color: white;
@@ -250,7 +254,11 @@ a.btn.btn-lg {
 }
 
 // Specific form styles
-#preop-form .panel-body {
+.page-pathway-container {
+    margin-left : 14px;
+    margin-right: 14px;
+}
+.page-pathway-container .panel-body {
     padding-left: 24px;
     padding-right: 24px;
 }

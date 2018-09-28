@@ -5879,8 +5879,8 @@ h1.display-1 {
   height: 32px; }
 
 .somno-brand {
-  width: 45px;
-  height: 45px;
+  width: 46px;
+  height: 46px;
   text-align: center;
   font-size: 34px;
   background-color: #105187;
@@ -5890,14 +5890,17 @@ h1.display-1 {
   display: flex;
   align-items: center; }
 
+.left-nav {
+  display: flex; }
+
 .patient-details {
   display: inline-block;
   margin-right: 20px; }
 
 .hamburger {
   display: inline-block;
-  height: 45px;
-  width: 45px;
+  height: 46px;
+  width: 46px;
   text-align: center;
   font-size: 34px;
   color: white;
@@ -6001,7 +6004,11 @@ h1.display-1 {
 a.btn.btn-lg, .btn-group-lg > a.btn {
   background-color: #ccc; }
 
-#preop-form .panel-body {
+.page-pathway-container {
+  margin-left: 14px;
+  margin-right: 14px; }
+
+.page-pathway-container .panel-body {
   padding-left: 24px;
   padding-right: 24px; }
 

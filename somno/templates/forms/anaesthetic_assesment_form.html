@@ -1,8 +1,21 @@
 {% load forms %}
-{% textarea field="AnaestheticAssesment.Assessment" %}
-{% input field="AnaestheticAssesment.ASA" %}
-{% input field="AnaestheticAssesment.Frailty" %}
-{% input field="AnaestheticAssesment.previous_anaesthetics" %}
-{% input field="AnaestheticAssesment.FastingStatus" %}
-{% input field="AnaestheticAssesment.SmokingStatus" %}
-{% input field="AnaestheticAssesment.ExerciseTolerance" %}
+{% select field="AnaestheticAssesment.previous_anaesthetics" style="vertical" %}
+{% textarea field="AnaestheticAssesment.assessment" rows="10" style="vertical" %}
+<div class="row">
+  <div class="col-md-5">
+    {% radio field="AnaestheticAssesment.asa" style="vertical" %}
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    {% input field="AnaestheticAssesment.exercise_tolerance" style="vertical" %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-5">
+    {% input field="AnaestheticAssesment.fasting_status" style="vertical" %}
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    {% input field="AnaestheticAssesment.smoking_status" style="vertical" %}
+  </div>
+</div>
+
+{% input field="AnaestheticAssesment.time_seen" label="Time seen" style="vertical" %}

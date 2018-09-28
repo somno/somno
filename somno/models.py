@@ -1,11 +1,143 @@
 """
-somno models.
+Somno models.
+
+This file is divided into three sections:
+
+1. Lookuplists
+2. Concrete definitions of core Opal Models
+3. Somno models
 """
 from django.db import models as db_models
 
 from opal.core import fields
 from opal import models
 from opal.core import lookuplists
+
+
+"""
+Section 1: Lookuplists
+"""
+
+
+class AnaestheticDrug(lookuplists.LookupList):
+    pass
+
+
+class AnaestheticDrugType(lookuplists.LookupList):
+    pass
+
+
+class Fluids(lookuplists.LookupList):
+    pass
+
+
+class MaskVent(lookuplists.LookupList):
+    pass
+
+
+class airway(lookuplists.LookupList):
+    pass
+
+
+class CormackLehane(lookuplists.LookupList):
+    pass
+
+
+class Position(lookuplists.LookupList):
+    pass
+
+
+class Induction_type(lookuplists.LookupList):
+    pass
+
+
+class EventType(lookuplists.LookupList):
+    pass
+
+
+class Malampati(lookuplists.LookupList):
+    pass
+
+
+class Dentition(lookuplists.LookupList):
+    pass
+
+
+class ASA(lookuplists.LookupList):
+    pass
+
+
+class PreviousAnaesthetics(lookuplists.LookupList):
+    pass
+
+
+class ProposedProcedure(lookuplists.LookupList):
+    """
+    An anaesthetic procedure - e.g. Block, Art line
+    """
+
+
+class Surgeon(lookuplists.LookupList):
+    """
+    A person booked to conduct surgery e.g. Dr Hunter
+    """
+
+
+class Anaesthetist(lookuplists.LookupList):
+    """
+    A person who conducts an anaesthetic
+    """
+
+
+class Risks(lookuplists.LookupList):
+    pass
+
+
+class Procedure(lookuplists.LookupList):
+    """
+    A procedure that could be undertaken for an operation
+    """
+
+
+class ProcedureType(lookuplists.LookupList):
+    """
+    The Broad category of Anaesthetic procedure which we'll perform eg. CVC insertion
+    """
+
+
+
+class ProcedureName(lookuplists.LookupList):
+    """
+    The Specific name of the procedure e.g. Subclavian line insertion
+    """
+
+
+class ProcedureDevice(lookuplists.LookupList):
+    """
+    What we used to perform the procedure e.g. Whittaker needle
+    """
+
+
+class BodySite(lookuplists.LookupList):
+    """
+    Where bit of the body did we do that procdure on
+    """
+
+
+class ProcedureTechnique(lookuplists.LookupList):
+    pass
+
+
+class ProcedureSterility(lookuplists.LookupList):
+    pass
+
+
+class ProcedureUltrasound(lookuplists.LookupList):
+    pass
+
+"""
+Section 2: Concrete implementations of core Opal models
+"""
 
 
 class Demographics(models.Demographics):
@@ -36,16 +168,9 @@ class Investigation(models.Investigation):
     pass
 
 
-class AnaestheticDrug(lookuplists.LookupList):
-    pass
-
-
-class AnaestheticDrugType(lookuplists.LookupList):
-    pass
-
-
-class Fluids(lookuplists.LookupList):
-    pass
+"""
+Section 3: Somno models
+"""
 
 
 class GivenDrug(models.PatientSubrecord):
@@ -110,6 +235,9 @@ class PatientPhysicalAttributes(models.PatientSubrecord):
 
     _is_singleton = True
 
+    class Meta:
+        verbose_name = "Physical Attributes"
+
     height       = db_models.FloatField(blank=True, null=True)
     weight       = db_models.FloatField(blank=True, null=True)
 
@@ -129,26 +257,6 @@ class Observation(RemoteAdded):
     datetime     = db_models.DateTimeField()
 
 
-class MaskVent(lookuplists.LookupList):
-    pass
-
-
-class airway(lookuplists.LookupList):
-    pass
-
-
-class CormackLehane(lookuplists.LookupList):
-    pass
-
-
-class Position(lookuplists.LookupList):
-    pass
-
-
-class Induction_type(lookuplists.LookupList):
-    pass
-
-
 class Induction(models.EpisodeSubrecord):
     _is_singleton = True
 
@@ -166,10 +274,6 @@ class Induction(models.EpisodeSubrecord):
     )
     Induction_type  = fields.ForeignKeyOrFreeText(Induction_type)
     Position        = fields.ForeignKeyOrFreeText(Position)
-
-
-class EventType(lookuplists.LookupList):
-    pass
 
 
 class AnaestheticNote(models.PatientSubrecord):
@@ -217,34 +321,6 @@ class Bloods(models.EpisodeSubrecord):
     K = db_models.FloatField(blank=True, null=True)
 
 
-class Malampati(lookuplists.LookupList):
-    pass
-
-
-class Dentition(lookuplists.LookupList):
-    pass
-
-
-class FrailtyScale(lookuplists.LookupList):
-    pass
-
-
-class ASA(lookuplists.LookupList):
-    pass
-
-
-class PreviousAnaesthetics(lookuplists.LookupList):
-    pass
-
-
-class ProposedProcedure(lookuplists.LookupList):
-    pass
-
-
-class Risks(lookuplists.LookupList):
-    pass
-
-
 class AnaestheticPlan(models.EpisodeSubrecord):
     _is_singleton = True
 
@@ -257,25 +333,34 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
 
     _is_singleton = True
 
-    ASA                 = fields.ForeignKeyOrFreeText(ASA)
-    Frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
     previous_anaesthetics = fields.ForeignKeyOrFreeText(PreviousAnaesthetics)
-    FastingStatus       = db_models.TextField(blank=True, null=True)
-    SmokingStatus       = db_models.TextField(blank=True, null=True)
-    ExerciseTolerance   = db_models.TextField(blank=True, null=True)
-    Assessment          = db_models.TextField(blank=True, null=True)
-    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
-    Assessment          = db_models.TextField(blank=True, null=True)
-    TimeSeen            = db_models.DateTimeField(blank=True, null=True,)
+    assessment            = db_models.TextField(blank=True, null=True)
+    asa                   = fields.ForeignKeyOrFreeText(
+        ASA, verbose_name="ASA"
+    )
+    fasting_status        = db_models.TextField(
+        blank=True, null=True, verbose_name="Fasting status"
+    )
+    smoking_status        = db_models.TextField(
+        blank=True, null=True, verbose_name="Smoking status"
+    )
+    exercise_tolerance    = db_models.TextField(
+        blank=True, null=True, verbose_name="Exercise tolerance"
+    )
+    time_seen             = db_models.DateTimeField(blank=True, null=True,)
 
 
 class AirwayAssessment(models.EpisodeSubrecord):
     _is_singleton = True
 
-    Malampati       = fields.ForeignKeyOrFreeText(Malampati)
-    Dentition       = fields.ForeignKeyOrFreeText(Dentition)
-    MouthOpening    = db_models.FloatField(blank=True, null=True)
-    JawProtusion    = fields.ForeignKeyOrFreeText(ASA)
+    mouth_opening = db_models.FloatField(
+        blank=True, null=True, verbose_name="Mouth opening"
+    )
+    jaw_protusion = fields.ForeignKeyOrFreeText(
+        ASA, verbose_name="Jaw protrusion"
+    )
+    malampati     = fields.ForeignKeyOrFreeText(Malampati)
+    dentition     = fields.ForeignKeyOrFreeText(Dentition)
 
 
 class DrugHistory(models.EpisodeSubrecord):
@@ -286,34 +371,7 @@ class DrugHistory(models.EpisodeSubrecord):
     Allergies = db_models.TextField(blank=True, null=True)
 
 
-class ProcedureType(lookuplists.LookupList):
-    pass
-
-class ProcedureName(lookuplists.LookupList):
-    pass
-
-
-class ProcedureDevice(lookuplists.LookupList):
-    pass
-
-
-class BodySite(lookuplists.LookupList):
-    pass
-
-
-class ProcedureTechnique(lookuplists.LookupList):
-    pass
-
-
-class ProcedureSterility(lookuplists.LookupList):
-    pass
-
-
-class ProcedureUltrasound(lookuplists.LookupList):
-    pass
-
-
-class Procedure(models.EpisodeSubrecord):
+class AnaestheticProcedure(models.EpisodeSubrecord):
 
     Procedure_Type = fields.ForeignKeyOrFreeText(ProcedureType)
     Procedure_Name = fields.ForeignKeyOrFreeText(ProcedureName)
