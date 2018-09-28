@@ -1,34 +1,36 @@
 {% load forms %}
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
     {% input field="Bloods.Hb" style="vertical" %}
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     {% input field="Bloods.Plt" style="vertical" %}
   </div>
-  <div class="col-md-4">
+</div>
+
+<div class="row">
+  <div class="col-md-6">
     {% input field="Bloods.WBC" style="vertical" %}
   </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6">
     {% input field="Bloods.INR" style="vertical" %}
   </div>
-  <div class="col-md-4">
-    {% input field="Bloods.CRP" style="vertical" %}
-  </div>
-  <div class="col-md-4">
-    {% input field="Bloods.Urea" style="vertical" %}
-  </div>
 </div>
+
 <div class="row">
-  <div class="col-md-4">
-    {% input field="Bloods.Creat" style="vertical" %}
-  </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     {% input field="Bloods.Na" style="vertical" %}
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     {% input field="Bloods.K" style="vertical" %}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    {% input field="Bloods.Creat" style="vertical" %}
+  </div>
+  <div class="col-md-6">
+    {% input field="Bloods.Urea" style="vertical" %}
   </div>
 </div>
