@@ -98,7 +98,7 @@ class Application(application.OpalApplication):
         'js/somno/services/records/event.js',
         'js/somno/services/records/observation_record.js',
         'js/somno/services/infusion.js',
-        'js/somno/controllers/newgraph.js',
+        'js/somno/controllers/bettergraph3.php.js',
         'js/somno/controllers/induction_drug_controller.js',
         'js/somno/controllers/new_infusions.js',
     ]
