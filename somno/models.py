@@ -228,10 +228,6 @@ class Dentition(lookuplists.LookupList):
     pass
 
 
-class FrailtyScale(lookuplists.LookupList):
-    pass
-
-
 class ASA(lookuplists.LookupList):
     pass
 
@@ -275,9 +271,6 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
         blank=True, null=True, verbose_name="Exercise tolerance"
     )
     time_seen             = db_models.DateTimeField(blank=True, null=True,)
-
-    # TODO <- this is currently not anywhere in the UI ?
-    frailty             = fields.ForeignKeyOrFreeText(FrailtyScale)
 
 
 class AirwayAssessment(models.EpisodeSubrecord):
