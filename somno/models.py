@@ -337,6 +337,8 @@ class DrugHistory(models.EpisodeSubrecord):
 
 class OperationDetails(models.EpisodeSubrecord):
 
+    _is_singleton = True
+
     procedure    = fields.ForeignKeyOrFreeText(Procedure)
     planned_date = db_models.DateField(blank=True, null=True)
     surgeon      = db_models.ManyToManyField(

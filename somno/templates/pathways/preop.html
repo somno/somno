@@ -4,7 +4,7 @@
     <div class="col-md-12 somno-sub-nav">
       <ul>
         <li>
-          <a class="active" href="/pathway/#/preop/[[ episode.patient_id ]]/[[ episode.id ]]">
+          <a class="active" href="/pathway/#/preop/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]">
             Pre-op
           </a>
         </li>
@@ -14,7 +14,9 @@
           </a>
         </li>
         <li>
-          <a href="">Anaesthetic details</a>
+          <a href="/pathway/#/details/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]">
+            Anaesthetic details
+          </a>
         </li>
       </ul>
     </div>

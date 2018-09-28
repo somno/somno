@@ -1,3 +1,5 @@
 {% load forms %}
 {% datepicker field="OperationDetails.planned_date" %}
 {% input field="OperationDetails.procedure" %}
+{% select autofocus field="OperationDetails.surgeon" multiple=True tagging=False %}
+{% select autofocus field="OperationDetails.anaesthetist" multiple=True tagging=False %}

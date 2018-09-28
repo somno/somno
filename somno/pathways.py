@@ -60,5 +60,14 @@ class PreOpPathway(PagePathway):
         )
     ]
 
-    def redirect_url(self, **kwargs):
-        return settings.LOGIN_REDIRECT
+
+class AnaestheticDetailsPathway(PagePathway):
+    display_name = 'Anaesthetic details'
+    slug         = 'details'
+    template     = 'pathways/anaesthetic_details.html'
+    steps        = [
+        Step(
+            model=models.OperationDetails,
+            base_template="pathways/preop_step_base_template.html"
+        )
+    ]
