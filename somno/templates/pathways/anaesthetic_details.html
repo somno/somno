@@ -1,0 +1,47 @@
+{% include "_partials/somno_top_nav.html" %}
+<nav>
+  <div style="border-bottom: 1px solid $black; margin: 0;" class="row">
+    <div class="col-md-12 somno-sub-nav">
+      <ul>
+        <li>
+          <a href="/pathway/#/preop/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]">
+            Pre-op
+          </a>
+        </li>
+        <li>
+          <a href="/#/patient/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]">
+            Chart
+          </a>
+        </li>
+        <li>
+          <a class="active" href="/pathway/#/details/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]">
+            Anaesthetic details
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-pathway-container">
+  <form name="form" class="form-horizontal" novalidate >
+    <div class="row">
+
+      <div class="col-md-6 col-md-offset-3" >
+        {% for step in pathway.steps %}
+          {% include step.get_base_template %}
+        {% endfor %}
+      </div>
+
+      <div class="text-center" ng-show="form.$submitted && form.$invalid">
+        <strong class="help-block">Please fix the above errors</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-8">
+        {% include "pathway/partial/save_button.html" %}
+      </div>
+    </div>
+
+  </form>
+</div>

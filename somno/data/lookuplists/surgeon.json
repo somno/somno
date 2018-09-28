@@ -1,0 +1,36 @@
+{
+    "surgeon":[
+        {
+            "synonyms": [],
+            "name": "Lancelot Spratt"
+        },
+        {
+            "name": "Harvey Cushing",
+            "synonyms": []
+        },
+        {
+            "name": "John Hunter",
+            "synonyms": []
+        },
+        {
+            "name": "Christiaan Bernard",
+            "synonyms": []
+        },
+        {
+            "name": "Michael DeBakey",
+            "synonyms": []
+        },
+        {
+            "name": "Joseph Lister",
+            "synonyms": []
+        },
+        {
+            "name": "Magdi Yacoub",
+            "synonyms": []
+        },
+        {
+            "name": "Norman Bethune",
+            "synonyms": []
+        }
+    ]
+}
