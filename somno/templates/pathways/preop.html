@@ -60,11 +60,6 @@
     </div>
 
     <div class="row">
-      <div class="col-md-2">
-        {% include "pathway/partial/save_button.html" %}
-      </div>
-    </div>
-    <div class="row">
       <div class="col-md-12">
         <!-- Anaesthetic plan -->
         {% with pathway.steps.5 as step %}
@@ -72,5 +67,12 @@
         {% endwith %}
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        {% include "pathway/partial/save_button.html" %}
+      </div>
+    </div>
+
   </form>
 </div>
