@@ -1,0 +1,24 @@
+{% load forms %}
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
+      {% input field="GivenFluids.fluid" style="vertical" %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      {% input field="GivenFluids.volume" style="vertical" unit="mls"  %}
+    </div>
+    <div class="col-md-8">
+      {% input field="GivenFluids.unit_number" style="vertical" %}
+    </div>
+  </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% datetimepicker field="GivenFluids.given_time" style="vertical" %}
+    </div>
+  </div>
+</div>
