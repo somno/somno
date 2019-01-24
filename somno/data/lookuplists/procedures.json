@@ -190,7 +190,7 @@
       "name": "Erector Spinae Block",
       "synonyms":["ESP"],
       "coding": {
-        "code": "",
+        "code": "0",
         "system": "http://snomed.info/sct"
       }
     },
@@ -214,7 +214,7 @@
       "name": "Rectus Sheath Block",
       "synonyms":[],
       "coding": {
-        "code": "",
+        "code": "0",
         "system": "http://snomed.info/sct"
       }
     },
@@ -259,7 +259,7 @@
       }
     }
   ],
-  "proceduredevice" :[
+  "proceduredevice": [
     {
       "name": "Venflon",
       "synonyms":[]
@@ -290,16 +290,16 @@
     },
     {
       "name": "Tri-Lumen",
-      "synonyms":["Triple Lumen"]
+      "synonyms":["Triple Lumen", "3 lumen"]
     },
     {
       "name": "Quad Lumen" ,
-      "synonyms":[]
+      "synonyms":["4 lumen"]
     },
     {
       "name": "Quin Lumen",
-      "synonyms":[]
-    }
+      "synonyms":["5 lumen"]
+    },
     {
       "name": "Vascath",
       "synonyms":[]
@@ -310,7 +310,7 @@
     },
     {
       "name": "Angiocath",
-      "synonyms":[]
+      "synonyms":["Abocath"]
     },
     {
       "name": "Flo-Switch",
@@ -413,7 +413,7 @@
     {
       "name": "C7/T1",
       "synonyms":[]
-    },
+    }
   ],
   "proceduretechnique": [
     {
@@ -463,6 +463,6 @@
     {
       "name": "Combined Ultrasound and Nerve Stimulator",
       "synonyms":[]
-    },
+    }
   ]
 }
