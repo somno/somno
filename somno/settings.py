@@ -97,7 +97,9 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
-
+STATICFILES_DIRS = [
+    ('node_modules', '/node_modules'),
+]
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'foobarbaz'
 

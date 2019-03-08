@@ -15,3 +15,5 @@ djcelery
 lib64
 somno/local_settings.py
 *.css.map
+somno/assets/CACHE
+node_modules
