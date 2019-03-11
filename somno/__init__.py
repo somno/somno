@@ -102,6 +102,7 @@ class Application(application.OpalApplication):
         'js/somno/controllers/induction_drug_controller.js',
         'js/somno/controllers/new_infusions.js',
         'js/somno/controllers/d3timeline.js',
+        'js/somno/d3-timelines.js',
     ]
     styles = [
         "css/somno.css",
