@@ -1,7 +1,7 @@
 import requests
 import json
 import logging
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.conf import settings
 from django.db import models as db_models
 from django.utils import timezone
@@ -34,7 +34,7 @@ class Monitor(db_models.Model):
 class Pairing(models.PatientSubrecord):
     start = db_models.DateTimeField(blank=True, null=True)
     stop = db_models.DateTimeField(blank=True, null=True)
-    monitor = db_models.ForeignKey(Monitor)
+    monitor = db_models.ForeignKey(Monitor, on_delete=db_models.CASCADE)
     subscription_id = db_models.CharField(max_length=256, unique=True)
 
     def monitor_options(self):
