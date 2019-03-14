@@ -1,14 +1,8 @@
 angular.module('opal.controllers').controller(
     'd3timeline',
     function(
-        $rootScope, $scope, $window,
-        recordLoader, ngProgressLite, $q,
-        $cookieStore, patientLoader
+        $scope, patientLoader
     ){
-
-        var dateformat = "DD/MM/YYYY HH:mm:ss";
-        var interval;
-
         $scope.monitorPairing = function(){
             var result = _.find($scope.patient.pairing, function(pairing){
                 return pairing.start && !pairing.stop
