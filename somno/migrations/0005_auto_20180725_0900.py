@@ -11,45 +11,109 @@ import opal.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('opal', '0034_auto_20171214_1845'),
+        ("opal", "0034_auto_20171214_1845"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('somno', '0004_auto_20180724_1100'),
+        ("somno", "0004_auto_20180724_1100"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Infusion',
+            name="Infusion",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(blank=True, null=True)),
-                ('updated', models.DateTimeField(blank=True, null=True)),
-                ('consistency_token', models.CharField(max_length=8)),
-                ('start_time', models.DateTimeField(blank=True, null=True)),
-                ('end_date', models.DateTimeField(blank=True, null=True)),
-                ('rate', models.CharField(max_length=255)),
-                ('drug_name_ft', models.CharField(blank=True, default=b'', max_length=255, null=True)),
-                ('drug_type_ft', models.CharField(blank=True, default=b'', max_length=255, null=True)),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_somno_infusion_subrecords', to=settings.AUTH_USER_MODEL)),
-                ('drug_name_fk', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='somno.AnaestheticDrug')),
-                ('drug_type_fk', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='somno.AnaestheticDrugType')),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='opal.Patient')),
-                ('updated_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='updated_somno_infusion_subrecords', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(blank=True, null=True)),
+                ("updated", models.DateTimeField(blank=True, null=True)),
+                ("consistency_token", models.CharField(max_length=8)),
+                ("start_time", models.DateTimeField(blank=True, null=True)),
+                ("end_date", models.DateTimeField(blank=True, null=True)),
+                ("rate", models.CharField(max_length=255)),
+                (
+                    "drug_name_ft",
+                    models.CharField(
+                        blank=True, default=b"", max_length=255, null=True
+                    ),
+                ),
+                (
+                    "drug_type_ft",
+                    models.CharField(
+                        blank=True, default=b"", max_length=255, null=True
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="created_somno_infusion_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "drug_name_fk",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="somno.AnaestheticDrug",
+                    ),
+                ),
+                (
+                    "drug_type_fk",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="somno.AnaestheticDrugType",
+                    ),
+                ),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="opal.Patient"
+                    ),
+                ),
+                (
+                    "updated_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="updated_somno_infusion_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
+            options={"abstract": False},
+            bases=(
+                opal.models.UpdatesFromDictMixin,
+                opal.models.ToDictMixin,
+                models.Model,
+            ),
+        ),
+        migrations.AlterModelOptions(
+            name="diagnosis",
             options={
-                'abstract': False,
+                "verbose_name": "Diagnosis / Issues",
+                "verbose_name_plural": "Diagnoses",
             },
-            bases=(opal.models.UpdatesFromDictMixin, opal.models.ToDictMixin, models.Model),
         ),
         migrations.AlterModelOptions(
-            name='diagnosis',
-            options={'verbose_name': 'Diagnosis / Issues', 'verbose_name_plural': 'Diagnoses'},
+            name="investigation", options={"verbose_name": "Investigations"}
         ),
         migrations.AlterModelOptions(
-            name='investigation',
-            options={'verbose_name': 'Investigations'},
-        ),
-        migrations.AlterModelOptions(
-            name='pastmedicalhistory',
-            options={'verbose_name': 'PMH', 'verbose_name_plural': 'Past medical histories'},
+            name="pastmedicalhistory",
+            options={
+                "verbose_name": "PMH",
+                "verbose_name_plural": "Past medical histories",
+            },
         ),
     ]

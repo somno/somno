@@ -7,17 +7,9 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0025_merge_20180928_1045'),
-    ]
+    dependencies = [("somno", "0025_merge_20180928_1045")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='anaestheticassesment',
-            name='frailty_fk',
-        ),
-        migrations.RemoveField(
-            model_name='anaestheticassesment',
-            name='frailty_ft',
-        ),
+        migrations.RemoveField(model_name="anaestheticassesment", name="frailty_fk"),
+        migrations.RemoveField(model_name="anaestheticassesment", name="frailty_ft"),
     ]

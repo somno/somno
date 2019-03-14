@@ -7,12 +7,6 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0026_auto_20180928_1429'),
-    ]
+    dependencies = [("somno", "0026_auto_20180928_1429")]
 
-    operations = [
-        migrations.DeleteModel(
-            name='FrailtyScale',
-        ),
-    ]
+    operations = [migrations.DeleteModel(name="FrailtyScale")]

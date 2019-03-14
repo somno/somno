@@ -7,24 +7,18 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0017_infusion_units'),
-    ]
+    dependencies = [("somno", "0017_infusion_units")]
 
     operations = [
         migrations.RenameField(
-            model_name='anaestheticnote',
-            old_name='Description',
-            new_name='description',
+            model_name="anaestheticnote", old_name="Description", new_name="description"
         ),
         migrations.RenameField(
-            model_name='anaestheticnote',
-            old_name='Title',
-            new_name='title',
+            model_name="anaestheticnote", old_name="Title", new_name="title"
         ),
         migrations.AlterField(
-            model_name='infusion',
-            name='start_time',
-            field=models.DateTimeField(blank=True, null=True, verbose_name='Start'),
+            model_name="infusion",
+            name="start_time",
+            field=models.DateTimeField(blank=True, null=True, verbose_name="Start"),
         ),
     ]

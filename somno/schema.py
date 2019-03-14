@@ -10,11 +10,9 @@ list_columns = [
     models.Diagnosis,
     models.PastMedicalHistory,
     models.Treatment,
-    models.Investigation
+    models.Investigation,
 ]
 
-list_schemas = {
-    'default': list_columns,
-}
+list_schemas = {"default": list_columns}
 
 detail_columns = list_columns
