@@ -1,4 +1,8 @@
 from opal.core.pathway import PagePathway, Step
+from somno import models
+# import json
+
+
 # from fhirclient import client
 
 settings = {
@@ -10,9 +14,6 @@ settings = {
 # import fhirclient.models.medicationrequest as meds
 # import fhirclient.models.medication as mednames
 # import fhirclient.models as fhirmodels
-import json
-
-from somno import models
 
 
 class DrugPathway(PagePathway):
