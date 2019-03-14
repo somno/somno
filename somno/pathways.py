@@ -1,18 +1,19 @@
 from opal.core.pathway import PagePathway, Step
-from fhirclient import client
+from somno import models
+# import json
+
+
+# from fhirclient import client
 
 settings = {
     'app_id': 'my_web_app',
     'api_base': 'https://r3.smarthealthit.org'
 }
-smart = client.FHIRClient(settings=settings)
-import fhirclient.models.patient as p
-import fhirclient.models.medicationrequest as meds
-import fhirclient.models.medication as mednames
-import fhirclient.models as fhirmodels
-import json
-
-from somno import models
+# smart = client.FHIRClient(settings=settings)
+# import fhirclient.models.patient as p
+# import fhirclient.models.medicationrequest as meds
+# import fhirclient.models.medication as mednames
+# import fhirclient.models as fhirmodels
 
 
 class DrugPathway(PagePathway):
