@@ -16,11 +16,14 @@
   </div>
 </div>
 
-<div style="width: calc(100% - 100px); margin-left: 100px" somno-timeline id="#timeline1" ng-controller="d3timeline">
-</div>
 {# beginning of timeline stuff #}
-<div>
-  <div id="timeline2"></div>
+<div class="row">
+  <div ng-controller="d3timeline">
+    <div class="col-md-2"></div>
+    <div class="col-md-9" >
+      <div id="drugtimeline"></div>
+    </div>
+  </div>  
 </div>
 {# end of timeline stuff #}
 

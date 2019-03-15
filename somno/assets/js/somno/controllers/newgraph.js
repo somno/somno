@@ -5,7 +5,7 @@ angular.module('opal.controllers').controller(
         recordLoader, ngProgressLite, $q,
         $cookieStore, patientLoader
     ){
-
+        //debugger;
         var dateformat = "DD/MM/YYYY HH:mm:ss";
         var interval;
 
@@ -255,11 +255,19 @@ angular.module('opal.controllers').controller(
             newvents = ventsettings(patient.episodes[0].ventilation);
             newlines = gridlines(patient.episodes[0].anaesthetic_note);
             newdrugs = drugs(patient.episodes[0].given_drug);
+            
+            //debugger;
+            //set first and last time for x axis
+            $scope.firstobs = newColumns[4][1];
+            $scope.lastobs = newColumns[4][newColumns[4].length-1];
+            
+            //$scope.drugmin = moment().unix()
+            //$scope.drugend = $scope.lastobs.moment().unix()
 
             chart_padding = 75;
             chart = c3.generate({
 
-                bindto: '#chart',
+                bindto: '#obschart',
                 legend: {
                     show: false
                 },

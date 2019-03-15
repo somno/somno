@@ -18,20 +18,23 @@ angular
 
       //if new drug create xs and column, if old push to existing.
 
-      $scope.druglist = new Array();
-      $scope.drugdata = [];
+      $scope.druglist = [];
+      $scope.bolusdrugs = [];
 
       //set up stuff for infusions
+      $scope.infusiondrugs = [];
 
       _.each(drug, function(a) {
         var drugname = a.drug_name;
-        var drugtime = a.datetime.format("DD/MM/YYYY HH:mm:ss");
+        // var drugtime = a.datetime.unix()*1000;
+        var drugtime = a.datetime
         var drugclass = a.drug_type;
         var drugdose = a.dose;
 
-        var inlist = _.indexOf($scope.druglist, drugname);
+        var inlist = _.indexOf($scope.bolusdrugs, drugname);
         if (inlist == "-1") {
           // drug not given before
+          $scope.bolusdrugs.push(drugname)
           $scope.druglist.push({ label: drugname, times: [] });
         }
 
@@ -42,7 +45,7 @@ angular
 
         var colours = [
           { class: "Antiemetic Drug", colour: "#EFBE7D" },
-          { class: "Induction Agent Drug", colour: "#ffe800" },
+          { class: "Induction agent drug", colour: "#ffe800" },
           { class: "Hypnotic Drug", colour: "#FF8200" },
           { class: "Hypnotic Antagonist Drug", colour: "#FF8200" },
           { class: "Neuromuscular Blocking Drug", colour: "#ff7477" },
@@ -71,12 +74,14 @@ angular
           nextcolour = nextcolour.colour;
         }
 
+
         _.each($scope.druglist, function(b) {
           if (drugname == b.label) {
             b.times.push({
               color: nextcolour,
               label: drugdose,
               starting_time: drugtime,
+              ending_time: drugtime,
               display: "circle"
             });
           }
@@ -85,29 +90,35 @@ angular
     };
 
     function timelineCircle(drugsList) {
-        var width = 500;
-        var chart = d3
-          .timeline()
-          .tickFormat(
-            //
-            {
-              format: d3.time.format("%I %p"),
-              tickTime: d3.time.hours,
-              tickInterval: 1,
-              tickSize: 30
-            }
-          )
-          .display("circle"); // toggle between rectangles and circles
-        d3.select("#timeline2").selectAll("svg").remove();
+        var chart = d3.timeline()
+          // .beginning(moment().unix($scope.firstobs)*1000)
+          // .ending(moment().unix($scope.lastobs)*1000)
+          .showTimeAxisTick()
+          .stack()
+          .margin({left:70, right:30, top:0, bottom:0})
+          
+        d3.select("#drugtimeline").selectAll("svg").remove();
         var svg = d3
-          .select("#timeline2")
+          .select("#drugtimeline")
           .append("svg")
-          .attr("width", width)
+          .attr("width", 1000)
           .datum(drugsList)
           .call(chart);
       }
+      
 
     patientLoader().then(function(patient) {
+      var iconTestData = [
+        {label:"jackie", times: [
+          {"starting_time": 1355752800000, "ending_time": 1355759900000},
+          {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
+        {label:"troll", times: [
+          {"starting_time": 1355759910000, "ending_time": 1355761900000,
+          "display":"circle"}, ]},
+        {label:"wat", times: [
+          {"starting_time": 1355761910000, "ending_time": 1355763910000}]}
+      ];
+
       drugs(patient.episodes[0].given_drug);
       // DEBUG:
       console.log($scope.druglist);
