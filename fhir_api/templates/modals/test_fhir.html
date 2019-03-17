@@ -5,6 +5,15 @@
 
 loop:
 
+ {% patient.first_name %}
 {% for i in patient %}
     {{ i }}
+    {{ i.first_name }}
+    {{ i.surname }}
+    {{ i.birthDate}}
+{% endfor %}
+
+{% for j in medication %}
+    {{ j.name|safe }}
+    {{ j.dosage}}
 {% endfor %}
