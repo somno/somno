@@ -193,6 +193,7 @@ INSTALLED_APPS = (
     'opal.core.search',
     'opal.core.pathway',
     'einstein_api',
+    'fhir_api',
     'somno',
     'django.contrib.admin',
 )
