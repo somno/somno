@@ -45,7 +45,7 @@
 
       </div>
       <div class="col-md-2">
-        <a href="/pathway/#/fhir/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]">FHIR thing</a>
+        <a href="/fhir_patient/[[ episode.demographics[0].patient_id ]]/[[ episode.id ]]/[[ episode.demographics[0].hospital_number]]">FHIR thing</a>
         <!-- Physical attributes -->
         {% with pathway.steps.0 as step %}
           {% include pathway.steps.0.get_base_template %}
