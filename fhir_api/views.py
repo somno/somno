@@ -17,10 +17,8 @@ class FhirViewSet(TemplateView):
 
     template_name = "modals/test_fhir.html"
 
-    def get_context_data(request, patient_id, episode_id, hospital_number):
+    def get_context_data(self, patient_id, episode_id, hospital_number):
 
-        # pprint.pprint(request.request.user.username)
-        pprint.pprint(dir(request.request.user))
 
         settings = {"app_id": "my_web_app", "api_base": "https://r3.smarthealthit.org"}
 
@@ -51,13 +49,18 @@ class FhirViewSet(TemplateView):
             medlist.append(med_object)
 
         context = {"patient": patient_object, "medication": medlist}
-        Patient().bulk_update(
+        current_patient  = Patient.objects.get(id=patient_id)
+        current_episode = current_patient.get_active_episode()
+        pprint.pprint(current_patient)
+        pprint.pprint(current_episode)
+        current_patient.bulk_update(
             {
-                "demographics": {"hospital_number": hospital_number},
-                "drug_history": {"Medications": medlist},
+                "demographics": [{"hospital_number": hospital_number}],
+                "drug_history": [{"Medications": medlist}],
             },
-            request.request.user.username,
-            episode=episode_id,
+            self.request.user,
+            episode=current_episode,
+            force=True,
         )
 
         return context
