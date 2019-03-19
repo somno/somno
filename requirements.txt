@@ -1,4 +1,4 @@
-Django==1.10.8
+Django==2.1.7
 coverage==3.6
 dj-database-url==0.2.1
 gunicorn==19.5.0
