@@ -20,12 +20,14 @@ class FhirViewSet(RedirectView):
 
     def get_redirect_url(self, patient_id, episode_id, hospital_number):
 
-        patient_smart_number = 'smart-8888804'
+        patient_smart_number = "smart-8888804"
         settings = {"app_id": "my_web_app", "api_base": "https://r3.smarthealthit.org"}
 
         smart = client.FHIRClient(settings=settings)
 
-        patient = s.FHIRSearch(p.Patient, {"_id": patient_smart_number}).perform(smart.server)
+        patient = s.FHIRSearch(p.Patient, {"_id": patient_smart_number}).perform(
+            smart.server
+        )
         json_pt = patient.as_json()
 
         # pprint.pprint(json_pt["entry"][0]["resource"])
@@ -48,33 +50,45 @@ class FhirViewSet(RedirectView):
                 "dosage": medref["dosageInstruction"][0]["text"],
             }
             medlist.append(med_object)
-            medhtml += medref["medicationCodeableConcept"]["text"] + ": " + medref["dosageInstruction"][0]["text"] + " "
+            medhtml += (
+                medref["medicationCodeableConcept"]["text"]
+                + ": "
+                + medref["dosageInstruction"][0]["text"]
+                + " "
+            )
 
         # past_med_history = condition.Condition.read(
         #     struct={"_id": "smart-767980", "status": "active"}
         # ).perform(smart.server)
 
-        past_med_history = s.FHIRSearch(condition.Condition, {"_id": patient_smart_number}).perform_resources(smart.server)
+        past_med_history = s.FHIRSearch(
+            condition.Condition, {"subject": patient_smart_number}
+        ).perform_resources(smart.server)
 
-        pprint.pprint(past_med_history)
-
-        pmh = []
+        pmh = ""
         for past_history in past_med_history:
-            pprint.pprint(past_history.code())
-        context = {"patient": patient_object, "medication": medlist}
-        current_patient  = Patient.objects.get(id=patient_id)
+            disease = past_history.code.as_json()
+            pmh += (
+                disease["coding"][0]["display"]
+                + "(snomed:"
+                + disease["coding"][0]["code"]
+                + ") ,"
+            )
+
+        current_patient = Patient.objects.get(id=patient_id)
         current_episode = current_patient.get_active_episode()
-        
+
         current_patient.bulk_update(
             {
                 "demographics": [{"hospital_number": hospital_number}],
-                #"drug_history": [{"Medications": medlist}],
-                "drug_history": [{ "Medications": medhtml}],
+                # "drug_history": [{"Medications": medlist}],
+                "drug_history": [{"Medications": medhtml}],
+                "anaesthetic_assesment": [{"assessment": pmh}],
             },
             self.request.user,
             episode=current_episode,
             force=True,
         )
 
-        old_url = '/pathway/#/preop/{}/{}'.format(patient_id, episode_id)
+        old_url = "/pathway/#/preop/{}/{}".format(patient_id, episode_id)
         return old_url

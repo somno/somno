@@ -10,10 +10,11 @@ class Fhir_ApiPlugin(plugins.OpalPlugin):
     """
     Main entrypoint to expose this plugin to our Opal application.
     """
+
     urls = urlpatterns
     javascripts = {
         # Add your javascripts here!
-        'opal.fhir_api': [
+        "opal.fhir_api": [
             # 'js/fhir_api/app.js',
             # 'js/fhir_api/controllers/larry.js',
             # 'js/fhir_api/services/larry.js',
@@ -32,5 +33,3 @@ class Fhir_ApiPlugin(plugins.OpalPlugin):
         by our plugin.
         """
         return {}
-
-
