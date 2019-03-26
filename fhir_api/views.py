@@ -3,7 +3,6 @@ Views for the fhir_api Opal Plugin
 """
 import pprint
 from django.views.generic.base import RedirectView
-from django.shortcuts import redirect
 from opal.models import Patient, UserProfile
 
 from fhirclient import client
@@ -90,5 +89,14 @@ class FhirViewSet(RedirectView):
             force=True,
         )
 
+        old_url = "/pathway/#/preop/{}/{}".format(patient_id, episode_id)
+        return old_url
+
+
+class CaptureToken(RedirectView):
+    """ captures token from smart redirect """
+
+    def get_redirect_url(self, patient_id, episode_id, hospital_number):
+        pprint.pprint(self.request)
         old_url = "/pathway/#/preop/{}/{}".format(patient_id, episode_id)
         return old_url
