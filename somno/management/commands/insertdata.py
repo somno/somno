@@ -13,29 +13,29 @@ FILE_LOCATION = "somno/data/example_data.csv"
 PATIENT_ID = 1
 
 OBSERVATION_FIELD_NAMES = [
-    'bp_systolic',
-    'bp_diastolic',
-    'pulse',
-    'resp_rate',
-    'sp02',
-    'temperature',
-    'datetime'
+    "bp_systolic",
+    "bp_diastolic",
+    "pulse",
+    "resp_rate",
+    "sp02",
+    "temperature",
+    "datetime",
 ]
 
 GASES_FIELD_NAMES = [
-    'expired_oxygen',
-    'inspired_oxygen',
-    'expired_aa',
-    'expired_carbon_dioxide',
-    'datetime'
+    "expired_oxygen",
+    "inspired_oxygen",
+    "expired_aa",
+    "expired_carbon_dioxide",
+    "datetime",
 ]
 
 VENTILATION_FIELD_NAMES = [
-    'peak_airway_pressure',
-    'peep_airway_pressure',
-    'tidal_volume',
-    'rate',
-    'datetime'
+    "peak_airway_pressure",
+    "peep_airway_pressure",
+    "tidal_volume",
+    "rate",
+    "datetime",
 ]
 
 
@@ -60,9 +60,9 @@ def create_model(model_cls, patient, row, fields):
     field_names = model_cls._get_fieldnames_to_serialize()
     unknown_field_names = set(fields) - set(field_names)
     if unknown_field_names:
-        raise ValueError("unable to recognise {} for {}".format(
-            unknown_field_names, model_cls
-        ))
+        raise ValueError(
+            "unable to recognise {} for {}".format(unknown_field_names, model_cls)
+        )
     instance = model_cls()
     data_to_update = {i: v for i, v in row.items() if i in fields}
     user = User.objects.get(username=USER)

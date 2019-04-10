@@ -12,6 +12,7 @@
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenDrug.get_api_name }}')" href="">Drug</a></li>
           <li><a ng-click="episode.recordEditor.newItem('{{ models.GivenFluids.get_api_name }}')" href="">Fluids</a></li>
           <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticNote.get_api_name }}')" href="">Event</a></li>
+          <li><a ng-click="episode.recordEditor.newItem('{{ models.AnaestheticProcedure.get_api_name }}')" href="">Procedure</a></li>
         </ul>
       </div>
       <a open-pathway="infusion_pathway" pathway-episode="episode" pathway-callback="refresh()" class="btn btn-secondary">Edit Infusions</a>

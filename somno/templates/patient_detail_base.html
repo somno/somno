@@ -67,6 +67,19 @@
             </li>
           </ul>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-click="episode.recordEditor.newItem('{{ models.AnaestheticProcedure.get_api_name }}')">Procedures</div>
+            <ul class="list-group">
+              <li ng-repeat="procedure in episode.anaesthetic_procedure" class="list-group-item">
+                <span class="badge badge-secondary pull-left">[[ $index +1 ]]</span>
+                &nbsp;
+                [[ procedure.Procedure_Type]]
+                <br >
+                <small>[[ procedure.Procedure_Name]]</small>
+                
+              </li>
+            </ul>
+          </div>
       </div>
 
       {% include "line_graph.html" %}

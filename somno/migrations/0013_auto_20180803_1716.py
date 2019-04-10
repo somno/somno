@@ -7,31 +7,13 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0012_remove_monitorpatientpairing_user'),
-    ]
+    dependencies = [("somno", "0012_remove_monitorpatientpairing_user")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='monitorpatientpairing',
-            name='created_by',
-        ),
-        migrations.RemoveField(
-            model_name='monitorpatientpairing',
-            name='monitor',
-        ),
-        migrations.RemoveField(
-            model_name='monitorpatientpairing',
-            name='patient',
-        ),
-        migrations.RemoveField(
-            model_name='monitorpatientpairing',
-            name='updated_by',
-        ),
-        migrations.DeleteModel(
-            name='Monitor',
-        ),
-        migrations.DeleteModel(
-            name='MonitorPatientPairing',
-        ),
+        migrations.RemoveField(model_name="monitorpatientpairing", name="created_by"),
+        migrations.RemoveField(model_name="monitorpatientpairing", name="monitor"),
+        migrations.RemoveField(model_name="monitorpatientpairing", name="patient"),
+        migrations.RemoveField(model_name="monitorpatientpairing", name="updated_by"),
+        migrations.DeleteModel(name="Monitor"),
+        migrations.DeleteModel(name="MonitorPatientPairing"),
     ]

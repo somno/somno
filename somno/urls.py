@@ -6,8 +6,6 @@ from opal.urls import urlpatterns as opatterns
 admin.autodiscover()
 
 
-urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-]
+urlpatterns = [url(r"^admin/", include(admin.site.urls))]
 
 urlpatterns += opatterns

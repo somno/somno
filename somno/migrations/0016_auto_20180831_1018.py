@@ -7,19 +7,17 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0015_auto_20180831_0939'),
-    ]
+    dependencies = [("somno", "0015_auto_20180831_0939")]
 
     operations = [
         migrations.AddField(
-            model_name='infusion',
-            name='concentration',
+            model_name="infusion",
+            name="concentration",
             field=models.CharField(blank=True, max_length=255, null=True),
         ),
         migrations.AlterField(
-            model_name='givendrug',
-            name='datetime',
-            field=models.DateTimeField(blank=True, null=True, verbose_name='Start'),
+            model_name="givendrug",
+            name="datetime",
+            field=models.DateTimeField(blank=True, null=True, verbose_name="Start"),
         ),
     ]

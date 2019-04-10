@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+flake8 = "*"
+
+[packages]
+coverage = "==3.6"
+dj-database-url = "==0.2.1"
+gunicorn = "==19.5.0"
+psycopg2 = "==2.7"
+dj-static = "==0.0.6"
+django-reversion = "==1.10.2"
+django-axes = "==1.7.0"
+ffs = "==0.0.8.2"
+letter = "==0.4.1"
+requests = "==2.18.4"
+django-test-coverage = {editable = true,git = "https://github.com/srosro/django-test-coverage",ref = "3f34cc05e50dd16b75d2e18a681d133f27dc5668"}
+djangorestframework = "==3.4.7"
+opal = {editable = true,git = "https://github.com/openhealthcare/opal.git",ref = "v0.12.0"}
+jsonfield = "==1.0.3"
+Django = "==1.10.8"
+django_compressor = "==1.5"
+
+[requires]
+python_version = "3.7"
