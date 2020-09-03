@@ -64,6 +64,7 @@ def create_model(model_cls, patient, row, fields):
             unknown_field_names, model_cls
         ))
     instance = model_cls()
+    instance.patient = patient
     data_to_update = {i: v for i, v in row.items() if i in fields}
     user = User.objects.get(username=USER)
     instance.update_from_dict(data_to_update, user)
