@@ -11,49 +11,91 @@ import opal.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('opal', '0034_auto_20171214_1845'),
+        ("opal", "0034_auto_20171214_1845"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('somno', '0008_auto_20180725_1627'),
+        ("somno", "0008_auto_20180725_1627"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Monitor',
+            name="Monitor",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user_machine_name', models.CharField(max_length=256, unique=True)),
-                ('einstein_id', models.CharField(max_length=256, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("user_machine_name", models.CharField(max_length=256, unique=True)),
+                ("einstein_id", models.CharField(max_length=256, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='PatientUserPairing',
+            name="PatientUserPairing",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(blank=True, null=True)),
-                ('updated', models.DateTimeField(blank=True, null=True)),
-                ('consistency_token', models.CharField(max_length=8)),
-                ('start', models.DateTimeField(blank=True, null=True)),
-                ('stop', models.DateTimeField(blank=True, null=True)),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_somno_patientuserpairing_subrecords', to=settings.AUTH_USER_MODEL)),
-                ('monitor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='somno.Monitor')),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='opal.Patient')),
-                ('updated_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='updated_somno_patientuserpairing_subrecords', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(blank=True, null=True)),
+                ("updated", models.DateTimeField(blank=True, null=True)),
+                ("consistency_token", models.CharField(max_length=8)),
+                ("start", models.DateTimeField(blank=True, null=True)),
+                ("stop", models.DateTimeField(blank=True, null=True)),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="created_somno_patientuserpairing_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "monitor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="somno.Monitor"
+                    ),
+                ),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="opal.Patient"
+                    ),
+                ),
+                (
+                    "updated_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="updated_somno_patientuserpairing_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=(opal.models.UpdatesFromDictMixin, opal.models.ToDictMixin, models.Model),
+            options={"abstract": False},
+            bases=(
+                opal.models.UpdatesFromDictMixin,
+                opal.models.ToDictMixin,
+                models.Model,
+            ),
         ),
         migrations.AlterModelOptions(
-            name='diagnosis',
-            options={'verbose_name_plural': 'Diagnoses'},
+            name="diagnosis", options={"verbose_name_plural": "Diagnoses"}
         ),
+        migrations.AlterModelOptions(name="investigation", options={}),
         migrations.AlterModelOptions(
-            name='investigation',
-            options={},
-        ),
-        migrations.AlterModelOptions(
-            name='pastmedicalhistory',
-            options={'verbose_name_plural': 'Past medical histories'},
+            name="pastmedicalhistory",
+            options={"verbose_name_plural": "Past medical histories"},
         ),
     ]

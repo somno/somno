@@ -11,48 +11,72 @@ import opal.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('opal', '0034_auto_20171214_1845'),
+        ("opal", "0034_auto_20171214_1845"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('somno', '0009_auto_20180802_1037'),
+        ("somno", "0009_auto_20180802_1037"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='MonitorPatientPairing',
+            name="MonitorPatientPairing",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(blank=True, null=True)),
-                ('updated', models.DateTimeField(blank=True, null=True)),
-                ('consistency_token', models.CharField(max_length=8)),
-                ('start', models.DateTimeField(blank=True, null=True)),
-                ('stop', models.DateTimeField(blank=True, null=True)),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_somno_monitorpatientpairing_subrecords', to=settings.AUTH_USER_MODEL)),
-                ('monitor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='somno.Monitor')),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='opal.Patient')),
-                ('updated_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='updated_somno_monitorpatientpairing_subrecords', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(blank=True, null=True)),
+                ("updated", models.DateTimeField(blank=True, null=True)),
+                ("consistency_token", models.CharField(max_length=8)),
+                ("start", models.DateTimeField(blank=True, null=True)),
+                ("stop", models.DateTimeField(blank=True, null=True)),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="created_somno_monitorpatientpairing_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "monitor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="somno.Monitor"
+                    ),
+                ),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="opal.Patient"
+                    ),
+                ),
+                (
+                    "updated_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="updated_somno_monitorpatientpairing_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=(opal.models.UpdatesFromDictMixin, opal.models.ToDictMixin, models.Model),
+            options={"abstract": False},
+            bases=(
+                opal.models.UpdatesFromDictMixin,
+                opal.models.ToDictMixin,
+                models.Model,
+            ),
         ),
-        migrations.RemoveField(
-            model_name='patientuserpairing',
-            name='created_by',
-        ),
-        migrations.RemoveField(
-            model_name='patientuserpairing',
-            name='monitor',
-        ),
-        migrations.RemoveField(
-            model_name='patientuserpairing',
-            name='patient',
-        ),
-        migrations.RemoveField(
-            model_name='patientuserpairing',
-            name='updated_by',
-        ),
-        migrations.DeleteModel(
-            name='PatientUserPairing',
-        ),
+        migrations.RemoveField(model_name="patientuserpairing", name="created_by"),
+        migrations.RemoveField(model_name="patientuserpairing", name="monitor"),
+        migrations.RemoveField(model_name="patientuserpairing", name="patient"),
+        migrations.RemoveField(model_name="patientuserpairing", name="updated_by"),
+        migrations.DeleteModel(name="PatientUserPairing"),
     ]

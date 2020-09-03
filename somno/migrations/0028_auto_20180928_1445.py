@@ -12,75 +12,140 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('opal', '0035_auto_20180806_1150'),
-        ('somno', '0027_delete_frailtyscale'),
+        ("opal", "0035_auto_20180806_1150"),
+        ("somno", "0027_delete_frailtyscale"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Anaesthetist',
+            name="Anaesthetist",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, unique=True)),
             ],
-            options={
-                'ordering': ['name'],
-                'abstract': False,
-            },
+            options={"ordering": ["name"], "abstract": False},
         ),
         migrations.CreateModel(
-            name='OperationDetails',
+            name="OperationDetails",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(blank=True, null=True)),
-                ('updated', models.DateTimeField(blank=True, null=True)),
-                ('consistency_token', models.CharField(max_length=8)),
-                ('planned_date', models.DateField(blank=True, null=True)),
-                ('procedure_ft', models.CharField(blank=True, default=b'', max_length=255, null=True)),
-                ('anaesthetist', models.ManyToManyField(blank=True, null=True, related_name='Anaesthetists', to='somno.Anaesthetist')),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_somno_operationdetails_subrecords', to=settings.AUTH_USER_MODEL)),
-                ('episode', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='opal.Episode')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(blank=True, null=True)),
+                ("updated", models.DateTimeField(blank=True, null=True)),
+                ("consistency_token", models.CharField(max_length=8)),
+                ("planned_date", models.DateField(blank=True, null=True)),
+                (
+                    "procedure_ft",
+                    models.CharField(
+                        blank=True, default=b"", max_length=255, null=True
+                    ),
+                ),
+                (
+                    "anaesthetist",
+                    models.ManyToManyField(
+                        blank=True,
+                        null=True,
+                        related_name="Anaesthetists",
+                        to="somno.Anaesthetist",
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="created_somno_operationdetails_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "episode",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="opal.Episode"
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
-            bases=(opal.models.UpdatesFromDictMixin, opal.models.ToDictMixin, models.Model),
+            options={"abstract": False},
+            bases=(
+                opal.models.UpdatesFromDictMixin,
+                opal.models.ToDictMixin,
+                models.Model,
+            ),
         ),
         migrations.CreateModel(
-            name='Procedure',
+            name="Procedure",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, unique=True)),
             ],
-            options={
-                'ordering': ['name'],
-                'abstract': False,
-            },
+            options={"ordering": ["name"], "abstract": False},
         ),
         migrations.CreateModel(
-            name='Surgeon',
+            name="Surgeon",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, unique=True)),
             ],
-            options={
-                'ordering': ['name'],
-                'abstract': False,
-            },
+            options={"ordering": ["name"], "abstract": False},
         ),
         migrations.AddField(
-            model_name='operationdetails',
-            name='procedure_fk',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='somno.Procedure'),
+            model_name="operationdetails",
+            name="procedure_fk",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="somno.Procedure",
+            ),
         ),
         migrations.AddField(
-            model_name='operationdetails',
-            name='surgeon',
-            field=models.ManyToManyField(blank=True, null=True, related_name='surgeons', to='somno.Surgeon'),
+            model_name="operationdetails",
+            name="surgeon",
+            field=models.ManyToManyField(
+                blank=True, null=True, related_name="surgeons", to="somno.Surgeon"
+            ),
         ),
         migrations.AddField(
-            model_name='operationdetails',
-            name='updated_by',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='updated_somno_operationdetails_subrecords', to=settings.AUTH_USER_MODEL),
+            model_name="operationdetails",
+            name="updated_by",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="updated_somno_operationdetails_subrecords",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

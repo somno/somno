@@ -7,21 +7,24 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0013_auto_20180803_1716'),
-    ]
+    dependencies = [("somno", "0013_auto_20180803_1716")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='diagnosis',
-            options={'verbose_name': 'Diagnosis / Issues', 'verbose_name_plural': 'Diagnoses'},
+            name="diagnosis",
+            options={
+                "verbose_name": "Diagnosis / Issues",
+                "verbose_name_plural": "Diagnoses",
+            },
         ),
         migrations.AlterModelOptions(
-            name='investigation',
-            options={'verbose_name': 'Investigations'},
+            name="investigation", options={"verbose_name": "Investigations"}
         ),
         migrations.AlterModelOptions(
-            name='pastmedicalhistory',
-            options={'verbose_name': 'PMH', 'verbose_name_plural': 'Past medical histories'},
+            name="pastmedicalhistory",
+            options={
+                "verbose_name": "PMH",
+                "verbose_name_plural": "Past medical histories",
+            },
         ),
     ]

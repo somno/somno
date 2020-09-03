@@ -7,14 +7,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0005_auto_20180725_0900'),
-    ]
+    dependencies = [("somno", "0005_auto_20180725_0900")]
 
     operations = [
         migrations.AlterField(
-            model_name='infusion',
-            name='rate',
-            field=models.CharField(default='', max_length=255),
-        ),
+            model_name="infusion",
+            name="rate",
+            field=models.CharField(default="", max_length=255),
+        )
     ]

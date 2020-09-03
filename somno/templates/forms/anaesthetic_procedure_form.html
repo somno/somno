@@ -1,0 +1,77 @@
+{% load forms %}
+
+<div class="col-md-12">
+{% input field="AnaestheticProcedure.Procedure_Type" style="vertical" %}
+
+<span ng-show="editing.anaesthetic_procedure.Procedure_Type == 'Cannulation'">
+  <div>
+    <span ng-value="Cannulation">{% static "AnaestheticProcedure.Procedure_Name" %}</span>
+    {% input field="AnaestheticProcedure.Body_Site" label="site" style="vertical" %}
+    {% input field="AnaestheticProcedure.Device_Used" style="vertical" %}
+    {% input field="AnaestheticProcedure.Number_Of_Attempts" style="vertical" %}
+    {% radio field="AnaestheticProcedure.Ultrasound" style="vertical" %}
+  </div>
+</span>
+
+<span ng-show="editing.anaesthetic_procedure.Procedure_Type == 'Central Neuraxial Technique'">
+  
+    {% input field="AnaestheticProcedure.Procedure_Name"  style="vertical" %}
+    {% input field="AnaestheticProcedure.Body_Site" label="Level" style="vertical" %}
+    <span ng-show="editing.anaesthetic_procedure.Procedure_Name.indexOf('Epidural') != -1">
+
+        <div class="row">
+          <div class="col-md-5">
+          {% input field="AnaestheticProcedure.Depth_Of_Space" unit="cm" label="Depth" style="vertical" %}
+          </div>
+          <div class="col-md-5 col-md-offset-1">
+          {% input field="AnaestheticProcedure.Catheter_Left_In" unit="cm" label="At Skin" style="vertical" %}
+          </div>
+        </div>
+
+    </span>
+    {% input field="AnaestheticProcedure.Technique" style="vertical" %}
+    {% input field="AnaestheticProcedure.Device_Used" style="vertical" %}
+    {% input field="AnaestheticProcedure.Sterility" style="vertical" %}
+    <div class="row">
+      <div class="col-md-4">
+      {% input field="AnaestheticProcedure.Number_Of_Attempts" label="Attempts" maxlength="3" style="vertical"%}
+      </div>
+    </div>
+    {% radio field="AnaestheticProcedure.Ultrasound"  style="vertical" %}
+  
+</span>
+
+<span ng-show="editing.anaesthetic_procedure.Procedure_Type == 'Regional Anaesthetic'">
+  <div>
+    {% input field="AnaestheticProcedure.Procedure_Name" style="vertical" %}
+    {% input field="AnaestheticProcedure.Body_Site" label="Side" style="vertical" %}
+    {% input field="AnaestheticProcedure.Number_Of_Attempts" label="Attempts" style="vertical" %}
+
+    <span><h3>Drugs</h3></span>
+    {% input field="AnaestheticProcedure.Drug_Used" style="vertical" %}
+    <div class="span">
+      <div class="col-md-6">
+          {% input field="AnaestheticProcedure.Drug_Concentration" label=" " unit="%"  style="vertical" %}
+      </div>
+      <div class="col-md-6">
+          {% input field="AnaestheticProcedure.Drug_Dose" label=" " unit="mls" style="vertical" %}
+      </div>
+    </div>
+    
+    {% radio field="AnaestheticProcedure.Ultrasound" style="vertical" %}
+  </div>
+</span>
+
+<span ng-show="editing.anaesthetic_procedure.Procedure_Type == 'Central Venous Catheter'">
+  <div>
+    {% input field="AnaestheticProcedure.Procedure_Name" style="vertical" %}
+    {% input field="AnaestheticProcedure.Body_Site" label="Side" style="vertical" %}
+    {% input field="AnaestheticProcedure.Device_Used"  style="vertical" %}
+    {% input field="AnaestheticProcedure.Number_Of_Attempts" label="Attempts" style="vertical" %}
+    {% radio field="AnaestheticProcedure.Ultrasound" style="vertical" %}
+  </div>
+</span>
+
+{% textarea field="AnaestheticProcedure.Procedure_Note" style="vertical" %}
+{% datetimepicker field="AnaestheticProcedure.Time_Done"%}
+</div>

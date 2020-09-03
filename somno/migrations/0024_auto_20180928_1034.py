@@ -7,52 +7,49 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0023_auto_20180928_0913'),
-    ]
+    dependencies = [("somno", "0023_auto_20180928_0913")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='patientphysicalattributes',
-            options={'verbose_name': 'Physical Attributes'},
+            name="patientphysicalattributes",
+            options={"verbose_name": "Physical Attributes"},
         ),
         migrations.RenameField(
-            model_name='airwayassessment',
-            old_name='Dentition_fk',
-            new_name='dentition_fk',
+            model_name="airwayassessment",
+            old_name="Dentition_fk",
+            new_name="dentition_fk",
         ),
         migrations.RenameField(
-            model_name='airwayassessment',
-            old_name='Dentition_ft',
-            new_name='dentition_ft',
+            model_name="airwayassessment",
+            old_name="Dentition_ft",
+            new_name="dentition_ft",
         ),
         migrations.RenameField(
-            model_name='airwayassessment',
-            old_name='JawProtusion_fk',
-            new_name='jaw_protusion_fk',
+            model_name="airwayassessment",
+            old_name="JawProtusion_fk",
+            new_name="jaw_protusion_fk",
         ),
         migrations.RenameField(
-            model_name='airwayassessment',
-            old_name='JawProtusion_ft',
-            new_name='jaw_protusion_ft',
+            model_name="airwayassessment",
+            old_name="JawProtusion_ft",
+            new_name="jaw_protusion_ft",
         ),
         migrations.RenameField(
-            model_name='airwayassessment',
-            old_name='Malampati_fk',
-            new_name='malampati_fk',
+            model_name="airwayassessment",
+            old_name="Malampati_fk",
+            new_name="malampati_fk",
         ),
         migrations.RenameField(
-            model_name='airwayassessment',
-            old_name='Malampati_ft',
-            new_name='malampati_ft',
+            model_name="airwayassessment",
+            old_name="Malampati_ft",
+            new_name="malampati_ft",
         ),
-        migrations.RemoveField(
-            model_name='airwayassessment',
-            name='MouthOpening',
-        ),
+        migrations.RemoveField(model_name="airwayassessment", name="MouthOpening"),
         migrations.AddField(
-            model_name='airwayassessment',
-            name='mouth_opening',
-            field=models.FloatField(blank=True, null=True, verbose_name='Mouth opening'),
+            model_name="airwayassessment",
+            name="mouth_opening",
+            field=models.FloatField(
+                blank=True, null=True, verbose_name="Mouth opening"
+            ),
         ),
     ]

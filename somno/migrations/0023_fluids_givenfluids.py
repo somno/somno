@@ -12,41 +12,98 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('opal', '0034_auto_20171214_1845'),
-        ('somno', '0022_merge_20180831_1212'),
+        ("opal", "0034_auto_20171214_1845"),
+        ("somno", "0022_merge_20180831_1212"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Fluids',
+            name="Fluids",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, unique=True)),
             ],
-            options={
-                'abstract': False,
-                'ordering': ['name'],
-            },
+            options={"abstract": False, "ordering": ["name"]},
         ),
         migrations.CreateModel(
-            name='GivenFluids',
+            name="GivenFluids",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(blank=True, null=True)),
-                ('updated', models.DateTimeField(blank=True, null=True)),
-                ('consistency_token', models.CharField(max_length=8)),
-                ('volume', models.FloatField(blank=True, null=True)),
-                ('unit_number', models.CharField(blank=True, max_length=255, null=True)),
-                ('given_time', models.DateTimeField(blank=True, null=True, verbose_name='Time')),
-                ('fluid_ft', models.CharField(blank=True, default=b'', max_length=255, null=True)),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_somno_givenfluids_subrecords', to=settings.AUTH_USER_MODEL)),
-                ('fluid_fk', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='somno.Fluids')),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='opal.Patient')),
-                ('updated_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='updated_somno_givenfluids_subrecords', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(blank=True, null=True)),
+                ("updated", models.DateTimeField(blank=True, null=True)),
+                ("consistency_token", models.CharField(max_length=8)),
+                ("volume", models.FloatField(blank=True, null=True)),
+                (
+                    "unit_number",
+                    models.CharField(blank=True, max_length=255, null=True),
+                ),
+                (
+                    "given_time",
+                    models.DateTimeField(blank=True, null=True, verbose_name="Time"),
+                ),
+                (
+                    "fluid_ft",
+                    models.CharField(
+                        blank=True, default=b"", max_length=255, null=True
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="created_somno_givenfluids_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "fluid_fk",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="somno.Fluids",
+                    ),
+                ),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="opal.Patient"
+                    ),
+                ),
+                (
+                    "updated_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="updated_somno_givenfluids_subrecords",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'verbose_name': 'Fluids',
-            },
-            bases=(opal.models.UpdatesFromDictMixin, opal.models.ToDictMixin, models.Model),
+            options={"verbose_name": "Fluids"},
+            bases=(
+                opal.models.UpdatesFromDictMixin,
+                opal.models.ToDictMixin,
+                models.Model,
+            ),
         ),
     ]

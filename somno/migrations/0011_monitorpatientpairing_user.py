@@ -11,17 +11,16 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('somno', '0010_auto_20180802_1106'),
+        ("somno", "0010_auto_20180802_1106"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='monitorpatientpairing',
-            name='user',
+            model_name="monitorpatientpairing",
+            name="user",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE,
-                to=settings.AUTH_USER_MODEL
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
             ),
             preserve_default=False,
-        ),
+        )
     ]

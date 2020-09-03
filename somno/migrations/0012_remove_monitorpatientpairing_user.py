@@ -7,13 +7,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('somno', '0011_monitorpatientpairing_user'),
-    ]
+    dependencies = [("somno", "0011_monitorpatientpairing_user")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='monitorpatientpairing',
-            name='user',
-        ),
+        migrations.RemoveField(model_name="monitorpatientpairing", name="user")
     ]
