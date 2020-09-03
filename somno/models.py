@@ -305,8 +305,9 @@ class Bloods(models.EpisodeSubrecord):
 
 class AnaestheticPlan(models.EpisodeSubrecord):
     _is_singleton = True
-
-    Proposed_Procedure = fields.ForeignKeyOrFreeText(ProposedProcedure)
+    Proposed_Procedure = db_models.ManyToManyField(
+        ProposedProcedure, related_name="ProposedProcedure", blank=True, null=True
+    )
     Procedure_Risks = db_models.TextField(blank=True, null=True)
     Risks = fields.ForeignKeyOrFreeText(Risks)
 
@@ -327,6 +328,7 @@ class AnaestheticAssesment(models.EpisodeSubrecord):
     exercise_tolerance = db_models.TextField(
         blank=True, null=True, verbose_name="Exercise tolerance"
     )
+    seen_by = fields.ForeignKeyOrFreeText(Anaesthetist)
     time_seen = db_models.DateTimeField(blank=True, null=True)
 
 

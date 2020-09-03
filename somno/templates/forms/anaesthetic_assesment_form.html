@@ -17,5 +17,9 @@
     {% input field="AnaestheticAssesment.smoking_status" style="vertical" %}
   </div>
 </div>
+<hr>
+<div class="row">
+  <div class="col-md-8">{% input field="AnaestheticAssesment.seen_by" label="Last Update By:" style="vertical" %}</div>
+  <div class="col-md-2">{% datetimepicker field="AnaestheticAssesment.time_seen" label="Time" style="horizontal" %}</div>
+</div>
 
-{% input field="AnaestheticAssesment.time_seen" label="Time seen" style="vertical" %}

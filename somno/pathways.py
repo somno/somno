@@ -49,26 +49,42 @@ class PreOpPathway(PagePathway):
 
     steps = [
         Step(
+            #0
             model=models.PatientPhysicalAttributes,
             base_template="pathways/preop_step_base_template.html",
         ),
         Step(
+            #1
             model=models.AnaestheticAssesment,
             base_template="pathways/preop_step_base_template.html",
         ),
         Step(
-            model=models.DrugHistory,
+            #2
+            model=models.Allergies,
             base_template="pathways/preop_step_base_template.html",
         ),
         Step(
+            #3
+            model=models.Treatment,
+            base_template="pathways/preop_step_base_template.html",
+        ),
+        Step(
+            #4
             model=models.AirwayAssessment,
             base_template="pathways/preop_step_base_template.html",
         ),
         Step(
+            #5
             model=models.Bloods, base_template="pathways/preop_step_base_template.html"
         ),
         Step(
+            #6
             model=models.AnaestheticPlan,
+            base_template="pathways/preop_step_base_template.html",
+        ),
+        Step(
+            #7
+            model=models.PastMedicalHistory,
             base_template="pathways/preop_step_base_template.html",
         ),
     ]
