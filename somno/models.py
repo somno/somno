@@ -164,10 +164,6 @@ class Treatment(models.Treatment):
     pass
 
 
-class Investigation(models.Investigation):
-    pass
-
-
 """
 Section 3: Somno models
 """
