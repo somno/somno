@@ -248,7 +248,7 @@ class Observation(RemoteAdded):
 
 class Induction(models.EpisodeSubrecord):
     _is_singleton = True
-
+ 
     MaskVent = fields.ForeignKeyOrFreeText(MaskVent)
     Airway = fields.ForeignKeyOrFreeText(airway)
     CormackLehane = fields.ForeignKeyOrFreeText(CormackLehane)
