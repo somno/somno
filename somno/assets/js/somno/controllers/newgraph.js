@@ -128,8 +128,6 @@ angular.module('opal.controllers').controller(
 
                 drugclass = capitalizeEachWord(drugclass);
 
-                //push dose to array for labels
-                $scope.labels.push(drugdose);
 
                 var inlist = _.indexOf($scope.druglist, drugname);
                 if (inlist == '-1'){
@@ -147,27 +145,14 @@ angular.module('opal.controllers').controller(
                     //push data
                     $scope.drugcolumns[i].push(drugorder);
                     $scope.drugcolumns[j].push(drugtime);
+ 
+                    $scope.labels.push([drugdose]);
 
                     //push to colours
-                    // var colours = [
-                    //   {class: "antiemetic_drug", colour: "#EFBE7D"},
-                    //   {class: "induction_agent_drug", colour: '#ffe800'},
-                    //   {class: "hypnotic_drug", colour: '#FF8200'},
-                    //   {class: "hypnotic_antagonist_drug", colour: '#FF8200'},
-                    //   {class: "neuromuscular_blocking_drug", colour: '#ff7477'},
-                    //   {class: "neuromuscular_blocking_drug_antagonist", colour: '#ff7477'},
-                    //   {class: "depolarizing_neuromuscular_blocking_drug", colour: '#ff7477'},
-                    //   {class: "opioid_drug", colour: '#71C5E8'},
-                    //   {class: "opioid_antagonist", colour: '#71C5E8'},
-                    //   {class: "vasopressor_drug", colour: '#D6BFDD'},
-                    //   {class: "local_anaesthetics_drug", colour: '#AFA9A0'},
-                    //   {class: "anticholinergic_drug", colour: '#A4D65E'},
-                    //   {class: "other_drug_agents", colour: '#ffffff'},
-                    // ];
 
                     //stuff to do
                     // 1 find a better way of doing this
-                    //have some reminder to change this if we change class names
+                    // 2 have some reminder to change this if we change class names
 
                     var colours = [
                         {class: "Antiemetic Drug", colour: "#EFBE7D"},
@@ -187,7 +172,7 @@ angular.module('opal.controllers').controller(
                     //var nextcolour = _.where(colours, drugclass);
                     var something = {class: drugclass};
                     var nextcolour = _.findWhere(colours, something);
-                    //debugger;
+
                     if (nextcolour == null){
                         $scope.drugcolours[drugname] = '#736969';
                     } else {
@@ -205,11 +190,13 @@ angular.module('opal.controllers').controller(
 
                     var i = (drugorder * 2) - 2;
                     var j = (drugorder * 2) - 1;
+                    var k = drugord
 
                     drugnamex = drugname + "_x";
                     //push data
                     $scope.drugcolumns[i].push(drugorder);
                     $scope.drugcolumns[j].push(drugtime);
+                    $scope.labels[k].push(drugdose);
                 };
 
             });
@@ -222,31 +209,38 @@ angular.module('opal.controllers').controller(
                 colors: $scope.drugcolours,
             }
             $scope.dheight = $scope.druglist.length * 35;
+
+            //reverse the sub arrays so drug doses are in the correct order
+            _.map($scope.labels, function(i){
+                i.reverse()
+            })
+
+
             return drugdata;
         }
 
         var chart;
 
-        function drawlabels(chartInternal){
-            var textLayer = drugchart.internal.main.select('.' + c3.chart.internal.fn.CLASS.chartTexts);
-            _.each(drugchart.internal.mainCircle, function(a){
-                _.each(a, function(){
-                    textLayer.select('text').remove();
+        function drawlabels(){
+            // series
+            var series = chart4.internal.main
+                .selectAll('.' + c3.chart.internal.fn.CLASS.circles)[0];
+            // text layers
+            var texts = chart4.internal.main
+                .selectAll('.' + c3.chart.internal.fn.CLASS.chartTexts)
+                .selectAll('.' + c3.chart.internal.fn.CLASS.chartText)[0]
+            series.forEach(function (series, i) {
+                var points = d3.select(series).selectAll('.' + c3.chart.internal.fn.CLASS.circle)[0]
+                points.forEach(function (point, j) {
+                    d3.select(texts[i])
+                    .append('text')
+                    .attr('text-anchor', 'middle')
+                    .attr('dy', '0.3em')
+                    .attr('x', d3.select(point).attr('cx'))
+                    .attr('y', d3.select(point).attr('cy'))
+                    .text($scope.labels[i][j])
                 })
-            })
-            _.each(drugchart.internal.mainCircle, function(point){
-                _.each(point, function(p){
-                    var d3point = d3.select(p);
-                    var ind = _.findIndex(drugchart.internal.mainCircle, point);
-                    textLayer
-                        .append('text')
-                    // center horizontally and vertically
-                        .style('text-anchor', 'middle').attr('dy', '.2em')
-                        .text($scope.labels[ind])
-                    // same as at the point
-                        .attr('x', d3point.attr('cx') ).attr('y', d3point.attr('cy'));
-                })
-            })
+            });
         }
 
         patientLoader().then(function(patient){
@@ -393,13 +387,17 @@ angular.module('opal.controllers').controller(
                         },
                     },
                 },
+                regions: [
+                    //shaded region for BIS
+                    {axis: 'y', start: 40, end: 60}
+                ], 
 
                 subchart: {
-                    show: true,
+                    show: false,
                     onbrush: function (d) {
                         chart.zoom(d);
                         chart3.zoom(d);
-                        drugchart.zoom(d);
+                        chart4.zoom(d);
                     },
                     size: {
                         height: 20,
@@ -476,7 +474,7 @@ angular.module('opal.controllers').controller(
 
             });
 
-            drugchart = c3.generate({
+            chart4 = c3.generate({
                 oninit: function(){
                     d3.select('#drugchart .c3-axis-x').attr("transform", "");
                 },
@@ -487,7 +485,7 @@ angular.module('opal.controllers').controller(
                 },
                 opacity: 1,
                 point: {
-                    r: 5,
+                    r: 10,
                     opacity: 1,
                 },
                 data: {
@@ -496,20 +494,20 @@ angular.module('opal.controllers').controller(
                     columns : newdrugs.columns,
                     type: 'scatter',
                     colors: newdrugs.colors,
-                    //should probably get rid of this
-                    labels: {
-                        show: false,
-                        // format : function(d){
-                        //   var label = $scope.labels[d-1];
-                        //   return label
-                        // }
-                        format: function (v, id, i, j) {
-                            var label = $scope.labels[i-1];
-                            return label;
+
+                },
+                tooltip: {
+                    show: false, 
+                    format: {
+                        value: function(value, ratio, id, index){
+                            return $scope.labels[value][index]
                         }
-
                     }
-
+                },
+                grid: {
+                    y: {
+                      show: true
+                    }
                 },
                 axis: {
                     x: {
@@ -521,25 +519,26 @@ angular.module('opal.controllers').controller(
                     },
 
                     y: {
-                        inverted: true,
+                        inverted: false,
                         tick: {
-                            // format: function(e){
-                            //   var label = $scope.druglist[e-1];
-                            //   return label;
-                            // },
+                            format: function(e){
+                              var label = $scope.druglist[e-1];
+                              return label;
+                            },
                         },
                         padding: {
                             top: 15,
                             bottom: 15,
                         },
-                        show: false,
+                        show: true,
                     },
 
                     y2: {
                         //we'll use y2 to display total dose
                         default: [0,4],
                         tick: {
-                            values: [0.5,1.5,2.5,3.5], //this needs to come from a function in the future
+                            count:2
+                            //values: [0.5,1.5,2.5,3.5], //this needs to come from a function in the future
                         },
                         padding: {
                             top: 5,
@@ -551,12 +550,15 @@ angular.module('opal.controllers').controller(
                 size: {
                     height: $scope.dheight,
                 },
-                grid: {
-                    y2: {
-                        show: true,
-                    },
-                },
+                zoom :{
+                    onzoom: function () {
+                        debugger
+                        // $('.c3-shapes.c3-circles text').remove();
+                        ('.' + c3.chart.internal.fn.CLASS.chartTexts).remove()
+                     }
+                }
             });
+            drawlabels()
         });
 
         // interval = setInterval(function () {

@@ -19,3 +19,4 @@ somno/assets/CACHE
 node_modules
 %SystemDrive%
 .vscode
+.env

@@ -10,7 +10,7 @@
       [[ episode.getFullName() ]]
       | [[ episode.demographics[0].hospital_number ]]
       | [[ episode.demographics[0].date_of_birth | momentDateFormat:"Mo MMMM YYYY" ]]
-      | Hip replacement
+      | [[ episode.operation_details[0].procedure ]]
     </div>
     <a href="/accounts/logout/" class="hamburger">
       <i class="fas fa-sign-out-alt"></i>
